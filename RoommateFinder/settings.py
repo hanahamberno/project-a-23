@@ -25,7 +25,12 @@ SECRET_KEY = 'bnsa+wj-r#obp6!bdnc$(@yr41$g3jsj%163g2w(dyfgtv%bep'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '0.0.0.0',
+    '127.0.0.1',
+    'localhost',
+    'pure-reaches-12380.herokuapp.com'
+]
 
 
 # Application definition
