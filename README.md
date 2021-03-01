@@ -3,7 +3,9 @@
 * We are using `Django`, the full-stack web framework made of `python` and `bootstrap`.
 
 * Memebers' Role:
+  
 |Name|Role|
+|----|----|
 |Hanah No|**Scrum Manager**|
 |Nathan Snyder|**DevOps Manager**|
 |Kathy Kang|**UX Desinger**|
