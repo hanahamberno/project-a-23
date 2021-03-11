@@ -1,20 +1,15 @@
-{% load socialaccount %}
+{% extends "social_app/base.html" %}
+
 <html>
-
-<head>
-    <title>Google Registration</title>
-</head>
-
-<body>
-    <h1>My Google Login Project</h1>
-    {% if user.is_authenticated %}
-    <p>Welcome, {{ user.email }} !</p>
-
-    {% else %}
-
-    <a href="{% provider_login_url 'google' %}">Login with Google</a>
-    {% endif %}
-
-</body>
-
+    <head>
+        <title>Google Registration</title>
+    </head>
+    <body>
+        {% block content %}
+        <div class="container">
+            <h2>Home</h2>
+            <p>Our homepage :) although nothing on here yet</p>
+        </div>
+        {% endblock content %}
+    </body>
 </html>
