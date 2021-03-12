@@ -1,0 +1,14 @@
+{% extends "social_app/base.html" %}
+
+    {% block title %}Roommate Finder{% endblock %}
+    {% block content %}
+    <div class="container jumbotron">
+        <h2>Home</h2>
+        <p>Our homepage :) although nothing on here yet</p>
+        {% if user.is_authenticated %}
+            <p><b>{{ user.email }}</b> is being logged in!</p>
+        {% else %}
+            <p>It is not logged in</p>
+        {% endif %}
+    </div>
+    {% endblock content %}

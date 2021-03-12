@@ -6,7 +6,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Roommate Finder</title>
+        <title>{% block title %}{% endblock %}</title>
         <link
             rel="stylesheet"
             href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -21,7 +21,7 @@
             <header>
                 <nav class="navbar navbar-expand-md navbar-light bg-light">
                     <div class="container">
-                        <a class="navbar-brand mr-4" href="{% url 'roommate-home' %}">Roommate Finder</a>
+                        <a class="navbar-brand mr-4" href="{% url 'social_app:home' %}">Roommate Finder</a>
                         <button
                             class="navbar-toggler"
                             type="button"
@@ -35,8 +35,8 @@
                         </button>
                         <div class="collapse navbar-collapse" id="navbarToggle">
                             <div class="navbar-nav mr-auto">
-                                <a class="nav-item nav-link" href="#">Home</a>
-                                <a class="nav-item nav-link" href="#">About</a>
+                                <a class="nav-item nav-link" href="{% url 'social_app:home' %}">Home</a>
+                                <a class="nav-item nav-link" href="{% url 'social_app:about' %}">About</a>
                             </div>
                             <!-- Navbar Right Side -->
                             <div class="navbar-nav">
