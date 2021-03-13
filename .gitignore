@@ -1,5 +1,7 @@
 Lib/
 Scripts/
+#Pipfile might cause an crash with requirement.txt so I'll put it in .gitignore
+Pipfile
 
 # Django #
 *.log
