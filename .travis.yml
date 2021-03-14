@@ -11,5 +11,5 @@ deploy:
     secure: LURKDcd3+xWZfup8sDQcCo3z/cjywYoovVpeOAm/dv3ULS6hKPLLT7uz9Wjg32GxeFbo6B/wslIhOhtFhsD0e7eVCcn8O4FErwsHF/+s34huIqJ3s7TjG0bQ4J/UfBVnkCPlBOd8D4YnLUDiZhLfBDolSqZ8dCa+gVUrTRYyxkh0kh9D7EbC7zmpWwoKHKjhWdmkS830SninLx0R7lt6M+A8R66qMlr1To0p5xlcwx72s2zuOHm7D9ZlGOaxKWsQSQHidlvvT0ccdfKrFL6VpDeK6f7GpeOHhPWVIxeSFGQUDi/q96mccK82foAvzM+L/XMN+joQFDnf+MPY9f/iJSDJqHblPR8gQjY/6uOufUa1BjdgmgqbUNykcdq+chzWHu2It7gGFgmhyG1E4AiX/a6AixbfJQza2beO6Y6+pxbDmGFR6+cx3y/9AIr1o/ezYGKWGVFv7JJkqtzb9LKu02ud7IoA5qjanXViR18bJSZhB+ZHRfQc6D/f86TpC5OvzeiSdsWKS1rSo0xhCuNzfQ0h1QoU8/hnax/3+Tw6IPIWkgJ46OTXJK5nHVdl6YE5wt8SJrjKMF+mYS3rWfOb936IkxxUzIlkGjfvNGoVfDtFUWdXE+Yo7lx24aO9ptqPZSTQychWNix11TFOH9doDbDDkgFaNT5+dEv8iYtWRJ8=
     app: pure-reaches-12380
     on:
-      all_branches: true
+      branch: main
 
