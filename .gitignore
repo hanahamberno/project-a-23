@@ -3,7 +3,7 @@ Scripts/
 # Pipfile might cause an crash with requirement.txt so I'll put it in .gitignore
 Pipfile
 # For Windows users, it looks like virtual environment so should be ignored as well
-pyven.cfg
+pyvenv.cfg
 
 # Django #
 *.log
