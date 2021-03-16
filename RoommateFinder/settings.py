@@ -159,13 +159,14 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 
-# # # AWS credentials to access bucket
-# AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-# AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-# AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+# AWS Stuff
+# # AWS credentials to access bucket
+AWS_ACCESS_KEY_ID = 'AKIAT5JXBWLMVCZZAE7U'
+AWS_SECRET_ACCESS_KEY = 'sDW8OxAsG/5WhO6ijSnBgIxmJafvBdov3TV3Kq/V'
+AWS_STORAGE_BUCKET_NAME = 'roomie-finder'
 
-# # # overwrite files of the same name (e.g. if 2 users uploaded image.jpg, just overwrite instead of changing everyone's stuff)
-# AWS_S3_FILE_OVERWRITE = False
-# # recommended to set it to none cuz current default causes problems
-# AWS_DEFAULT_ACL = None
-# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# # overwrite files of the same name (e.g. if 2 users uploaded image.jpg, just overwrite instead of changing everyone's stuff)
+AWS_S3_FILE_OVERWRITE = False
+# recommended to set it to none cuz current default causes problems
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
