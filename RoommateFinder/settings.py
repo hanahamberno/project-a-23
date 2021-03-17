@@ -46,14 +46,20 @@ DEFAULT_APPS = [
 ]
 
 PROJECT_APPS = [
+    'social_app.apps.SocialAppConfig',
+    'users.apps.UsersConfig',
+]
+# it is the thrid party api
+THIRD_PARTY_APP = [
+    #----Google Authentication API-----#
     'django.contrib.sites',
     'allauth',
-    'social_app.apps.SocialAppConfig',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
- 
 ]
+
+INSTALLED_APPS = DEFAULT_APPS + PROJECT_APPS + THIRD_PARTY_APP
 
 AUTHENTICATION_BACKENDS = (
  'django.contrib.auth.backends.ModelBackend',
@@ -74,7 +80,7 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
-INSTALLED_APPS = DEFAULT_APPS + PROJECT_APPS
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -157,3 +163,14 @@ USE_TZ = True
 # set up where heroku static files are
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+
+#(Seungeon) a full absolute path to a dir where we like Django to store uploaded files
+# It is the place where the uploaded files are saved
+# using os.path.join() means no matter what OS ur using, it will safely create a full absoulte path to the dir
+# BASE_DIR specifies the project's base directory
+# 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# (Seungeon) this is where we access the profile pics on the broswer side
+# ex) pure-reaches-whatever.com/media/the_name_of_the_pic
+MEDIA_URL = '/media/'
