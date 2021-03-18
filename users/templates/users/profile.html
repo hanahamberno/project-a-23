@@ -1,8 +1,14 @@
 {% extends "social_app/base.html" %}
 <!-- (Hanah) tutorial had this in already? -->
-<!-- {% load crispy_forms_tags %}  -->
+{% load crispy_forms_tags %} 
 {% block content %}
 <!--(Hanah) layout that has bootstrap classes to make things look nicer + some styles from main.css file base template-->
+<style>
+    img{
+        width: 300px;
+        height: 300px;
+    }
+</style>
 <div class="content-section">
     <div class="media">
         <img class="rounded-circle account-img" src="{{ user.profile.image.url }}"> <!--(Hanah) location of user's image-->
