@@ -4,3 +4,4 @@ django-heroku
 django-allauth
 requests
 Pillow
+django-crispy-forms
