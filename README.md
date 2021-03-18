@@ -24,3 +24,7 @@
 
 
 
+# Sprint 4 - First Major Feature (Profile)
+   * [Default image resource](https://www.google.com/url?sa=i&url=https%3A%2F%2Ficon-library.com%2Ficon%2Fdefault-user-icon-26.html&psig=AOvVaw1B1qFKdKGh7zHRZTXUBjle&ust=1616142636270000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJCLvNS2ue8CFQAAAAAdAAAAABAD)
+
+
