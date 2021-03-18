@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+#from django.contrib.auth import views as auth_views (Hanah) idk if we need this, it was already there from the tutorial
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
@@ -28,6 +29,10 @@ urlpatterns = [
     #(Seungeon) for the profile url
     path('profile/', user_views.profile, name='profile'),
 ]
+
+
+if settings.DEBUG: # (Hanah) if in debug mode, then we want to add following to url patterns
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # (Hanah) Serving files uploaded by a user during development
 
 
 # (Seungeon) this is for the production. If debug is set to True, which means development mode,
