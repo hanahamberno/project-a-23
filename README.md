@@ -29,6 +29,7 @@
    * dependencies
      * ## make sure to set up the virtual environment and install these on your local machine:
        * `pip install django-crispy-forms`
-       * 
+       * `pip install django-allauth`
+       * `pip install Pillow`
 
 
