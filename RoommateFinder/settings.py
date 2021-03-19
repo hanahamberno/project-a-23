@@ -165,6 +165,8 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 #(Seungeon) a full absolute path to a dir where we like Django to store uploaded files
 # It is the place where the uploaded files are saved
 # using os.path.join() means no matter what OS ur using, it will safely create a full absoulte path to the dir
