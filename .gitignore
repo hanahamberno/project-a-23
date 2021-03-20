@@ -4,6 +4,7 @@ Scripts/
 Pipfile
 # For Windows users, it looks like virtual environment so should be ignored as well
 pyvenv.cfg
+db.sqlite3
 
 # Django #
 *.log
