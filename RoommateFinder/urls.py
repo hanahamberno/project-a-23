@@ -33,10 +33,3 @@ urlpatterns = [
 
 if settings.DEBUG: # (Hanah) if in debug mode, then we want to add following to url patterns
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # (Hanah) Serving files uploaded by a user during development
-
-
-# (Seungeon) this is for the production. If debug is set to True, which means development mode,
-# we can explicitly see the url for the profile picture on the browser.
-# we don't want this to happen when it's being deployed
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

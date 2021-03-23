@@ -43,6 +43,7 @@ DEFAULT_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 ]
 
 PROJECT_APPS = [
@@ -52,12 +53,14 @@ PROJECT_APPS = [
 # it is the thrid party api
 THIRD_PARTY_APP = [
     #----Google Authentication API-----#
-    'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'crispy_forms',
+    # AWS stuff?
+    'storages',
+
 ]
 
 INSTALLED_APPS = DEFAULT_APPS + PROJECT_APPS + THIRD_PARTY_APP
@@ -81,11 +84,6 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
-<<<<<<< HEAD
-INSTALLED_APPS = DEFAULT_APPS + PROJECT_APPS + ['storages']
-=======
-
->>>>>>> user_profile
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
