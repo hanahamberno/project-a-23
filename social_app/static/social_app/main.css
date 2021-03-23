@@ -1,0 +1,18 @@
+:root {
+    --primary: #4b3734;
+    --secondary: #f5f0ea;
+    --primary2: #e4ba61;
+    --secondary2: #f1a19b;
+
+  }
+
+body, .main-page{
+    background: var(--secondary);
+    color: var(--primary);
+}
+
+.navbar{
+    background-color: var(--primary) !important;
+}
+
+
