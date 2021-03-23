@@ -179,6 +179,8 @@ AWS_S3_FILE_OVERWRITE = False
 # recommended to set it to none cuz current default causes problems
 AWS_DEFAULT_ACL = None
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 #(Seungeon) a full absolute path to a dir where we like Django to store uploaded files
