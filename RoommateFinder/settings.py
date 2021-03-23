@@ -46,14 +46,21 @@ DEFAULT_APPS = [
 ]
 
 PROJECT_APPS = [
+    'social_app.apps.SocialAppConfig',
+    'users.apps.UsersConfig',
+]
+# it is the thrid party api
+THIRD_PARTY_APP = [
+    #----Google Authentication API-----#
     'django.contrib.sites',
     'allauth',
-    'social_app.apps.SocialAppConfig',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
- 
+    'crispy_forms',
 ]
+
+INSTALLED_APPS = DEFAULT_APPS + PROJECT_APPS + THIRD_PARTY_APP
 
 AUTHENTICATION_BACKENDS = (
  'django.contrib.auth.backends.ModelBackend',
@@ -74,7 +81,11 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
+<<<<<<< HEAD
 INSTALLED_APPS = DEFAULT_APPS + PROJECT_APPS + ['storages']
+=======
+
+>>>>>>> user_profile
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -170,3 +181,15 @@ AWS_S3_FILE_OVERWRITE = False
 # recommended to set it to none cuz current default causes problems
 AWS_DEFAULT_ACL = None
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+#(Seungeon) a full absolute path to a dir where we like Django to store uploaded files
+# It is the place where the uploaded files are saved
+# using os.path.join() means no matter what OS ur using, it will safely create a full absoulte path to the dir
+# BASE_DIR specifies the project's base directory
+# 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# (Seungeon) this is where we access the profile pics on the broswer side
+# ex) pure-reaches-whatever.com/media/the_name_of_the_pic
+MEDIA_URL = '/media/'
