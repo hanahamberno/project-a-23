@@ -1,0 +1,22 @@
+/*Kathy*/
+:root {
+    --primary: #57453a;
+    --secondary: #f5f0ea;
+    --primary2: #ce5c54;
+    --secondary2: #f1a19b;
+
+  }
+
+body, .main-page{
+    background: var(--secondary);
+    color: var(--primary);
+}
+
+.navbar{
+    background-color: var(--primary) !important;
+}
+
+.btn-dark{
+    background: var(--primary);
+}
+
