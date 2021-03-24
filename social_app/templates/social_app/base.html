@@ -19,7 +19,7 @@
         <div>
             <!--NAVBAR-->
             <!--  Navbar code based on corey schafer django tutorial -->
-            <!--Kathy's bootsrap-->
+            <!--Kathy's bootstrap-->
             <header>
                 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
                     <div class="container">
@@ -53,6 +53,16 @@
                 </nav>
             </header>
             {% block content %}{% endblock %}
+            <!-- Kathy - Back to top button -->
+            <div class="container-fluid my-4">
+                <div class="row d-flex justify-content-center">
+                    <a href="#" tabindex="-1">
+                        <button class="btn btn-outline-dark" id="backToTop">
+                            Back to top
+                        </button>
+                    </a>
+                </div>
+            </div>
         </div>
         <!-- Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
