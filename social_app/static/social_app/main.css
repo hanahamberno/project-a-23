@@ -1,7 +1,8 @@
+/*Kathy*/
 :root {
-    --primary: #4b3734;
+    --primary: #57453a;
     --secondary: #f5f0ea;
-    --primary2: #e4ba61;
+    --primary2: #ce5c54;
     --secondary2: #f1a19b;
 
   }
@@ -15,4 +16,7 @@ body, .main-page{
     background-color: var(--primary) !important;
 }
 
+.btn-dark{
+    background: var(--primary);
+}
 
