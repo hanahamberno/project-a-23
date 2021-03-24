@@ -13,13 +13,14 @@
             integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
             crossorigin="anonymous"
         >
+        <link rel="stylesheet" type="text/css" href="{% static 'social_app/main.css' %}">
     </head>
     <body>
         <div>
             <!--NAVBAR-->
             <!--  Navbar code based on corey schafer django tutorial -->
             <header>
-                <nav class="navbar navbar-expand-md navbar-light bg-light">
+                <nav class="navbar navbar-expand-md navbar-dark bg-light">
                     <div class="container">
                         <a class="navbar-brand mr-4" href="{% url 'social_app:home' %}">Roommate Finder</a>
                         <button
