@@ -17,7 +17,11 @@ class Profile(models.Model):
         # it will create a dir called "profile_pics"
         upload_to="profile_pics",
     )
+    age = models.IntegerField(blank=True,)
 
+    bio = models.TextField(blank=True,)
+
+    graduation_year = models.CharField(blank=True)
     # attributes needed:
         # 2. graduation year -> Char(with number)? Integer?
         # 3. Age -> Integer
