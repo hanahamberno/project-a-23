@@ -2,8 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from PIL import Image
 
-
 class Profile(models.Model):
+
     user = models.OneToOneField(
         User, 
         # (Seungeon)models.CASCADE => if the 'User' is deleted, profile is also deleted.
@@ -17,6 +17,16 @@ class Profile(models.Model):
         # it will create a dir called "profile_pics"
         upload_to="profile_pics",
     )
+
+    # attributes needed:
+        # 2. graduation year -> Char(with number)? Integer?
+        # 3. Age -> Integer
+        # 4. Pronouns(she/he) -> Char
+        # 5. Bio -> textField
+        # 6. Phone Number -> Char? is there anything specifically for PhoneNumber
+        # 7. On-Grounds/Off-Grounds -> char
+        # 8. Max_Price -> Integer
+    
 
     def __str__(self):
         return f'{self.user.username} Profile' 

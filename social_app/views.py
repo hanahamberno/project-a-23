@@ -20,7 +20,6 @@ class ProfileListView(ListView):
     # from Django official Docs
     # https://docs.djangoproject.com/en/3.1/ref/class-based-views/mixins-single-object/
     context_object_name = 'profiles'
-
     # ordering = [-some attribute] <- this will order it by whatever attribute in models.py specified
     
 class ProfileDetailView(DetailView):
