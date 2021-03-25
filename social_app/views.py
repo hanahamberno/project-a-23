@@ -23,6 +23,10 @@ class ProfileListView(ListView):
 
     # ordering = [-some attribute] <- this will order it by whatever attribute in models.py specified
     
+class ProfileDetailView(DetailView):
+    model = Profile
+    template_name = 'social_app/detail.html'
+    context_object_name = 'profiles'
 
 
 def about(request):

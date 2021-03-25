@@ -4,29 +4,32 @@
     {% block content %}
     <!--Kathy's CSS (main-page)-->
     <div class="container jumbotron main-page">
-        <h2>Home</h2>
-        <p>Our homepage :) although nothing on here yet</p>
-        {% if user.is_authenticated %}
-        <p>
-            <b>{{ user.email }}</b>
-            is being logged in!
-        </p>
+        {% if user.is_authenticated != True %}
+        <div>
+            <p>please Log-in with your UVA account</p>
+        </div>
         {% else %}
-        <p>It is not logged in</p>
+            <p>looking for rommates? :></p>
         {% endif %}
+
     </div>
-    <div>
-        {% if profiles %}
-            {% for p in profiles %}
-            <div class="card d-inline-block p-2" style="width: 18rem;">
-                <img src="{{ p.image.url }}" class="card-img-top">
-                <div class="card-body">
-                  <h5 class="card-title">{{ p.user.first_name }} {{ p.user.last_name}} </h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
+    <!-- Seungeon -->
+    <!-- Added profile cards -->
+    {% if user.is_authenticated == True %}
+        <div>
+            {% if profiles %}
+                {% for p in profiles %}
+                <div class="card d-inline-block p-2" style="width: 18rem;">
+                    <img src="{{ p.image.url }}" class="card-img-top">
+                    <div class="card-body">
+                    <h5 class="card-title">{{ p.user.first_name }} {{ p.user.last_name}}</h5>
+                    <p class="card-text">{{ p.user.email }}</p>
+                    <a href="{% url 'social_app:profile-detail' p.user.id %}" class="btn btn-primary">Explore</a>
+                    </div>
                 </div>
-              </div>
-            {% endfor %}
-        {% endif %}
-    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    {% endif %}
+    
     {% endblock content %}
