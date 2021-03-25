@@ -15,5 +15,13 @@
         <p>It is not logged in</p>
         {% endif %}
     </div>
+    <div>
+        {% if profiles %}
+            <p>profile object is retrived</p>
+            {% for p in profiles %}
+                <p>{{ p.user.email }}</p>
+                <img src= "{{ p.image.url }}">
+            {% endfor %}
+        {% endif %}
     </div>
     {% endblock content %}
