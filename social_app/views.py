@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 #(Seungeon)
 from users.models import Profile
 
@@ -20,6 +20,8 @@ class ProfileListView(ListView):
     # from Django official Docs
     # https://docs.djangoproject.com/en/3.1/ref/class-based-views/mixins-single-object/
     context_object_name = 'profiles'
+
+    # ordering = [-some attribute] <- this will order it by whatever attribute in models.py specified
     
 
 
