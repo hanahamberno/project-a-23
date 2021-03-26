@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.core.validators import MinValueValidator
+from django.core.validators import MinValueValidator, MaxValueValidator
 #from phonenumber_field.modelfields import PhoneNumberField
 from phone_field import PhoneField
 from PIL import Image
@@ -35,12 +35,16 @@ class Profile(models.Model):
 
     bio = models.TextField(blank=True,)
 
-    graduation_year = models.IntegerField(blank=True,default = 2021, validators=[MinValueValidator(2021)],
+    graduation_year = models.IntegerField(
+        blank=True,
+        default = 2021, 
+        validators=[MinValueValidator(2021), MaxValueValidator(2025)],
+        null=True,
     )
 
-    pronouns = models.CharField(blank=True,max_length=50)
+    pronouns = models.CharField(blank=True,max_length=50,)
 
-    phone_number = PhoneField(blank=True,)
+    phone_number = PhoneField(blank=True, max_length=14,)
 
     on_grounds = models.CharField(blank=True, choices= GROUNDS_CHOICES,max_length=50)
 
