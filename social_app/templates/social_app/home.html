@@ -24,7 +24,7 @@
                     <div class="card-body">
                     <h5 class="card-title">{{ p.user.first_name }} {{ p.user.last_name}}</h5>
                     <p class="card-text">{{ p.user.email }}</p>
-                    <a href="{% url 'social_app:profile-detail' p.user.id %}" class="btn btn-primary">Explore</a>
+                    <a href="{% url 'social_app:profile_detail_view' p.user.pk %}" class="btn btn-primary">Explore</a>
                     </div>
                 </div>
                 {% endfor %}
