@@ -31,3 +31,4 @@ whitenoise==5.2.0
 Pillow
 image
 django-crispy-forms
+django-phone-field

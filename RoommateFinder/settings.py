@@ -58,6 +58,8 @@ THIRD_PARTY_APP = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'crispy_forms',
+    #phone stuff
+    'phone_field',
     # AWS stuff?
     'storages',
 

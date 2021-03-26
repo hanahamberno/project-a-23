@@ -1,8 +1,21 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator
+#from phonenumber_field.modelfields import PhoneNumberField
+from phone_field import PhoneField
 from PIL import Image
 
 class Profile(models.Model):
+
+    ON_GROUNDS = "on-grounds"
+    OFF_GROUNDS = "off-grounds"
+    NO_PREFERENCE = "no preference"
+
+    GROUNDS_CHOICES = (
+        (ON_GROUNDS, "On-Grounds"),
+        (OFF_GROUNDS, "Off-Grounds"),
+        (NO_PREFERENCE, "No Preference"),
+    )
 
     user = models.OneToOneField(
         User, 
@@ -17,11 +30,22 @@ class Profile(models.Model):
         # it will create a dir called "profile_pics"
         upload_to="profile_pics",
     )
-    age = models.IntegerField(blank=True,)
+    age = models.IntegerField(blank=True,validators=[MinValueValidator(0)],
+    )
 
     bio = models.TextField(blank=True,)
 
-    graduation_year = models.CharField(blank=True)
+    graduation_year = models.IntegerField(blank=True,default = 2021, validators=[MinValueValidator(2021)],
+    )
+
+    pronouns = models.CharField(blank=True,max_length=50)
+
+    phone_number = PhoneField(blank=True,)
+
+    on_grounds = models.CharField(blank=True, choices= GROUNDS_CHOICES,max_length=50)
+
+    max_price = models.IntegerField(blank=True, validators=[MinValueValidator(0)], default=600,
+    )
     # attributes needed:
         # 2. graduation year -> Char(with number)? Integer?
         # 3. Age -> Integer
