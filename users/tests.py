@@ -4,7 +4,7 @@ from users.models import *
 
 # Create your tests here.
 
-class ProfileTest1(TestCase):
+class ProfileModelTest(TestCase):
     def setUp(self):
         test_user = User.objects.create(
             username = 'test_user',
