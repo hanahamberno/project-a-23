@@ -2,24 +2,24 @@
 
     {% block title %}Roommate Finder{% endblock %}
     {% block content %}
-    <!--Kathy's CSS (main-page)-->
-    <div class="container jumbotron main-page">
-        <h2>Home</h2>
-        <p>Our homepage :) although nothing on here yet</p>
-        {% if user.is_authenticated %}
-        <p>
-            <b>{{ user.email }}</b>
-            is being logged in!
-        </p>
-        {% else %}
-        <p>It is not logged in</p>
-        {% endif %}
+<!-- Seungeon -->
+<!-- Added profile cards -->
+<div class="container main-page">
+    <div class="media m-4">
+        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+        <!--(Hanah) location of user's image-->
+        <div class="media-body mx-4">
+            <h2 class="account-heading">{{ profile.user.username }}</h2>
+            <p class="text-secondary">{{ profile.user.email }}</p>
+        </div>
     </div>
-    <!-- Seungeon -->
-    <!-- Added profile cards -->
-    <div>
+    <div class="card">
         <p>Name : {{ profile.user.first_name }} {{ profile.user.last_name }}</p>
         <p>Bio : {{ profile.bio }}</p>
         <p>Age : {{ profile.age }}</p>
+        <p>Grad Year : {{ profile.age }}</p>
+        <p>Age : {{ profile.age }}</p>
+        <p>Age : {{ profile.age }}</p>
     </div>
-    {% endblock content %}
+</div>
+{% endblock content %}

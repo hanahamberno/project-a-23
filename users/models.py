@@ -5,6 +5,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from phone_field import PhoneField
 from PIL import Image
 
+
 class Profile(models.Model):
 
     ON_GROUNDS = "on-grounds"
@@ -18,10 +19,10 @@ class Profile(models.Model):
     )
 
     user = models.OneToOneField(
-        User, 
+        User,
         # (Seungeon)models.CASCADE => if the 'User' is deleted, profile is also deleted.
         on_delete=models.CASCADE,
-        )
+    )
 
     image = models.ImageField(
         # (Seungeon)if the user doesn't specify the image, this image will be the default image
@@ -30,38 +31,44 @@ class Profile(models.Model):
         # it will create a dir called "profile_pics"
         upload_to="profile_pics",
     )
-    age = models.IntegerField(blank=True,validators=[MinValueValidator(0)],
-    )
+    age = models.IntegerField(blank=True, validators=[MinValueValidator(0)], null=True
+                              )
 
-    bio = models.TextField(blank=True,)
+    bio = models.TextField(blank=True, default='')
 
     graduation_year = models.IntegerField(
         blank=True,
-        default = 2021, 
+        default=2021,
         validators=[MinValueValidator(2021), MaxValueValidator(2025)],
         null=True,
     )
 
-    pronouns = models.CharField(blank=True,max_length=50,)
+    pronouns = models.CharField(blank=True, max_length=50,)
 
     phone_number = PhoneField(blank=True, max_length=14,)
 
-    on_grounds = models.CharField(blank=True, choices= GROUNDS_CHOICES,max_length=50)
+    on_grounds = models.CharField(
+        blank=True, 
+        choices=GROUNDS_CHOICES, 
+        max_length=50
+    )
 
-    max_price = models.IntegerField(blank=True, validators=[MinValueValidator(0)], default=600,
+    max_price = models.IntegerField(
+        blank=True,
+        validators=[MinValueValidator(0)],
+        default=600,
     )
     # attributes needed:
-        # 2. graduation year -> Char(with number)? Integer?
-        # 3. Age -> Integer
-        # 4. Pronouns(she/he) -> Char
-        # 5. Bio -> textField
-        # 6. Phone Number -> Char? is there anything specifically for PhoneNumber
-        # 7. On-Grounds/Off-Grounds -> char
-        # 8. Max_Price -> Integer
-    
+    # 2. graduation year -> Char(with number)? Integer?
+    # 3. Age -> Integer
+    # 4. Pronouns(she/he) -> Char
+    # 5. Bio -> textField
+    # 6. Phone Number -> Char? is there anything specifically for PhoneNumber
+    # 7. On-Grounds/Off-Grounds -> char
+    # 8. Max_Price -> Integer
 
     def __str__(self):
-        return f'{self.user.username} Profile' 
+        return f'{self.user.username} Profile'
 
     # def save(self):
     #     super().save()
@@ -72,4 +79,3 @@ class Profile(models.Model):
     #         output_size = (300, 300)
     #         img.thumbnail(output_size)
     #         img.save(self.image.path)
-

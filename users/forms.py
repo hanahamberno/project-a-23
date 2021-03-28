@@ -1,8 +1,9 @@
-#Ben
+# Ben
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .models import Profile
+
 
 class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField()
@@ -15,4 +16,8 @@ class UserUpdateForm(forms.ModelForm):
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['image']
+        fields = [
+            'image',
+            'age',
+            'bio',
+            'pronouns', 'phone_number', 'on_grounds', 'max_price']
