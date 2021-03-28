@@ -26,7 +26,7 @@ class ProfileListView(ListView):
     # ordering = [-some attribute] <- this will order it by whatever attribute in models.py specified
 
     def get_queryset(self):
-        queryset = Profile.objects.all()
+        queryset = Profile.objects.exclude(user__username='admin')
         return queryset
 
 
