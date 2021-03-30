@@ -20,6 +20,7 @@ class Profile(models.Model):
 
     user = models.OneToOneField(
         User,
+        null=True,
         # (Seungeon)models.CASCADE => if the 'User' is deleted, profile is also deleted.
         on_delete=models.CASCADE,
     )
@@ -31,8 +32,11 @@ class Profile(models.Model):
         # it will create a dir called "profile_pics"
         upload_to="profile_pics",
     )
-    age = models.IntegerField(blank=True, validators=[MinValueValidator(0)], null=True
-                              )
+    age = models.IntegerField(
+        blank=True, 
+        validators=[MinValueValidator(0)], 
+        null=True,
+    )
 
     bio = models.TextField(blank=True, default='')
 
