@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 
+import dj_database_url
+import django_heroku
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -58,8 +61,12 @@ THIRD_PARTY_APP = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'crispy_forms',
+    #phone stuff
+    'phone_field',
     # AWS stuff?
     'storages',
+    # Postgre stuff?
+    'django_extensions',
 
 ]
 
@@ -70,7 +77,7 @@ AUTHENTICATION_BACKENDS = (
  'allauth.account.auth_backends.AuthenticationBackend',
 )
 
-SITE_ID = 1
+SITE_ID = 2
 LOGIN_REDIRECT_URL = '/'
 
 SOCIALACCOUNT_PROVIDERS = {
@@ -120,13 +127,38 @@ WSGI_APPLICATION = 'RoommateFinder.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'postgres',
+#         'USER': 'postgres',
+#         'PASSWORD': '1234',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'dbcoatdhbj2hv',
+        'USER': 'jfbrnjgulrztaz',
+        'PASSWORD': 'df183ec3d56d1119d2f130e7c7217ee9d6ac65873b351f6c40067d4967105217',
+        'HOST': 'ec2-52-23-190-126.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
+
+#(Seungeon) django/heroku database linking
+# db_from_env = dj_database_url.config(conn_max_age=600)
+# DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -194,3 +226,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # (Seungeon) this is where we access the profile pics on the broswer side
 # ex) pure-reaches-whatever.com/media/the_name_of_the_pic
 MEDIA_URL = '/media/'
+
+django_heroku.settings(locals())

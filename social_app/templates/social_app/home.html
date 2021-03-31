@@ -2,18 +2,35 @@
 
     {% block title %}Roommate Finder{% endblock %}
     {% block content %}
-    <!--Kathy's CSS (main-page)-->
-    <div class="container jumbotron main-page">
-        <h2>Home</h2>
-        <p>Our homepage :) although nothing on here yet</p>
-        {% if user.is_authenticated %}
-        <p>
-            <b>{{ user.email }}</b>
-            is being logged in!
-        </p>
-        {% else %}
-        <p>It is not logged in</p>
-        {% endif %}
+<!--Kathy's CSS (main-page)-->
+<div class="container jumbotron main-page">
+    {% if user.is_authenticated != True %}
+    <div>
+        <p>please Log-in with your UVA account</p>
     </div>
+    {% else %}
+    <p>looking for roommates? :></p>
+    {% endif %}
+</div>
+<!-- Seungeon -->
+<!-- Added profile cards -->
+{% if user.is_authenticated == True %}
+<div>
+    {% if profiles %}
+        {% for p in profiles %}
+    <div class="card d-inline-block p-2" style="width: 18rem;">
+        <a href="{% url 'social_app:profile_detail_view' p.user.pk %}">
+            <img src="{{ p.image.url }}" class="card-img-top">
+        </a>
+        <div class="card-body">
+            <a href="{% url 'social_app:profile_detail_view' p.user.pk %}" class="card-title">{{ p.user.first_name }} {{ p.user.last_name}}</a>
+            <p class="card-text">{{ p.user.email }}</p>
+            <a href="{% url 'social_app:profile_detail_view' p.user.pk %}" class="btn btn-primary">Explore</a>
+        </div>
     </div>
+    {% endfor %}
+    {% endif %}
+</div>
+{% endif %}
+    
     {% endblock content %}

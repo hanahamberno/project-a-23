@@ -31,5 +31,6 @@
        * `pip install django-crispy-forms`
        * `pip install django-allauth`
        * `pip install Pillow`
+       * `pip install django-phone-field`
 
 
