@@ -134,16 +134,27 @@ WSGI_APPLICATION = 'RoommateFinder.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'postgres',
+#         'USER': 'postgres',
+#         'PASSWORD': '1234',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     }
+# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': '1234',
-        'HOST': '127.0.0.1',
+        'NAME': 'dbcoatdhbj2hv',
+        'USER': 'jfbrnjgulrztaz',
+        'PASSWORD': 'df183ec3d56d1119d2f130e7c7217ee9d6ac65873b351f6c40067d4967105217',
+        'HOST': 'ec2-52-23-190-126.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
+
 
 #(Seungeon) django/heroku database linking
 # db_from_env = dj_database_url.config(conn_max_age=600)
