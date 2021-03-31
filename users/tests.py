@@ -4,16 +4,18 @@ from users.models import *
 
 # Create your tests here.
 
+
 class ProfileModelTest(TestCase):
     def setUp(self):
         test_user = User.objects.create(
-            username = 'test_user',
-            password = 'test_user',
-            email = '12345@gmail.com'
+            username='test_user',
+            password='test_user',
+            email='12345@gmail.com'
         )
 
-        test_profile = Profile.objects.get_or_create(user=test_user, image="default.jpg")
-    
+        test_profile = Profile.objects.get_or_create(
+            user=test_user, image="default.jpg")
+
     # (Seungeon)
     # a test method to check if the __str__ method returns the correct username
     def test_profile_str(self):
@@ -24,11 +26,13 @@ class ProfileModelTest(TestCase):
         test_profile = Profile.objects.filter(user__username='test_user')[0]
         # (Seungeon) str() will call __str__() inside the Profile Model
         self.assertEqual(str(test_user), 'test_user')
-        self.assertEqual(str(test_profile), f'{test_profile.user.username} Profile')
+        self.assertEqual(str(test_profile),
+                         f'{test_profile.user.username} Profile')
 
+    def test_profile_invalid_graduation_year(self):
 
-    # def testUserCanLogin(self):
-    #     user = User.objects.get(username='test_user')
-    #     profile = Profile.objects.get(user=user)
-    #     print("helloooo")
-    #     self.assertEqual(1,1)
+        # def testUserCanLogin(self):
+        #     user = User.objects.get(username='test_user')
+        #     profile = Profile.objects.get(user=user)
+        #     print("helloooo")
+        #     self.assertEqual(1,1)
