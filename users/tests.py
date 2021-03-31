@@ -30,7 +30,7 @@ class ProfileModelTest(TestCase):
                          f'{test_profile.user.username} Profile')
 
     def test_profile_invalid_graduation_year(self):
-
+        pass
         # def testUserCanLogin(self):
         #     user = User.objects.get(username='test_user')
         #     profile = Profile.objects.get(user=user)
