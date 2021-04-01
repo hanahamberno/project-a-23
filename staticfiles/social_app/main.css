@@ -20,3 +20,14 @@ body, .main-page{
     background: var(--primary);
 }
 
+.btn-outline-dark:hover{
+    background-color: var(--primary);
+}
+
+#backToTop {
+    margin: auto;
+    width: 15rem;
+    padding: auto;
+}
+
+
