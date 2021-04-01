@@ -13,14 +13,7 @@
             integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
             crossorigin="anonymous"
         >
-        <!-- Kathy - Google Fonts -->
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Nunito&family=Patrick+Hand+SC&display=swap" rel="stylesheet">
-        <!-- Kathy - CSS stylesheets -->
-        <link rel="stylesheet" type="text/css" href="{% static 'social_app/base.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'social_app/home.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'social_app/detail.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'users/profile.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'social_app/main.css' %}">
     </head>
     <body>
         <div>
@@ -28,7 +21,7 @@
             <!--  Navbar code based on corey schafer django tutorial -->
             <!--Kathy's bootstrap-->
             <header>
-                <nav class="navbar navbar-expand-md navbar-light bg-light">
+                <nav class="navbar navbar-expand-md navbar-dark bg-dark">
                     <div class="container">
                         <a class="navbar-brand mr-4" href="{% url 'social_app:home' %}">Roommate Finder</a>
                         <button
@@ -59,14 +52,12 @@
                     </div>
                 </nav>
             </header>
-            <div class="card m-4 base-card">
-                {% block content %}{% endblock %}
-            </div>
+            {% block content %}{% endblock %}
             <!-- Kathy - Back to top button -->
             <div class="container-fluid my-4">
                 <div class="row d-flex justify-content-center">
                     <a href="#" tabindex="-1">
-                        <button class="btn btn-dark" id="backToTop">
+                        <button class="btn btn-outline-dark" id="backToTop">
                             Back to top
                         </button>
                     </a>

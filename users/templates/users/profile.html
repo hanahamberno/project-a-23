@@ -2,31 +2,35 @@
 <!-- (Hanah) tutorial had this in already? -->
 {% load crispy_forms_tags %} 
 {% block content %}
+<!--(Hanah) layout that has bootstrap classes to make things look nicer + some styles from main.css file base template-->
+<style>
+    img{
+        width: 300px;
+        height: 300px;
+    }
+</style>
 <!--Kathy's CSS (main-page, container, and padding)-->
-<div class="container main-page py-4 px-3">
-    <div class="card profile-bg p-4">
-        <div class="media m-4">
-            <img class="rounded-circle img-thumbnail" src="{{ user.profile.image.url }}">
-            <!--(Hanah) location of user's image-->
-            <div class="media-body mx-4">
-                <h2 class="header-text">{{ user.username }}</h2>
-                <p class="text-secondary">{{ user.email }}</p>
+<div class="contianer main-page">
+    <div class="media m-4">
+        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}"> <!--(Hanah) location of user's image-->
+        <div class="media-body mx-4">
+            <h2 class="account-heading">{{ user.username }}</h2>
+            <p class="text-secondary">{{ user.email }}</p>
+        </div>
+    </div>
+    <!-- FORM HERE (Ben) -->
+    <div class="container main-page m-4 mt-5">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Profile Information</legend>
+                {{ u_form|crispy }}
+                {{ p_form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-dark" type="submit">Update</button>
             </div>
-        </div>
-        <!-- FORM HERE (Ben) -->
-        <div class="container main-page">
-            <form method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                <fieldset class="form-group">
-                    <legend class="border-bottom mb-4 header-text">Profile Information</legend>
-                    {{ u_form|crispy }}
-                    {{ p_form|crispy }}
-                </fieldset>
-                <div class="form-group">
-                    <button class="btn btn-dark" type="submit">Update</button>
-                </div>
-            </form>
-        </div>
+        </form>
     </div>
 </div>
 {% endblock content %}

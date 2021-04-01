@@ -2,34 +2,34 @@
 
     {% block title %}Roommate Finder{% endblock %}
     {% block content %}
-<!-- Seungeon -->
-<!-- Added profile cards -->
-{% if user.is_authenticated %}
-<div class="container py-4 px-4">
-    {% if profiles %}
-    <div class="card-deck">
-        {% for p in profiles %}
-        <div class="card p-4 m-2 text-center roomie-card">
-            <a href="{% url 'social_app:profile_detail_view' p.user.pk %}">
-                <img src="{{ p.image.url }}" class="rounded-circle img-thumbnail card-img-top roomie-pfp">
-            </a>
-            <div class="card-body">
-                <a href="{% url 'social_app:profile_detail_view' p.user.pk %}" class="card-title roomie-name"><strong>{{ p.user.first_name }} {{ p.user.last_name}}</strong></a>
-                <p class="card-text">{{ p.bio|truncatewords:15 }}</p>
-            </div>
-            <div class="card-footer roomie-footer">
-                <a href="{% url 'social_app:profile_detail_view' p.user.pk %}" class="btn btn-dark">View Profile</a>
-            </div>
-        </div>
-        {% endfor %}
+<!--Kathy's CSS (main-page)-->
+<div class="container jumbotron main-page">
+    {% if user.is_authenticated != True %}
+    <div>
+        <p>please Log-in with your UVA account</p>
     </div>
+    {% else %}
+    <p>looking for roommates? :></p>
     {% endif %}
 </div>
-{% else %}
-<div class="jumbotron my-auto">
-    <p class="text-center">
-        Log in to start checking out profiles
-    </p>
+<!-- Seungeon -->
+<!-- Added profile cards -->
+{% if user.is_authenticated == True %}
+<div>
+    {% if profiles %}
+        {% for p in profiles %}
+    <div class="card d-inline-block p-2" style="width: 18rem;">
+        <a href="{% url 'social_app:profile_detail_view' p.user.pk %}">
+            <img src="{{ p.image.url }}" class="card-img-top">
+        </a>
+        <div class="card-body">
+            <a href="{% url 'social_app:profile_detail_view' p.user.pk %}" class="card-title">{{ p.user.first_name }} {{ p.user.last_name}}</a>
+            <p class="card-text">{{ p.user.email }}</p>
+            <a href="{% url 'social_app:profile_detail_view' p.user.pk %}" class="btn btn-primary">Explore</a>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
 </div>
 {% endif %}
     
