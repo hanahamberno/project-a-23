@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.exceptions import ValidationError
 #from phonenumber_field.modelfields import PhoneNumberField
 from phone_field import PhoneField
 from PIL import Image
@@ -73,6 +74,11 @@ class Profile(models.Model):
 
     def __str__(self):
         return f'{self.user.username} Profile'
+
+    def is_valid_graduation_year(self):
+        if self.graduation_year != None:
+            if self.graduation_year < 2021 and self.graduation_year > 2025:
+                raise ValidationError("Invalid year")
 
     # def save(self):
     #    super().save()
