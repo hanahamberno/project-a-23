@@ -33,8 +33,8 @@ class Profile(models.Model):
         upload_to="profile_pics",
     )
     age = models.IntegerField(
-        blank=True, 
-        validators=[MinValueValidator(0)], 
+        blank=True,
+        validators=[MinValueValidator(0)],
         null=True,
     )
 
@@ -52,8 +52,8 @@ class Profile(models.Model):
     phone_number = PhoneField(blank=True, max_length=14,)
 
     on_grounds = models.CharField(
-        blank=True, 
-        choices=GROUNDS_CHOICES, 
+        blank=True,
+        choices=GROUNDS_CHOICES,
         max_length=50
     )
 
@@ -75,11 +75,11 @@ class Profile(models.Model):
         return f'{self.user.username} Profile'
 
     # def save(self):
-    #     super().save()
-    #     img = Image.open(self.image.path)
+    #    super().save()
+    #    img = Image.open(self.image.path)
 
-    #     # resize image if necessary
-    #     if (img.height > 300 or img.width > 300):
-    #         output_size = (300, 300)
-    #         img.thumbnail(output_size)
-    #         img.save(self.image.path)
+        # resize image if necessary
+    #    if (img.height > 300 or img.width > 300):
+    #        output_size = (300, 300)
+    #        img.thumbnail(output_size)
+    #        img.save(self.image.path)

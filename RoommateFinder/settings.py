@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import sys
 from pathlib import Path
 import os
 
@@ -61,7 +62,7 @@ THIRD_PARTY_APP = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'crispy_forms',
-    #phone stuff
+    # phone stuff
     'phone_field',
     # AWS stuff?
     'storages',
@@ -73,8 +74,8 @@ THIRD_PARTY_APP = [
 INSTALLED_APPS = DEFAULT_APPS + PROJECT_APPS + THIRD_PARTY_APP
 
 AUTHENTICATION_BACKENDS = (
- 'django.contrib.auth.backends.ModelBackend',
- 'allauth.account.auth_backends.AuthenticationBackend',
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
 )
 
 SITE_ID = 2
@@ -144,6 +145,7 @@ WSGI_APPLICATION = 'RoommateFinder.wsgi.application'
 #         'PORT': '5432',
 #     }
 # }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -155,8 +157,14 @@ DATABASES = {
     }
 }
 
+if 'test' in sys.argv:
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
 
-#(Seungeon) django/heroku database linking
+
+# (Seungeon) django/heroku database linking
 # db_from_env = dj_database_url.config(conn_max_age=600)
 # DATABASES['default'].update(db_from_env)
 
@@ -216,15 +224,16 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-#(Seungeon) a full absolute path to a dir where we like Django to store uploaded files
+# (Seungeon) a full absolute path to a dir where we like Django to store uploaded files
 # It is the place where the uploaded files are saved
 # using os.path.join() means no matter what OS ur using, it will safely create a full absoulte path to the dir
 # BASE_DIR specifies the project's base directory
-# 
+#
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # (Seungeon) this is where we access the profile pics on the broswer side
 # ex) pure-reaches-whatever.com/media/the_name_of_the_pic
 MEDIA_URL = '/media/'
 
-django_heroku.settings(locals())
+if '/app' in os.environ['HOME']:
+    django_heroku.settings(locals())
