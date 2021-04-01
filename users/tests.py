@@ -41,7 +41,7 @@ class ProfileModelTest(TestCase):
         test_profile1 = Profile.objects.filter(user__username='test_user')[0]
         test_profile1.graduation_year = 2022
         try:
-            print("Tryint valid graduation year(2022)\n")
+            print("Testing valid graduation year(2022)\n")
             test_profile1.full_clean()
             # Model.full_clean() validates the model fields, the field uniqueness
         except ValidationError:
@@ -56,13 +56,12 @@ class ProfileModelTest(TestCase):
         test_profile1 = Profile.objects.filter(user__username='test_user')[0]
         test_profile1.graduation_year = 2040
         try:
-            print("Tyring invalid graduation year(2040)\n")
+            print("Testing invalid graduation year(2040)\n")
             test_profile1.full_clean()
         except ValidationError:
             pass
         else:
-            print("'test_profile_invalid_graduation_year'failed")
-            test_profile1.save()
+            print("'test_profile_invalid_graduation_year' failed")
 
     # def testUserCanLogin(self):
     #     user = User.objects.get(username='test_user')
