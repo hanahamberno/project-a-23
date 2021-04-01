@@ -2,24 +2,83 @@
 
     {% block title %}Roommate Finder{% endblock %}
     {% block content %}
-<!-- Seungeon -->
+<!-- Kathy -->
 <!-- Added profile cards -->
-<div class="container main-page">
-    <div class="media m-4">
-        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
-        <!--(Hanah) location of user's image-->
-        <div class="media-body mx-4">
-            <h2 class="account-heading">{{ profile.user.username }}</h2>
-            <p class="text-secondary">{{ profile.user.email }}</p>
+<div class="container main-page py-4 px-3">
+    <div class="card profile-bg p-4">
+        <div class="media m-4">
+            <img class="rounded-circle img-thumbnail" src="{{ profile.user.profile.image.url }}">
+            <div class="media-body mx-4">
+                <h2 class="account-heading">{{ profile.user.username }}</h2>
+                <p class="text-secondary">{{ profile.user.email }}</p>
+            </div>
+        </div>
+        <div class="container p-4">
+            <h3 class="mb-4 card-header pl-0 pb-4 pt-1">A little bit about this wonderful person :)</h3>
+            <div class="card-text">
+                <p>
+                    <strong>Name :</strong>
+                    {{ profile.user.first_name }} {{ profile.user.last_name }}
+                </p>
+                <p>
+                    <strong>Bio :</strong>
+                    {%if profile.bio%}
+                    {{ profile.bio }}
+                {%else%}
+                    -
+                {%endif%}
+                </p>
+                <p>
+                    <strong>Age :</strong>
+                    {%if profile.age%}
+                    {{ profile.age }}
+                {%else%}
+                    -
+                {%endif%}
+                </p>
+                <p>
+                    <strong>Graduation Year :</strong>
+                    {%if profile.graduation_year%}
+                    {{ profile.graduation_year }}
+                {%else%}
+                    -
+                {%endif%}
+                </p>
+                <p>
+                    <strong>Pronouns :</strong>
+                    {%if profile.pronouns%}
+                    {{ profile.pronouns }}
+                {%else%}
+                    -
+                {%endif%}
+                </p>
+                <p>
+                    <strong>Phone Number :</strong>
+                    {%if profile.age%}
+                    {{ profile.age }}
+                {%else%}
+                    -
+                {%endif%}
+                </p>
+                <p>
+                    <strong>On Grounds :</strong>
+                    {%if profile.age%}
+                    {{ profile.age }}
+                {%else%}
+                    -
+                {%endif%}
+                </p>
+                <p>
+                    <strong>Max Price :</strong>
+                    {%if profile.age%}
+                    {{ profile.age }}
+                {%else%}
+                    -
+                {%endif%}
+                </p>
+            </div>
         </div>
     </div>
-    <div class="card">
-        <p>Name : {{ profile.user.first_name }} {{ profile.user.last_name }}</p>
-        <p>Bio : {{ profile.bio }}</p>
-        <p>Age : {{ profile.age }}</p>
-        <p>Grad Year : {{ profile.age }}</p>
-        <p>Age : {{ profile.age }}</p>
-        <p>Age : {{ profile.age }}</p>
-    </div>
+</div>
 </div>
 {% endblock content %}
