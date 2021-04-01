@@ -9,8 +9,7 @@
             <img class="rounded-circle img-thumbnail" src="{{ user.profile.image.url }}">
             <!--(Hanah) location of user's image-->
             <div class="media-body mx-4">
-                <h2 class="header-text">{{ user.first_name }}</h2>
-                <h2 class="header-text">{{ user.last_name }}</h2>
+                <h2 class="header-text">{{ user.first_name }} {{ user.last_name }}</h2>
                 <p class="text-secondary">{{ user.email }}</p>
             </div>
         </div>
