@@ -1,0 +1,22 @@
+.roomie-name{
+    color: var(--primary);
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+.roomie-name:hover{
+    color: var(--secondary);
+}
+
+.roomie-pfp:hover{
+    opacity: .7;
+}
+
+.roomie-footer{
+    background: none;
+}
+
+.roomie-card{
+    border-color: var(--secondary2);
+    border-width: 0.2rem;
+    background-color: var(--secondary3);
+}
