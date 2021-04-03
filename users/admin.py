@@ -23,3 +23,12 @@ class ProfileAdmin(admin.ModelAdmin):
 
     def email(self, obj):
         return obj.user.email
+
+# (Seungeon)
+# Property panel on admin site
+@admin.register(models.Property)
+class PropertyAdmin(admin.ModelAdmin):
+    # (Seungeon)
+    # if this is not setup, admin will have "propertys"
+    verbose_name_plural = "properties"
+    pass
