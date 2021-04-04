@@ -25,6 +25,14 @@ class ProfileAdmin(admin.ModelAdmin):
         return obj.user.email
 
 # (Seungeon)
+# Amenity panel
+@admin.register(models.Amenity)
+class AmenityAdmin(admin.ModelAdmin):
+    list_display = (
+        'name',
+    )
+
+# (Seungeon)
 # Property panel on admin site
 @admin.register(models.Property)
 class PropertyAdmin(admin.ModelAdmin):

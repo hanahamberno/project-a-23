@@ -104,7 +104,8 @@ class Profile(models.Model):
 # Amenity class which inherited from AbstractItem
 # AbstractItem will add each amenity
 class Amenity(AbstractItem):
-    verbose_name_plural = "Amenities" 
+    class Meta:
+        verbose_name_plural = "Amenities" 
 
 class Property(models.Model):
     class Meta:
