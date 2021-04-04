@@ -85,6 +85,8 @@ class Profile(models.Model):
     #         img.save(self.image.path)
 
 class Property(models.Model):
+    class Meta:
+        verbose_name_plural = "Properties"
 
     
     FURNISHED = "furnished"
@@ -193,5 +195,5 @@ class Property(models.Model):
 
     other_details = models.TextField(blank=True, default='')
 
-  # ''' def __str__(self):
-   #     return f'{self.profile.user.username} Property' '''
+    def __str__(self):
+       return f"{self.profile.user.first_name} {self.profile.user.last_name}'s Property"

@@ -28,7 +28,17 @@ class ProfileAdmin(admin.ModelAdmin):
 # Property panel on admin site
 @admin.register(models.Property)
 class PropertyAdmin(admin.ModelAdmin):
-    # (Seungeon)
-    # if this is not setup, admin will have "propertys"
-    verbose_name_plural = "properties"
-    pass
+    list_display = (
+        '__str__',
+        'rent',
+        'address',
+        'furnished',
+        'current_number_of_roommates',
+        'number_of_roommates_seeking',
+        'room_type',
+        'number_of_bedrooms',
+        'number_of_bathrooms',
+        'building_policies',
+        'lease_duration',
+        'building_type',
+    )
