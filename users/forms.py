@@ -24,4 +24,9 @@ class ProfileUpdateForm(forms.ModelForm):
             'image',
             'age',
             'bio',
-            'pronouns', 'phone_number', 'on_grounds', 'max_price']
+            'pronouns', 
+            'graduation_year',
+            'phone_number', 
+            'on_grounds', 
+            'max_price'
+        ]
