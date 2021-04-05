@@ -30,3 +30,20 @@ class ProfileUpdateForm(forms.ModelForm):
             'on_grounds', 
             'max_price'
         ]
+class PropertyUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Property
+        fields = [
+            'rent',
+            'amenities',
+            'address',
+            'furnished', 
+            'current_number_of_roommates', 
+            'number_of_roommates_seeking', 
+            'room_type',
+            'number_of_bedrooms',
+            'number_of_bathrooms',
+            'building_policies',
+            'lease_duration',
+            'building_type',
+            'other_details']
