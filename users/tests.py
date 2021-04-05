@@ -43,6 +43,7 @@ class ProfileModelTest(TestCase):
         try:
             print("Testing valid graduation year(2022)\n")
             test_profile1.full_clean()
+            self.assertTrue(test_profile1.is_valid_graduation_year())
             # Model.full_clean() validates the model fields, the field uniqueness
         except ValidationError:
             print("'test_profile_valid_graaduation_year'failed")

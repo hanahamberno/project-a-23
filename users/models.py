@@ -79,6 +79,7 @@ class Profile(models.Model):
         if self.graduation_year != None:
             if self.graduation_year < 2021 and self.graduation_year > 2025:
                 raise ValidationError("Invalid year")
+        return True
 
     # def save(self):
     #    super().save()
