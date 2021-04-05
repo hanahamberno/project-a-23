@@ -90,3 +90,114 @@ class Profile(models.Model):
     #        output_size = (300, 300)
     #        img.thumbnail(output_size)
     #        img.save(self.image.path)
+class Property(models.Model):
+
+    
+    FURNISHED = "furnished"
+    UNFURNISHED = "unfurnished"
+    FURNISHED_CHOICES = (
+        (FURNISHED, "Furnished"),
+        (UNFURNISHED, "Unfurnished"),
+    )
+
+    SINGLE = "single"
+    DOUBLE = "double"
+    EITHER = "either"
+
+    SINGLE_DOUBLE_CHOICES = (
+        (SINGLE, "Single Room"),
+        (DOUBLE, "Double Room"),
+        (EITHER, "Either Single or Double"),
+    )
+
+    APARTMENT = "apartment"
+    HOUSE = "house"
+    TOWNHOUSE = "townhouse"
+    OTHER = "other"
+
+    BUILDING_TYPE_CHOICES = (
+        (APARTMENT, "Apartment"),
+        (HOUSE, "House"),
+        (TOWNHOUSE, "Townhouse"),
+        (OTHER, "Other"),
+    )
+
+    profile = models.ForeignKey(
+        Profile,
+        null=True,
+        # (Seungeon)models.CASCADE => if the 'Profile' is deleted, properties is also deleted.
+        on_delete=models.CASCADE,
+    )
+
+    '''image = models.ImageField(
+        # (Seungeon)if the user doesn't specify the image, this image will be the default image
+        default='default.jpg',
+        # (Seungeon)the dir that the image will be uploaded to when the user uploads profile pic
+        # it will create a dir called "profile_pics"
+        upload_to="profile_pics",
+    )'''
+    rent = models.IntegerField(
+        blank=True, 
+        validators=[MinValueValidator(0)], 
+        null=True,
+    )
+
+    amenities = models.TextField(blank=True, default='')
+
+    address = models.CharField(blank = True, max_length = 200)
+
+    furnished = models.CharField(
+        blank = True,
+        choices = FURNISHED_CHOICES,
+        max_length = 50,
+    )
+
+    current_number_of_roommates = models.IntegerField(
+        blank = True,
+        validators=[MinValueValidator(1)], 
+        null=True,
+    )
+
+    number_of_roommates_seeking = models.IntegerField(
+        blank = True,
+        validators=[MinValueValidator(1)], 
+        null=True,
+    )
+
+    room_type = models.CharField(
+        blank = True,
+        choices = SINGLE_DOUBLE_CHOICES,
+        max_length = 50,
+    )
+
+    number_of_bedrooms =  models.IntegerField(
+        blank = True,
+        validators=[MinValueValidator(1)], 
+        null=True,
+    )
+
+    number_of_bathrooms =  models.IntegerField(
+        blank = True,
+        validators=[MinValueValidator(1)], 
+        null=True,
+    )
+
+    building_policies = models.TextField(blank=True, default='')
+
+    lease_duration = models.IntegerField(
+        blank = True,
+        validators=[MinValueValidator(1)], 
+        null=True,
+        default = 12,
+    )
+
+    building_type =  models.CharField(
+        blank = True,
+        choices = BUILDING_TYPE_CHOICES,
+        max_length = 50,
+    )
+
+    other_details = models.TextField(blank=True, default='')
+
+  # ''' def __str__(self):
+   #     return f'{self.profile.user.username} Property' '''
