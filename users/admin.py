@@ -23,3 +23,30 @@ class ProfileAdmin(admin.ModelAdmin):
 
     def email(self, obj):
         return obj.user.email
+
+# (Seungeon)
+# Amenity panel
+@admin.register(models.Amenity)
+class AmenityAdmin(admin.ModelAdmin):
+    list_display = (
+        'name',
+    )
+
+# (Seungeon)
+# Property panel on admin site
+@admin.register(models.Property)
+class PropertyAdmin(admin.ModelAdmin):
+    list_display = (
+        '__str__',
+        'rent',
+        'address',
+        'furnished',
+        'current_number_of_roommates',
+        'number_of_roommates_seeking',
+        'room_type',
+        'number_of_bedrooms',
+        'number_of_bathrooms',
+        'building_policies',
+        'lease_duration',
+        'building_type',
+    )
