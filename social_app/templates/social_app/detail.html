@@ -11,9 +11,22 @@
             <div class="media-body mx-4">
                 <h2 class="account-heading">{{ profile.user.username }}</h2>
                 <p class="text-secondary">{{ profile.user.email }}</p>
+                <p></p>
             </div>
         </div>
         <div class="container p-4">
+            {% for t in profile.property_set.all %}
+                <p>{{ t.rent }}</p>
+                <p>{{ t.address }}</p>
+                <p>{{ t.furnished }}</p>
+                <p>{{ t.current_number_of_roommates }}</p>
+                <p>{{ t.number_of_roommates_seeking }}</p>
+                <p>{{ t.number_of_bedrooms }}</p>
+                <p>{{ t.number_of_bathrooms }}</p>
+                <p>{{ t.lease_duration }} month(s)</p>
+                <p>{{ t.building_type }}</p>
+                <p>{{ t.other_details }}</p>
+            {% endfor %}
             <h3 class="mb-4 card-header pl-0 pb-4 pt-1">A little bit about this wonderful person :)</h3>
             <div class="card-text">
                 <p>

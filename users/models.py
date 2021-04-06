@@ -159,6 +159,7 @@ class Property(models.Model):
 
     profile = models.ForeignKey(
         Profile,
+        unique=True,
         null=True,
         # (Seungeon)models.CASCADE => if the 'Profile' is deleted, properties is also deleted.
         on_delete=models.CASCADE,

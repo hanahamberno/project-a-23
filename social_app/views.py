@@ -32,7 +32,9 @@ class ProfileListView(ListView):
 
 def profile_detail_view(request, pk):
     profile = Profile.objects.get(user__pk=pk)
-    context = {"profile": profile}
+    context = {
+        "profile": profile,
+        }
     return render(
         request=request,
         template_name='social_app/detail.html',
