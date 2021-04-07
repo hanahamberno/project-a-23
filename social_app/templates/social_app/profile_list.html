@@ -8,7 +8,7 @@
 {% if user.is_authenticated %}
 <div class="container py-4 px-4">
     {% if profiles %}
-    <div class="row row-cols-1 row-cols-md-3">
+    <div class="row row-cols-1 row-cols-md-5">
         {% for p in profiles %}
         <div class="col mb-4">
             <div class="card h-100 p-4 m-2 text-center roomie-card">
@@ -16,7 +16,9 @@
                     <img src="{{ p.image.url }}" class="rounded-circle img-thumbnail card-img-top roomie-pfp">
                 </a>
                 <div class="card-body">
-                    <a href="{% url 'social_app:profile_detail_view' p.user.pk %}" class="card-title roomie-name"><strong>{{ p.user.first_name }} {{ p.user.last_name}}</strong></a>
+                    <a href="{% url 'social_app:profile_detail_view' p.user.pk %}" class="card-title roomie-name">
+                        <strong>{{ p.user.first_name }} {{ p.user.last_name}}</strong>
+                    </a>
                     <p class="card-text">{{ p.bio|truncatewords:15 }}</p>
                 </div>
                 <div class="card-footer roomie-footer">
@@ -25,20 +27,28 @@
             </div>
         </div>
         {% endfor %}
-      </div>
-
+    </div>
     {% endif %}
+    <div class="row justify-content-center m-4">
+        <a href="{% url 'social_app:home' %}">
+            <button class="btn btn-dark">
+                Back To Home
+            </button>
+        </a>
+    </div>
 </div>
 {% else %}
-<div class="jumbotron">
-    <p class="text-center">
-        <p>Log in to start viewing profiles</p>
+<div class="jumbotron container text-center">
+    <div class="row justify-content-center">
+        <p class="m-4 h4">Log in to start viewing profiles</p>
+    </div>
+    <div class="row justify-content-center mt-4">
         <a href="{% provider_login_url 'google' %}">
             <button class="btn btn-dark">
                 Log In
             </button>
         </a>
-    </p>
+    </div>
 </div>
 {% endif %}
     

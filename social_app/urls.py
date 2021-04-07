@@ -25,9 +25,7 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('profile', ProfileListView.as_view(), name='profile_list'),
     path('property', PropertyListView.as_view(), name='property_list'),
-    # path('profile/<int:pk>/', ProfileDetailView.as_view(), name='profile-detail'),
     path('profile/<int:pk>', views.profile_detail_view, name='profile_detail_view'),
-    #path('property/<int:pk>', views.property_detail_view, name="property_detail_view"),
     path('logout/', auth_views.LogoutView.as_view(template_name='social_app/home.html'), name='logout'),
     path('about', views.about, name="about"),
 ]
