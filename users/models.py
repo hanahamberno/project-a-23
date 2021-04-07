@@ -6,6 +6,21 @@ from django.core.exceptions import ValidationError
 from phone_field import PhoneField
 from PIL import Image
 
+# (Seungeon)
+# This is used for amenities.
+# We have to have each amenity 'object'
+# So whenever we create a amenity, this will be created
+class AbstractItem(models.Model):
+    name = models.CharField(max_length=30)
+    
+    # (Seungeon)
+    # abstract = True will prevent this class from storing
+    # in the DB.
+    class Meta:
+        abstract = True
+
+    def __str__(self):
+        return self.name
 
 class Profile(models.Model):
 
@@ -90,7 +105,30 @@ class Profile(models.Model):
     #        output_size = (300, 300)
     #        img.thumbnail(output_size)
     #        img.save(self.image.path)
+
+    # def save(self):
+    #     super().save()
+    #     img = Image.open(self.image.path)
+
+    #     # resize image if necessary
+    #     if (img.height > 300 or img.width > 300):
+    #         output_size = (300, 300)
+    #         img.thumbnail(output_size)
+    #         img.save(self.image.path)
+
+# (Seungeon)
+# Amenity class which inherited from AbstractItem
+# AbstractItem will add each amenity
+class Amenity(models.Model):
+    name = models.CharField(max_length=30)
+    class Meta:
+        verbose_name_plural = "Amenities" 
+    def __str__(self):
+        return self.name
+
 class Property(models.Model):
+    class Meta:
+        verbose_name_plural = "Properties"
 
     
     FURNISHED = "furnished"
@@ -122,7 +160,7 @@ class Property(models.Model):
         (OTHER, "Other"),
     )
 
-    profile = models.ForeignKey(
+    profile = models.OneToOneField(
         Profile,
         null=True,
         # (Seungeon)models.CASCADE => if the 'Profile' is deleted, properties is also deleted.
@@ -142,7 +180,11 @@ class Property(models.Model):
         null=True,
     )
 
-    amenities = models.TextField(blank=True, default='')
+    # (Seungeon)
+    # ManyToMany Field
+    # one property can have multiple amenities
+    # one amenity can point to multiple properties
+    amenities = models.ManyToManyField(Amenity, blank=True)
 
     address = models.CharField(blank = True, max_length = 200)
 
@@ -199,5 +241,5 @@ class Property(models.Model):
 
     other_details = models.TextField(blank=True, default='')
 
-  # ''' def __str__(self):
-   #     return f'{self.profile.user.username} Property' '''
+    def __str__(self):
+       return f"{self.profile.user.first_name} {self.profile.user.last_name}'s Property"

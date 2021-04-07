@@ -46,4 +46,5 @@ class PropertyUpdateForm(forms.ModelForm):
             'building_policies',
             'lease_duration',
             'building_type',
-            'other_details']
+            'other_details'
+        ]
