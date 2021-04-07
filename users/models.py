@@ -119,9 +119,12 @@ class Profile(models.Model):
 # (Seungeon)
 # Amenity class which inherited from AbstractItem
 # AbstractItem will add each amenity
-class Amenity(AbstractItem):
+class Amenity(models.Model):
+    name = models.CharField(max_length=30)
     class Meta:
         verbose_name_plural = "Amenities" 
+    def __str__(self):
+        return self.name
 
 class Property(models.Model):
     class Meta:
@@ -157,9 +160,8 @@ class Property(models.Model):
         (OTHER, "Other"),
     )
 
-    profile = models.ForeignKey(
+    profile = models.OneToOneField(
         Profile,
-        unique=True,
         null=True,
         # (Seungeon)models.CASCADE => if the 'Profile' is deleted, properties is also deleted.
         on_delete=models.CASCADE,

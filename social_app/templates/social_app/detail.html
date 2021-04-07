@@ -15,19 +15,6 @@
             </div>
         </div>
         <div class="container p-4">
-            {% for t in profile.property_set.all %}
-                <p>{{ t.rent }}</p>
-                <p>{{ t.address }}</p>
-                <p>{{ t.furnished }}</p>
-                <p>{{ t.current_number_of_roommates }}</p>
-                <p>{{ t.number_of_roommates_seeking }}</p>
-                <p>{{ t.number_of_bedrooms }}</p>
-                <p>{{ t.number_of_bathrooms }}</p>
-                <p>{{ t.lease_duration }} month(s)</p>
-                <p>{{ t.building_type }}</p>
-                <p>{{ t.other_details }}</p>
-                
-            {% endfor %}
             <h3 class="mb-4 card-header pl-0 pb-4 pt-1">A little bit about this wonderful person :)</h3>
             <div class="card-text">
                 <p>
@@ -91,6 +78,98 @@
                 {%endif%}
                 </p>
             </div>
+
+            {% if profile.property %}
+            <h3 class="mb-4 mt-5 card-header pl-0 pb-4 pt-1">Property Information</h3>
+            <div class="card-text">
+                <p>
+                    <strong>Rent :</strong>
+                    {%if profile.property.rent%}
+                    {{ profile.property.rent }}
+                {%else%}
+                    -
+                {%endif%}
+                </p>
+                <p>
+                    <strong>Address: </strong>
+                    {%if profile.property.address%}
+                    {{ profile.property.address }}
+                {%else%}
+                    -
+                {%endif%}
+                </p>
+                <p><strong>Furnished :</strong>
+                    {%if profile.property.furnished%}
+                    {{ profile.property.furnished }}
+                {%else%}
+                    -
+                {%endif%}
+                </p>
+                <p>
+                    <strong>Current Number of Roommates: </strong>
+                    {%if profile.property.current_number_of_roommates%}
+                    {{ profile.property.current_number_of_roommates }}
+                {%else%}
+                    -
+                {%endif%}
+                </p>
+                <p><strong>Desired Number of Roommates: </strong>
+                    {%if profile.property.number_of_roommates_seeking%}
+                    {{ profile.property.number_of_roommates_seeking }}
+                {%else%}
+                    -
+                {%endif%}
+                </p>
+                <p>
+                    <strong>Number of Bedrooms: </strong>
+                    {%if profile.property.number_of_bedrooms%}
+                    {{ profile.property.number_of_bedrooms }}
+                {%else%}
+                    -
+                {%endif%}
+                </p>
+                <p>
+                    <strong>Number of Bathrooms: </strong>
+                    {%if profile.property.number_of_bathrooms%}
+                    {{ profile.property.number_of_bathrooms }}
+                {%else%}
+                    -
+                {%endif%}
+                </p>
+                <p>
+                    <strong>Lease Duration: </strong>
+                    {%if profile.property.lease_duration%}
+                    {{ profile.property.lease_duration }} month(s)
+                {%else%}
+                    -
+                {%endif%}
+                </p>
+                <p>
+                    <strong>Building Type: </strong>
+                    {%if profile.property.building_type%}
+                    {{ profile.property.building_type }} month(s)
+                {%else%}
+                    -
+                {%endif%}
+                </p>
+                <p>
+                    <strong>Other Details: </strong>
+                    {%if profile.property.other_details%}
+                    {{ profile.property.other_details }}
+                {%else%}
+                    -
+                {%endif%}
+                </p>
+                <p><strong>Amenities: </strong></p>
+                {% for a in profile.property.amenities.all %}
+                    {%if a.name%}
+                        {{ a.name }}
+                    {%else%}
+                        -
+                    {%endif%}
+                {% endfor %}
+            </div>
+            {% endif %}
         </div>
     </div>
 </div>

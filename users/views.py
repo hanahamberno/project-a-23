@@ -28,7 +28,7 @@ def profile(request):
     context = {
         'u_form': u_form,
         'p_form': p_form,
-        'prop_form' : prop_form
+        #'prop_form' : prop_form
     }
 
     return render(request, 'users/profile.html', context) 
