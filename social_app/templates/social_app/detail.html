@@ -83,6 +83,14 @@
             <h3 class="mb-4 mt-5 card-header pl-0 pb-4 pt-1">Property Information</h3>
             <div class="card-text">
                 <p>
+                    <strong>Pics: </strong>
+                    {%if profile.property.image%}
+                    {{ profile.property.image.url }}
+                {%else%}
+                    -
+                {%endif%}
+                </p>
+                <p>
                     <strong>Rent :</strong>
                     {%if profile.property.rent%}
                     {{ profile.property.rent }}
@@ -163,7 +171,7 @@
                 <p><strong>Amenities: </strong></p>
                 {% for a in profile.property.amenities.all %}
                     {%if a.name%}
-                        {{ a.name }}
+                        <li>{{ a.name }}</li>
                     {%else%}
                         -
                     {%endif%}

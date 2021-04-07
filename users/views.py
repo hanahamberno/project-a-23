@@ -32,3 +32,15 @@ def profile(request):
     }
 
     return render(request, 'users/profile.html', context) 
+
+def property_update(request):
+    #if request.method == 'POST':
+        # prop_form = PropertyUpdateForm(
+        #     request.POST,
+        #     request.FILES,
+        #     instance= something_idk)
+    return render(
+        request=request,
+        template_name='users/property_update.html',
+        context={},
+    )
