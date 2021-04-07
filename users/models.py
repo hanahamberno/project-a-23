@@ -50,7 +50,7 @@ class Profile(models.Model):
     )
     age = models.IntegerField(
         blank=True,
-        validators=[MinValueValidator(0)],
+        validators=[MinValueValidator(0),MaxValueValidator(150)],
         null=True,
     )
 
@@ -75,7 +75,7 @@ class Profile(models.Model):
 
     max_price = models.IntegerField(
         blank=True,
-        validators=[MinValueValidator(0)],
+        validators=[MinValueValidator(0),MaxValueValidator(10000)],
         default=600,
     )
     # attributes needed:
@@ -130,7 +130,6 @@ class Property(models.Model):
     class Meta:
         verbose_name_plural = "Properties"
 
-    
     FURNISHED = "Furnished"
     UNFURNISHED = "Unfurnished"
     FURNISHED_CHOICES = (
@@ -177,7 +176,7 @@ class Property(models.Model):
 
     rent = models.IntegerField(
         blank=True, 
-        validators=[MinValueValidator(0)], 
+        validators=[MinValueValidator(0),MaxValueValidator(10000)], 
         null=True,
     )
 
@@ -198,13 +197,13 @@ class Property(models.Model):
 
     current_number_of_roommates = models.IntegerField(
         blank = True,
-        validators=[MinValueValidator(1)], 
+        validators=[MinValueValidator(1),MaxValueValidator(20)], 
         null=True,
     )
 
     number_of_roommates_seeking = models.IntegerField(
         blank = True,
-        validators=[MinValueValidator(1)], 
+        validators=[MinValueValidator(1),MaxValueValidator(20)], 
         null=True,
     )
 
@@ -216,13 +215,13 @@ class Property(models.Model):
 
     number_of_bedrooms =  models.IntegerField(
         blank = True,
-        validators=[MinValueValidator(1)], 
+        validators=[MinValueValidator(1),MaxValueValidator(20)], 
         null=True,
     )
 
     number_of_bathrooms =  models.IntegerField(
         blank = True,
-        validators=[MinValueValidator(1)], 
+        validators=[MinValueValidator(1),MaxValueValidator(20)], 
         null=True,
     )
 
@@ -230,7 +229,7 @@ class Property(models.Model):
 
     lease_duration = models.IntegerField(
         blank = True,
-        validators=[MinValueValidator(1)], 
+        validators=[MinValueValidator(1),MaxValueValidator(72)], 
         null=True,
         default = 12,
     )

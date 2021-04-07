@@ -19,7 +19,6 @@ def profile(request):
             #prop_form.save()
             messages.success(request, f'Your account has been updated!')
             return redirect('profile')
-
     else:
         u_form = UserUpdateForm(instance=request.user)
         p_form = ProfileUpdateForm(instance=request.user.profile)
@@ -34,6 +33,7 @@ def profile(request):
     return render(request, 'users/profile.html', context) 
 
 def property_update(request):
+
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
         p_form = ProfileUpdateForm(request.POST,
@@ -54,6 +54,7 @@ def property_update(request):
     else:
         u_form = UserUpdateForm(instance=request.user)
         p_form = ProfileUpdateForm(instance=request.user.profile)
+        #we need to make some sort of new property object before running this next line
         prop_form = PropertyUpdateForm(instance = request.user.profile.property) #fix this
 
     context = {
