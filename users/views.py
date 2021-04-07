@@ -36,13 +36,13 @@ def profile(request):
 def property_update(request):
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
-        p_form = PropertyUpdateForm(request.POST,
+        p_form = ProfileUpdateForm(request.POST,
                                    request.FILES,
                                    #it is profile.property because it's OneToOne field
                                    instance=request.user.profile)
         prop_form = PropertyUpdateForm(request.POST,
                                        request.FILES,
-                                       instance = request.profile.property #fix this
+                                       instance = request.user.profile.property #fix this
                                        )
         if u_form.is_valid() and p_form.is_valid() and prop_form.is_valid(): #and prop_form.is_valid():
             u_form.save()
@@ -54,7 +54,7 @@ def property_update(request):
     else:
         u_form = UserUpdateForm(instance=request.user)
         p_form = ProfileUpdateForm(instance=request.user.profile)
-        prop_form = PropertyUpdateForm(instance = request.profile.property) #fix this
+        prop_form = PropertyUpdateForm(instance = request.user.profile.property) #fix this
 
     context = {
         'u_form': u_form,

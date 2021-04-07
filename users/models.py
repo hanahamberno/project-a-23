@@ -131,16 +131,16 @@ class Property(models.Model):
         verbose_name_plural = "Properties"
 
     
-    FURNISHED = "furnished"
-    UNFURNISHED = "unfurnished"
+    FURNISHED = "Furnished"
+    UNFURNISHED = "Unfurnished"
     FURNISHED_CHOICES = (
         (FURNISHED, "Furnished"),
         (UNFURNISHED, "Unfurnished"),
     )
 
-    SINGLE = "single"
-    DOUBLE = "double"
-    EITHER = "either"
+    SINGLE = "Single"
+    DOUBLE = "Double"
+    EITHER = "Either"
 
     SINGLE_DOUBLE_CHOICES = (
         (SINGLE, "Single Room"),
@@ -148,10 +148,10 @@ class Property(models.Model):
         (EITHER, "Either Single or Double"),
     )
 
-    APARTMENT = "apartment"
-    HOUSE = "house"
-    TOWNHOUSE = "townhouse"
-    OTHER = "other"
+    APARTMENT = "Apartment"
+    HOUSE = "House"
+    TOWNHOUSE = "Townhouse"
+    OTHER = "Other"
 
     BUILDING_TYPE_CHOICES = (
         (APARTMENT, "Apartment"),
@@ -185,7 +185,8 @@ class Property(models.Model):
     # ManyToMany Field
     # one property can have multiple amenities
     # one amenity can point to multiple properties
-    amenities = models.ManyToManyField(Amenity, blank=True)
+    #amenities = models.ManyToManyField(Amenity, blank=True)
+    amenities = models.TextField(blank = True, default='')
 
     address = models.CharField(blank = True, max_length = 200)
 

@@ -106,6 +106,15 @@
                     -
                 {%endif%}
                 </p>
+                <p>
+                    <strong>Amentities :</strong>
+                    {%if profile.property.amenities%}
+                    {{ profile.property.amenities }}
+                {%else%}
+                    -
+                {%endif%}
+                </p>
+
                 <p><strong>Furnished :</strong>
                     {%if profile.property.furnished%}
                     {{ profile.property.furnished }}
@@ -128,6 +137,13 @@
                     -
                 {%endif%}
                 </p>
+                <p><strong>Room Type :</strong>
+                    {%if profile.property.room_type%}
+                    {{ profile.property.room_type }}
+                {%else%}
+                    -
+                {%endif%}
+                </p>
                 <p>
                     <strong>Number of Bedrooms: </strong>
                     {%if profile.property.number_of_bedrooms%}
@@ -144,6 +160,13 @@
                     -
                 {%endif%}
                 </p>
+                <p><strong>Building Policies :</strong>
+                    {%if profile.property.building_policies%}
+                    {{ profile.property.building_policies }}
+                {%else%}
+                    -
+                {%endif%}
+                </p>
                 <p>
                     <strong>Lease Duration: </strong>
                     {%if profile.property.lease_duration%}
@@ -155,7 +178,7 @@
                 <p>
                     <strong>Building Type: </strong>
                     {%if profile.property.building_type%}
-                    {{ profile.property.building_type }} month(s)
+                    {{ profile.property.building_type }}
                 {%else%}
                     -
                 {%endif%}
@@ -167,15 +190,7 @@
                 {%else%}
                     -
                 {%endif%}
-                </p>
-                <p><strong>Amenities: </strong></p>
-                {% for a in profile.property.amenities.all %}
-                    {%if a.name%}
-                        <li>{{ a.name }}</li>
-                    {%else%}
-                        -
-                    {%endif%}
-                {% endfor %}
+                </p>                
             </div>
             {% endif %}
         </div>
