@@ -22,7 +22,7 @@ from .views import ProfileListView, PropertyListView
 app_name = 'social_app'
 
 urlpatterns = [
-    path('', ProfileListView.as_view(), name='home'),
+    path('', views.home, name='home'),
     path('profile', ProfileListView.as_view(), name='profile_list'),
     path('property', PropertyListView.as_view(), name='property_list'),
     # path('profile/<int:pk>/', ProfileDetailView.as_view(), name='profile-detail'),
