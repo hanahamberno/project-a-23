@@ -1,7 +1,7 @@
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 from django.dispatch import receiver 
-from .models import Profile
+from .models import Profile, Property
 from django.core.exceptions import ObjectDoesNotExist
 
 # (Hanah) want a user profile to be created for each new user
@@ -19,3 +19,12 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User) 
 def save_profile(sender, instance, **kwargs):
     instance.profile.save()
+
+# (Seungeon)
+# Try this for creating/saving property
+# @receiver(post_save, sender=Profile)
+# def create_property(sender, instance, **kwargs):
+#     try:
+#         instance.property.save()
+#     except ObjectDoesNotExist:
+#         Property.objects.create(user=instance)

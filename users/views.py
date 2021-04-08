@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect#Ben
 from django.contrib import messages
 from .forms import UserUpdateForm, ProfileUpdateForm, PropertyUpdateForm
+from .models import Property
 
 #(Seungeon)
 def profile(request):
@@ -52,6 +53,10 @@ def property_update(request):
             return redirect('profile')
 
     else:
+        # (Seungeon)
+        # property model shoudl be created first which shoudl point to
+        # the correct 'profile' model.
+        prop = Property.objects.get_or_create(profile=request.user.profile)
         u_form = UserUpdateForm(instance=request.user)
         p_form = ProfileUpdateForm(instance=request.user.profile)
         #we need to make some sort of new property object before running this next line
