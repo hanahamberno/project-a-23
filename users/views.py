@@ -2,8 +2,11 @@ from django.shortcuts import render, redirect#Ben
 from django.contrib import messages
 from .forms import UserUpdateForm, ProfileUpdateForm, PropertyUpdateForm
 from .models import Property
+# makes users login before they can see a page, Kathy
+from django.contrib.auth.decorators import login_required
 
 #(Seungeon)
+@login_required
 def profile(request):
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
@@ -34,7 +37,6 @@ def profile(request):
     return render(request, 'users/profile.html', context) 
 
 def property_update(request):
-
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
         p_form = ProfileUpdateForm(request.POST,
@@ -65,7 +67,8 @@ def property_update(request):
     context = {
         'u_form': u_form,
         'p_form': p_form,
-        'prop_form' : prop_form
+        'prop_form' : prop_form,
+
     }
     return render(
         request=request,
