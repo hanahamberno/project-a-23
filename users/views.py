@@ -62,7 +62,7 @@ def property_update(request):
         u_form = UserUpdateForm(instance=request.user)
         p_form = ProfileUpdateForm(instance=request.user.profile)
         #we need to make some sort of new property object before running this next line
-        prop_form = PropertyUpdateForm(instance = request.user.profile.property) #fix this
+        prop_form = PropertyUpdateForm() #fix this
 
     context = {
         'u_form': u_form,
