@@ -6,12 +6,8 @@
 <div class="container main-page py-4 px-3">
     <div class="card profile-bg p-4">
         <div class="media m-4">
-            <img class="rounded-circle img-thumbnail" src="{{ user.profile.image.url }}">
-            <!--(Hanah) location of user's image-->
-            <div class="media-body mx-4">
-                <h2 class="header-text">{{ user.first_name }} {{ user.last_name }}</h2>
-                <p class="text-secondary">{{ user.email }}</p>
-            </div>
+            <img class="img-thumbnail" src="{{ user.profile.property.image.url }}">
+            <!--Kathy: location of property image-->
         </div>
         <!-- FORM HERE (Ben) -->
         <div class="container main-page">
@@ -22,7 +18,7 @@
                     {{ prop_form|crispy }}
                 </fieldset>
                 <div class="form-group">
-                    <button class="btn btn-dark" type="submit">Update</button>
+                    <button class="btn btn-dark" type="submit">Save</button>
                 </div>
             </form>
         </div>

@@ -23,8 +23,8 @@ app_name = 'social_app'
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('profile', ProfileListView.as_view(), name='profile_list'),
-    path('property', PropertyListView.as_view(), name='property_list'),
+    path('profile_list', ProfileListView.as_view(), name='profile_list'),
+    path('property_list', PropertyListView.as_view(), name='property_list'),
     path('profile/<int:pk>', views.profile_detail_view, name='profile_detail_view'),
     path('logout/', auth_views.LogoutView.as_view(template_name='social_app/home.html'), name='logout'),
     path('about', views.about, name="about"),

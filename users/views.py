@@ -18,7 +18,7 @@ def profile(request):
             u_form.save()
             p_form.save()
             messages.success(request, f'Your account has been updated!')
-            return redirect('profile')
+            return redirect('social_app:home')
         #endif
     else:
         u_form = UserUpdateForm(instance=request.user)
@@ -40,8 +40,8 @@ def property_update(request):
                                        )
         if prop_form.is_valid(): #and prop_form.is_valid():
             prop_form.save()
-            messages.success(request, f'Your account has been updated!')
-            return redirect('profile')
+            messages.success(request, f'Your property has been updated!')
+            return redirect('social_app:property_list')
         #endif
 
     else:
@@ -57,6 +57,7 @@ def property_update(request):
     }
     return render(
         request=request,
-        template_name='users/property_update.html',
+        template_name='users/property_form.html',
         context=context,
     )
+

@@ -168,7 +168,7 @@ class Property(models.Model):
 
     image = models.ImageField(
         # (Seungeon)if the user doesn't specify the image, this image will be the default image
-        default='default.jpg',
+        default='default_property.jpg',
         # (Seungeon)the dir that the image will be uploaded to when the user uploads profile pic
         # it will create a dir called "profile_pics"
         upload_to="property_pics",

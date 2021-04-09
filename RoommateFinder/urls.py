@@ -28,7 +28,7 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     #(Seungeon) for the profile url
     path('profile/', user_views.profile, name='profile'),
-    path('property_update/', user_views.property_update, name='property_update'),
+    path('property/', user_views.property_update, name='property'),
 ]
 
 
