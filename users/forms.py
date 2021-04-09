@@ -34,6 +34,7 @@ class PropertyUpdateForm(forms.ModelForm):
     class Meta:
         model = Property
         fields = [
+            'image',
             'rent',
             'amenities',
             'address',
