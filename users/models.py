@@ -180,11 +180,6 @@ class Property(models.Model):
         null=True,
     )
 
-    # (Seungeon)
-    # ManyToMany Field
-    # one property can have multiple amenities
-    # one amenity can point to multiple properties
-    #amenities = models.ManyToManyField(Amenity, blank=True)
     amenities = models.TextField(blank = True, default='')
 
     address = models.CharField(blank = True, max_length = 200)
