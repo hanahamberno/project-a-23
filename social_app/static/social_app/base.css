@@ -66,3 +66,9 @@ body{
     border-color: var(--secondary2);
     background-color: var(--secondary3);
 }
+
+.rounded-circle{
+    border-radius:50%;
+    width:10rem;
+    height:10rem;
+}

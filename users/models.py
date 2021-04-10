@@ -50,7 +50,7 @@ class Profile(models.Model):
     )
     age = models.IntegerField(
         blank=True,
-        validators=[MinValueValidator(0)],
+        validators=[MinValueValidator(0),MaxValueValidator(150)],
         null=True,
     )
 
@@ -75,8 +75,13 @@ class Profile(models.Model):
 
     max_price = models.IntegerField(
         blank=True,
-        validators=[MinValueValidator(0)],
+        validators=[MinValueValidator(0),MaxValueValidator(10000)],
         default=600,
+    )
+
+    display_profile = models.BooleanField(
+        blank=True,
+        default=False,
     )
     # attributes needed:
     # 2. graduation year -> Char(with number)? Integer?
@@ -119,25 +124,27 @@ class Profile(models.Model):
 # (Seungeon)
 # Amenity class which inherited from AbstractItem
 # AbstractItem will add each amenity
-class Amenity(AbstractItem):
+class Amenity(models.Model):
+    name = models.CharField(max_length=30)
     class Meta:
         verbose_name_plural = "Amenities" 
+    def __str__(self):
+        return self.name
 
 class Property(models.Model):
     class Meta:
         verbose_name_plural = "Properties"
 
-    
-    FURNISHED = "furnished"
-    UNFURNISHED = "unfurnished"
+    FURNISHED = "Furnished"
+    UNFURNISHED = "Unfurnished"
     FURNISHED_CHOICES = (
         (FURNISHED, "Furnished"),
         (UNFURNISHED, "Unfurnished"),
     )
 
-    SINGLE = "single"
-    DOUBLE = "double"
-    EITHER = "either"
+    SINGLE = "Single"
+    DOUBLE = "Double"
+    EITHER = "Either"
 
     SINGLE_DOUBLE_CHOICES = (
         (SINGLE, "Single Room"),
@@ -145,10 +152,10 @@ class Property(models.Model):
         (EITHER, "Either Single or Double"),
     )
 
-    APARTMENT = "apartment"
-    HOUSE = "house"
-    TOWNHOUSE = "townhouse"
-    OTHER = "other"
+    APARTMENT = "Apartment"
+    HOUSE = "House"
+    TOWNHOUSE = "Townhouse"
+    OTHER = "Other"
 
     BUILDING_TYPE_CHOICES = (
         (APARTMENT, "Apartment"),
@@ -157,32 +164,28 @@ class Property(models.Model):
         (OTHER, "Other"),
     )
 
-    profile = models.ForeignKey(
+    profile = models.OneToOneField(
         Profile,
-        unique=True,
         null=True,
         # (Seungeon)models.CASCADE => if the 'Profile' is deleted, properties is also deleted.
         on_delete=models.CASCADE,
     )
 
-    '''image = models.ImageField(
+    image = models.ImageField(
         # (Seungeon)if the user doesn't specify the image, this image will be the default image
-        default='default.jpg',
+        default='default_property.jpg',
         # (Seungeon)the dir that the image will be uploaded to when the user uploads profile pic
         # it will create a dir called "profile_pics"
-        upload_to="profile_pics",
-    )'''
+        upload_to="property_pics",
+    )
+
     rent = models.IntegerField(
         blank=True, 
-        validators=[MinValueValidator(0)], 
+        validators=[MinValueValidator(0),MaxValueValidator(10000)], 
         null=True,
     )
 
-    # (Seungeon)
-    # ManyToMany Field
-    # one property can have multiple amenities
-    # one amenity can point to multiple properties
-    amenities = models.ManyToManyField(Amenity, blank=True)
+    amenities = models.TextField(blank = True, default='')
 
     address = models.CharField(blank = True, max_length = 200)
 
@@ -194,13 +197,13 @@ class Property(models.Model):
 
     current_number_of_roommates = models.IntegerField(
         blank = True,
-        validators=[MinValueValidator(1)], 
+        validators=[MinValueValidator(1),MaxValueValidator(20)], 
         null=True,
     )
 
     number_of_roommates_seeking = models.IntegerField(
         blank = True,
-        validators=[MinValueValidator(1)], 
+        validators=[MinValueValidator(1),MaxValueValidator(20)], 
         null=True,
     )
 
@@ -212,13 +215,13 @@ class Property(models.Model):
 
     number_of_bedrooms =  models.IntegerField(
         blank = True,
-        validators=[MinValueValidator(1)], 
+        validators=[MinValueValidator(1),MaxValueValidator(20)], 
         null=True,
     )
 
     number_of_bathrooms =  models.IntegerField(
         blank = True,
-        validators=[MinValueValidator(1)], 
+        validators=[MinValueValidator(1),MaxValueValidator(20)], 
         null=True,
     )
 
@@ -226,7 +229,7 @@ class Property(models.Model):
 
     lease_duration = models.IntegerField(
         blank = True,
-        validators=[MinValueValidator(1)], 
+        validators=[MinValueValidator(1),MaxValueValidator(72)], 
         null=True,
         default = 12,
     )
@@ -238,6 +241,11 @@ class Property(models.Model):
     )
 
     other_details = models.TextField(blank=True, default='')
+
+    display_property = models.BooleanField(
+        blank=True,
+        default=False,
+    )
 
     def __str__(self):
        return f"{self.profile.user.first_name} {self.profile.user.last_name}'s Property"

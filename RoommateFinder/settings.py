@@ -235,5 +235,3 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # ex) pure-reaches-whatever.com/media/the_name_of_the_pic
 MEDIA_URL = '/media/'
 
-# if '/app' in os.environ['HOME']:
-#     django_heroku.settings(locals())

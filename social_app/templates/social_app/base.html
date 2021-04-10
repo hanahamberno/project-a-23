@@ -44,13 +44,15 @@
                         </button>
                         <div class="collapse navbar-collapse" id="navbarToggle">
                             <div class="navbar-nav mr-auto">
-                                <a class="nav-item nav-link" href="{% url 'social_app:home' %}">Home</a>
-                                <a class="nav-item nav-link" href="{% url 'social_app:about' %}">About</a>
+                                <a class="nav-item nav-link" href="{% url 'social_app:profile_list' %}">I Need A Place</a>
+                                <a class="nav-item nav-link" href="{% url 'social_app:property_list' %}">I Have A Place</a>
                             </div>
                             <!-- Navbar Right Side -->
                             <div class="navbar-nav">
                                 {% if user.is_authenticated %}
-                                <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+                                <a class="nav-item nav-link" href="{% url 'profile' %}">Edit Profile</a>
+                                <a class="nav-item nav-link" href="{% url 'property' %}">Manage Property</a>
+                                <a class="nav-item nav-link" href="{% url 'social_app:logout' %}">Log Out</a>
                                 {% else %}
                                 <a class="nav-item nav-link" href="{% provider_login_url 'google' %}">Log In</a>
                                 {% endif %}
@@ -59,7 +61,7 @@
                     </div>
                 </nav>
             </header>
-            <div class="card m-4 base-card">
+            <div class="card m-4 base-card justify-content-center">
                 {% block content %}{% endblock %}
             </div>
             <!-- Kathy - Back to top button -->

@@ -1,0 +1,27 @@
+{% extends "social_app/base.html" %}
+<!-- (Hanah) tutorial had this in already? -->
+{% load crispy_forms_tags %} 
+{% block content %}
+<!--Kathy's CSS (main-page, container, and padding)-->
+<div class="container main-page py-4 px-3">
+    <div class="card profile-bg p-4">
+        <div class="media m-4">
+            <img class="img-thumbnail" src="{{ user.profile.property.image.url }}">
+            <!--Kathy: location of property image-->
+        </div>
+        <!-- FORM HERE (Ben) -->
+        <div class="container main-page">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4 header-text">Property Information</legend>
+                    {{ prop_form|crispy }}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-dark" type="submit">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
