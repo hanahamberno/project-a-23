@@ -228,6 +228,7 @@ class Property(models.Model):
     building_policies = models.TextField(blank=True, default='')
 
     lease_duration = models.IntegerField(
+        'Lease Duration (Months)',
         blank = True,
         validators=[MinValueValidator(1),MaxValueValidator(72)], 
         null=True,
