@@ -78,6 +78,11 @@ class Profile(models.Model):
         validators=[MinValueValidator(0),MaxValueValidator(10000)],
         default=600,
     )
+
+    display_profile = models.BooleanField(
+        blank=True,
+        default=False,
+    )
     # attributes needed:
     # 2. graduation year -> Char(with number)? Integer?
     # 3. Age -> Integer
@@ -236,6 +241,11 @@ class Property(models.Model):
     )
 
     other_details = models.TextField(blank=True, default='')
+
+    display_property = models.BooleanField(
+        blank=True,
+        default=False,
+    )
 
     def __str__(self):
        return f"{self.profile.user.first_name} {self.profile.user.last_name}'s Property"

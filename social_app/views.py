@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 # (Seungeon)
 from users.models import Profile
+from django.db.models import Q
 
 
 def home(request):
@@ -42,7 +43,8 @@ class ProfileListView(ListView):
     # ordering = [-some attribute] <- this will order it by whatever attribute in models.py specified
 
     def get_queryset(self):
-        queryset = Profile.objects.filter(property__pk__isnull = True).exclude(user__username="admin")
+        # queryset = Profile.objects.filter(property__pk__isnull = True).exclude(user__username="admin").exclude(display_profile=False)
+        queryset = Profile.objects.filter(Q(display_profile=True) & Q(property__display_property=False))
         return queryset
 
 class PropertyListView(ListView):
@@ -51,7 +53,7 @@ class PropertyListView(ListView):
     context_object_name = "profiles"
 
     def get_queryset(self):
-        queryset = Profile.objects.filter(property__pk__isnull = False).exclude(user__username="admin")
+        queryset = Profile.objects.filter(Q(display_profile=True) & Q(property__display_property=True))
         return queryset
 
 def profile_detail_view(request, pk):

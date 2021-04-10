@@ -21,6 +21,7 @@ class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = [
+            'display_profile',
             'image',
             'age',
             'bio',
@@ -28,12 +29,15 @@ class ProfileUpdateForm(forms.ModelForm):
             'graduation_year',
             'phone_number', 
             'on_grounds', 
-            'max_price'
+            'max_price',
         ]
+
+
 class PropertyUpdateForm(forms.ModelForm):
     class Meta:
         model = Property
         fields = [
+            'display_property',
             'image',
             'rent',
             'amenities',
@@ -47,5 +51,5 @@ class PropertyUpdateForm(forms.ModelForm):
             'building_policies',
             'lease_duration',
             'building_type',
-            'other_details'
+            'other_details',
         ]
