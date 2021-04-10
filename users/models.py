@@ -187,7 +187,11 @@ class Property(models.Model):
 
     amenities = models.TextField(blank = True, default='')
 
-    address = models.CharField(blank = True, max_length = 200)
+    address = models.CharField(
+        verbose_name="Address/Location",
+        blank = True, 
+        max_length = 200
+    )
 
     furnished = models.CharField(
         blank = True,
