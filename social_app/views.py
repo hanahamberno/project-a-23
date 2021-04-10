@@ -42,7 +42,7 @@ class ProfileListView(ListView):
     # ordering = [-some attribute] <- this will order it by whatever attribute in models.py specified
 
     def get_queryset(self):
-        queryset = Profile.objects.filter(property__pk__isnull = True)
+        queryset = Profile.objects.filter(property__pk__isnull = True).exclude(user__username="admin")
         return queryset
 
 class PropertyListView(ListView):
@@ -51,7 +51,7 @@ class PropertyListView(ListView):
     context_object_name = "profiles"
 
     def get_queryset(self):
-        queryset = Profile.objects.filter(property__pk__isnull = False)
+        queryset = Profile.objects.filter(property__pk__isnull = False).exclude(user__username="admin")
         return queryset
 
 def profile_detail_view(request, pk):
