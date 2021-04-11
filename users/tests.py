@@ -7,15 +7,23 @@ from users.models import *
 
 class ProfileModelTest(TestCase):
     def setUp(self):
-        test_user = User.objects.create(
+        User.objects.create_user(
             username='test_user',
             password='test_user',
             email='12345@gmail.com'
         )
 
-        test_profile = Profile.objects.get_or_create(
-            user=test_user,
-            image="default.jpg"
+        Profile.objects.create(
+            user=User.objects.filter(username='test_user')[0],
+            image="default.jpg",
+            age=19,
+            bio="hello",
+            graduation_year=2023,
+            pronouns="she/they",
+            phone_number="472-555-0291",
+            on_grounds=Profile.ON_GROUNDS,
+            max_price=1500,
+            display_profile=True
         )
 
     # (Seungeon)

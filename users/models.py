@@ -86,7 +86,7 @@ class Profile(models.Model):
     # attributes needed:
     # 2. graduation year -> Char(with number)? Integer?
     # 3. Age -> Integer
-    # 4. Pronouns(she/he) -> Char
+    # 4. Pronouns -> Char
     # 5. Bio -> textField
     # 6. Phone Number -> Char? is there anything specifically for PhoneNumber
     # 7. On-Grounds/Off-Grounds -> char
@@ -99,6 +99,15 @@ class Profile(models.Model):
         if self.graduation_year != None:
             if self.graduation_year < 2021 and self.graduation_year > 2025:
                 raise ValidationError("Invalid year")
+        return True
+    
+    def is_valid_age(self):
+        return True
+    
+    def is_valid_phone_number(self):
+        return True
+    
+    def is_valid_price(self):
         return True
 
     # def save(self):
