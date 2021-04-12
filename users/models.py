@@ -98,25 +98,25 @@ class Profile(models.Model):
     def is_valid_graduation_year(self):
         if self.graduation_year != None:
             if self.graduation_year < 2021 or self.graduation_year > 2025:
-                raise ValidationError("Invalid year")
+                return False
         return True
     
     def is_valid_age(self):
         if self.age is not None:
             if self.age < 16 or self.age > 120:
-                raise ValidationError("Invalid Age")
+                return False
         return True
     
     def is_valid_phone_number(self):
         if self.phone_number is not None:
             if sum(c.isdigit() for c in self.phone_number) != 10:
-                raise ValidationError("Invalid Phone Number")
+                return False
         return True
     
     def is_valid_max_price(self):
         if self.max_price is not None:
             if self.max_price < 0 or self.max_price > 10000:
-                raise ValidationError("Invalid Max Price")
+                return False
         return True
 
     # def save(self):
