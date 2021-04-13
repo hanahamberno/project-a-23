@@ -28,10 +28,17 @@ class ProfileUpdateForm(forms.ModelForm):
             'pronouns', 
             'graduation_year',
             'phone_number', 
+        ]
+
+class PreferenceUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = [
+            'match_list',
             'on_grounds', 
             'max_price',
         ]
-
+        
 
 class PropertyUpdateForm(forms.ModelForm):
     class Meta:
@@ -53,3 +60,5 @@ class PropertyUpdateForm(forms.ModelForm):
             'building_type',
             'other_details',
         ]
+
+

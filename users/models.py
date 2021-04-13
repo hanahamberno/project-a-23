@@ -27,11 +27,13 @@ class Profile(models.Model):
     ON_GROUNDS = "on-grounds"
     OFF_GROUNDS = "off-grounds"
     NO_PREFERENCE = "no preference"
+    N_A = "na"
 
     GROUNDS_CHOICES = (
         (ON_GROUNDS, "On-Grounds"),
         (OFF_GROUNDS, "Off-Grounds"),
         (NO_PREFERENCE, "No Preference"),
+        (N_A, "N/A")
     )
 
     user = models.OneToOneField(
@@ -74,6 +76,7 @@ class Profile(models.Model):
     )
 
     max_price = models.IntegerField(
+        verbose_name='Max Rent',
         blank=True,
         validators=[MinValueValidator(0),MaxValueValidator(10000)],
         default=600,
@@ -82,6 +85,17 @@ class Profile(models.Model):
     display_profile = models.BooleanField(
         blank=True,
         default=False,
+    )
+
+    # user wants to match with people who only have 
+    match_list = models.CharField(
+        blank=True,
+        choices=(
+            ("Property", 'Property'),
+            ("Profile", 'Profile'),
+            ("Both", 'Both'),
+        ),
+        max_length=100
     )
     # attributes needed:
     # 2. graduation year -> Char(with number)? Integer?
