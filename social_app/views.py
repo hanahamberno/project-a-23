@@ -6,7 +6,15 @@ from django.db.models import Q
 
 
 def home(request):
-    return render(request, 'social_app/home.html')
+    profile = Profile.objects.all()
+    context = {
+        "profile": profile
+    }
+    return render(
+        request=request, 
+        template_name='social_app/home.html',
+        context=context,
+        )
 
 # (Seungeon)l
 # by default,
@@ -81,6 +89,36 @@ class PreferenceListView(ListView):
         queryset = Profile.objects.filter(Q(display_profile=True) & Q(property__display_property=False))
         return queryset
 
+def preference_list_view(request):
+    profile_all = Profile.objects.all()
+    profile = Profile.objects.get(user__pk=request.user.pk)
+
+    score = 0
+    top_profile_list = list()
+    if (profile.match_list == "Both"):
+        display_list = Profile.objects.filter(Q(match_list__icontains="both") & Q(display_profile=True) & Q(property__display_property=True)).exclude(user__pk=request.user.pk)
+        for d in display_list:
+            pass
+    if (profile.match_list == "Property"):
+        display_list = Profile.objects.filter(Q(display_profile=True) & Q(property__display_property=True)).exclude(user__pk=request.user.pk)
+        for d in display_list:
+            if d.property.rent != None:
+                if(d.property.rent <= profile.max_price):
+                    score += 1
+                    top_profile_list.append((d, score))
+        #display_list = Profile.objects.filter(property__pk__isnull=False).filter(Q(property__display_property=True))
+    if (profile.match_list == "Profile"):
+        display_list = Profile.objects.filter(Q(display_profile=True) & Q(property__display_property=False)).exclude(user__pk=request.user.pk)
+        #display_list = Profile.filter(property__pk__isnull=True).filter(Q(display_profile=True))
+
+    context = {
+        "display_list": top_profile_list
+    }
+    return render(
+        request=request,
+        template_name='social_app/top_matches_list.html',
+        context=context,
+    )
 class PropertyListView(ListView):
     model = Profile
     template_name = 'social_app/property_list.html'
