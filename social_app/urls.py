@@ -28,4 +28,5 @@ urlpatterns = [
     path('profile/<int:pk>', views.profile_detail_view, name='profile_detail_view'),
     path('logout/', auth_views.LogoutView.as_view(template_name='social_app/home.html'), name='logout'),
     path('about', views.about, name="about"),
+    path('groupme', views.groupme, name="groupme"),
 ]

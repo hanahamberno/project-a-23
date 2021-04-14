@@ -15,7 +15,7 @@ from pathlib import Path
 import os
 
 import dj_database_url
-import django_heroku
+#mport django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -101,7 +101,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    #'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'RoommateFinder.urls'
@@ -235,3 +235,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # ex) pure-reaches-whatever.com/media/the_name_of_the_pic
 MEDIA_URL = '/media/'
 
+# Activate Django-Heroku.
+try:
+    # Configure Django App for Heroku.
+    import django_heroku
+    django_heroku.settings(locals())
+except ImportError:
+    found = False
