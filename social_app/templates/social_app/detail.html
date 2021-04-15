@@ -38,6 +38,14 @@
                 {%endif%}
                 </p>
                 <p>
+                    <strong>Gender :</strong>
+                    {%if profile.gender%}
+                    {{ profile.gender }}
+                {%else%}
+                    -
+                {%endif%}
+                </p>
+                <p>
                     <strong>Graduation Year :</strong>
                     {%if profile.graduation_year%}
                     {{ profile.graduation_year }}
@@ -101,6 +109,14 @@
                             <strong>Address/Location:</strong>
                             {%if profile.property.address%}
                             {{ profile.property.address }}
+                        {%else%}
+                            -
+                        {%endif%}
+                        </p>
+                        <p>
+                            <strong>On Grounds?:</strong>
+                            {%if profile.property.on_grounds%}
+                            {{ profile.property.on_grounds }}
                         {%else%}
                             -
                         {%endif%}

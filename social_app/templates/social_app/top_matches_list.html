@@ -13,17 +13,17 @@
         {% for p in display_list %}
             <div class="col mb-4">
             <div class="card h-100 p-4 m-2 text-center roomie-card">
-                <a href="{% url 'social_app:profile_detail_view' p.0.user.pk %}">
-                    <img src="{{ p.0.image.url }}" class="rounded-circle img-thumbnail card-img-top roomie-pfp">
+                <a href="{% url 'social_app:profile_detail_view' p.1.user.pk %}">
+                    <img src="{{ p.1.image.url }}" class="rounded-circle img-thumbnail card-img-top roomie-pfp">
                 </a>
                 <div class="card-body">
-                    <a href="{% url 'social_app:profile_detail_view' p.0.user.pk %}" class="card-title roomie-name">
-                        <strong>{{ p.0.user.first_name }} {{ p.0.user.last_name}}</strong>
+                    <a href="{% url 'social_app:profile_detail_view' p.1.user.pk %}" class="card-title roomie-name">
+                        <strong>{{ p.1.user.first_name }} {{ p.1.user.last_name}}</strong>
                     </a>
-                    <p class="card-text">{{ p.0.bio|truncatewords:15 }}</p>
+                    <p class="card-text">{{ p.1.bio|truncatewords:15 }}</p>
                 </div>
                 <div class="card-footer roomie-footer">
-                    <a href="{% url 'social_app:profile_detail_view' p.0.user.pk %}" class="btn btn-dark">View Profile</a>
+                    <a href="{% url 'social_app:profile_detail_view' p.1.user.pk %}" class="btn btn-dark">View Profile</a>
                 </div>
             </div>
         </div>

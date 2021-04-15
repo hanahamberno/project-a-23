@@ -24,6 +24,7 @@ class ProfileUpdateForm(forms.ModelForm):
             'display_profile',
             'image',
             'age',
+            'gender',
             'bio',
             'pronouns', 
             'graduation_year',
@@ -37,6 +38,7 @@ class PreferenceUpdateForm(forms.ModelForm):
             'match_list',
             'on_grounds', 
             'max_price',
+            'pref_gender',
         ]
         
 
@@ -59,6 +61,7 @@ class PropertyUpdateForm(forms.ModelForm):
             'lease_duration',
             'building_type',
             'other_details',
+            'on_grounds',
         ]
 
 
