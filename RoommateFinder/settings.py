@@ -68,7 +68,8 @@ THIRD_PARTY_APP = [
     'storages',
     # Postgre stuff?
     'django_extensions',
-
+    # twilio stuff
+    'chatapp',
 ]
 
 INSTALLED_APPS = DEFAULT_APPS + PROJECT_APPS + THIRD_PARTY_APP
@@ -242,3 +243,15 @@ try:
     django_heroku.settings(locals())
 except ImportError:
     found = False
+
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = (os.path.join(os.path.dirname(__file__),'static'),)
+
+
+#tells Django to read the keys from environment variables
+TWILIO_ACCT_SID = os.environ['TWILIO_ACCT_SID']
+TWILIO_CHAT_SID = os.environ['TWILIO_CHAT_SID']
+TWILIO_SYNC_SID = os.environ['TWILIO_SYNC_SID']
+TWILIO_API_SID = os.environ['TWILIO_API_SID']
+TWILIO_API_SECRET = os.environ['TWILIO_API_SECRET']

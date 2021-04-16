@@ -87,10 +87,10 @@ def about(request):
         template_name='social_app/about.html'
     )
 
-def groupme(request):
+def twilio(request):
     return render(
         request=request,
-        template_name='social_app/groupme.html'
+        template_name='twilio/index.html'
     )
     #response = requests.get('https://api.groupme.com/v3/groups?token=INSERTTOKENHERE')
     #return render(request, 'social_app/groupme.html', {'response':response})

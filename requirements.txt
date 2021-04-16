@@ -34,3 +34,6 @@ image
 django-crispy-forms
 django-phone-field
 django-extensions
+twilio
+honcho
+faker
