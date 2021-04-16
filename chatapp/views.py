@@ -9,6 +9,7 @@ from twilio.jwt.access_token.grants import (
     SyncGrant,
     ChatGrant
 )
+from users.models import Profile
 
 # Create your views here.
 def app(request):
@@ -16,8 +17,16 @@ def app(request):
 
 
 def token(request):
-    fake = Factory.create()
-    return generateToken(fake.user_name())
+    #fake = Factory.create()
+    email = request.user.email
+    first_name = request.user.first_name
+    last_name = request.user.last_name
+    #print(email)
+    #return generateToken(fake.user_name())
+    computingid = email.split("@")
+
+    username = first_name + " " + last_name + " " + "(" + computingid[0] + ")"
+    return generateToken(username)
 
 def generateToken(identity):
     # Get credentials from environment variables
