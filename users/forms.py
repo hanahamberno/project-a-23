@@ -24,14 +24,23 @@ class ProfileUpdateForm(forms.ModelForm):
             'display_profile',
             'image',
             'age',
+            'gender',
             'bio',
             'pronouns', 
             'graduation_year',
             'phone_number', 
-            'on_grounds', 
-            'max_price',
         ]
 
+class PreferenceUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = [
+            'match_list',
+            'on_grounds', 
+            'max_price',
+            'pref_gender',
+        ]
+        
 
 class PropertyUpdateForm(forms.ModelForm):
     class Meta:
@@ -52,4 +61,7 @@ class PropertyUpdateForm(forms.ModelForm):
             'lease_duration',
             'building_type',
             'other_details',
+            'on_grounds',
         ]
+
+

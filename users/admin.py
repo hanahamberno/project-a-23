@@ -13,6 +13,7 @@ class ProfileAdmin(admin.ModelAdmin):
         'last_name',
         'email',
         'age',
+        'display_profile',
     )
 
     def first_name(self, obj):
@@ -39,6 +40,7 @@ class PropertyAdmin(admin.ModelAdmin):
     list_display = (
         '__str__',
         'rent',
+        'on_grounds',
         'address',
         'furnished',
         'current_number_of_roommates',

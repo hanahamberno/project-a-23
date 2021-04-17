@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from . import views
-from .views import ProfileListView, PropertyListView
+from .views import *
 
 app_name = 'social_app'
 
@@ -27,5 +27,6 @@ urlpatterns = [
     path('property_list', PropertyListView.as_view(), name='property_list'),
     path('profile/<int:pk>', views.profile_detail_view, name='profile_detail_view'),
     path('logout/', auth_views.LogoutView.as_view(template_name='social_app/home.html'), name='logout'),
+    path('top_match_list/', views.preference_list_view, name='preference_list'),
     path('about', views.about, name="about"),
 ]
