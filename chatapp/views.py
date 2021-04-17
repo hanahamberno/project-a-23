@@ -48,6 +48,5 @@ def generateToken(identity):
     if chat_service_sid:
         chat_grant = ChatGrant(service_sid=chat_service_sid)
         token.add_grant(chat_grant)
-
     # Return token info as JSON
-    return JsonResponse({'identity':identity,'token':token.to_jwt().decode('utf-8')})
+    return JsonResponse({'identity':identity,'token':token.to_jwt()})
