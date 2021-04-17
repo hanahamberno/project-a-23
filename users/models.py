@@ -94,7 +94,7 @@ class Profile(models.Model):
     )
 
     max_price = models.IntegerField(
-        verbose_name='Max Rent',
+        verbose_name='Max Rent or Rent Amount',
         blank=True,
         validators=[MinValueValidator(0),MaxValueValidator(10000)],
         default=600,

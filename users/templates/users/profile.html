@@ -1,6 +1,6 @@
 {% extends "social_app/base.html" %}
 <!-- (Hanah) tutorial had this in already? -->
-{% load crispy_forms_tags %} 
+{% load crispy_forms_tags %}
 {% block content %}
 <!--Kathy's CSS (main-page, container, and padding)-->
 <div class="container main-page py-4 px-3">
@@ -32,3 +32,16 @@
     </div>
 </div>
 {% endblock content %}
+{% block JS %}
+<script>
+    window.addEventListener('load', () => {
+        const option = document.getElementsByTagName['option'];
+        console.log(option);
+    })
+    document.getElementById('id_match_list').addEventListener('change', function () {
+        const match_form = document.getElementById('id_match_list');
+        const match_form_option = match_form.options[match_form.selectedIndex].value;
+        console.log(match_form_option);
+    })
+</script>
+{% endblock JS %}

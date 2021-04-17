@@ -89,82 +89,107 @@ class PreferenceListView(ListView):
         queryset = Profile.objects.filter(Q(display_profile=True) & Q(property__display_property=False))
         return queryset
 
+# Kathy: helper method to calculate score for matching algorithm
+# d = the other user to compare to
+# profile = the current user
+# match_type = the type of users (d) that the current user (profile) wants to match with
+#               **this is either "profile" or "property"
+#               "profile": match with users who don't have a property
+#               "property": match with users who have a property
+def calculate_score(d, profile, match_type):
+    print("calculate_score in")
+    score = 0
+    # score w/ others who don't have a property
+    if(match_type == "profile"):
+        for pref in d.preference_list(): 
+            print(pref)
+            if pref != None:
+                # check if the person has a property or not and assign variables accordingly
+                comp_val = 0
+                if(hasattr(d, "Property")):
+                    if(d.property.display_property):
+                        comp_val = profile.property.rent
+                else:
+                    comp_val = profile.max_price
+                
+                # score things
+                if(pref == "max_price" and d.max_price >= comp_val):
+                    score += 1
+                if(pref == "on_grounds" and d.on_grounds == profile.on_grounds):
+                    score += 1
+                if(pref == "pref_gender"):
+                    if(profile.pref_gender == "NO_PREFERENCE"):
+                        score += 1
+                    else:
+                        if(d.gender == profile.pref_gender):
+                            score += 1
+    # score w/ others who have a property
+    elif(match_type == "property"):
+        for pref in d.preference_list():
+            print(pref)
+            if pref != None:
+                # score things
+                if(pref == "max_price" and d.property.rent <= profile.max_price):
+                    print("rent is good")
+                    score += 1
+                if(pref == "on_grounds" and d.property.on_grounds == profile.on_grounds):
+                    print("on grounds is good")
+                    score += 1
+                if(pref == "pref_gender"):
+                    if(profile.pref_gender == "NO_PREFERENCE"):
+                        print("gender is good")
+                        score += 1
+                    else:
+                        if(d.gender == profile.pref_gender):
+                            print("gender is good")
+                            score += 1
+    return score
+
 def preference_list_view(request):
     profile_all = Profile.objects.all()
     profile = Profile.objects.get(user__pk=request.user.pk)
     top_profile_list = []
 
     if (profile.match_list == "Both" or not profile.match_list):
-        # display_list = Profile.objects.filter(Q(display_profile=True)).exclude(user__pk=request.user.pk)
-        # for d in display_list:
-        #     if d.property_id != None:
-        #         if d.property.display_property:
-        #             score = 0
-        #             # calculate the score for each profile in display_list
-        #             for pref in d.preference_list(): #
-        #                 if pref != None:
-        #                     if(pref == "max_price" and d.property.rent <= profile.max_price):
-        #                         score += 1
-        #                     if(pref == "on_grounds" and d.property.on_grounds == profile.on_grounds):
-        #                         score += 1
-        #                     if(pref == "pref_gender"):
-        #                         if(profile.pref_gender == "NO_PREFERENCE"):
-        #                             score += 1
-        #                         else:
-        #                             if(d.gender == profile.pref_gender):
-        #                                 score += 1
-        #     else:
-        #         for pref in d.preference_list(): 
-        #             if pref != None:
-        #                 if(pref == "on_grounds" and d.property.on_grounds == profile.on_grounds):
-        #                     score += 1
-        #                 if(pref == "pref_gender"):
-        #                     if(profile.pref_gender == "NO_PREFERENCE"):
-        #                         score += 1
-        #                     else:
-        #                         if(d.gender == profile.pref_gender):
-        #                             score += 1
-        pass
+        display_list = Profile.objects.filter(Q(display_profile=True)).exclude(user__pk=request.user.pk)
+        print(display_list)
+        score = 0
+        for d in display_list:
+            # if d created a 
+            print(str(d) + " hasattr: " + str(hasattr(d, 'property')))
+            if(hasattr(d, 'property')): #either False or True
+                # and d wants to display the property
+                print("display prop: " + str(d.property.display_property))
+                if (d.property.display_property):
+                    print(d, "display_property in")
+                    score = calculate_score(d, profile, "property")
+                else:
+                    print(d, "display_profile in")
+                    score = calculate_score(d, profile, "profile")
+            else:
+                print(d, "display_profile in")
+                score = calculate_score(d, profile, "profile")
+            top_profile_list.append((score, d))
+
+        # if d is a person w/ no property: score = calculate_score(d, profile, "profile")
+        # else if d is a person w/ a property: score = calculate_score(d, profile, "property")
 
 
     elif (profile.match_list == "Profile"):
         display_list = Profile.objects.filter(Q(display_profile=True) & Q(property__display_property=False)).exclude(user__pk=request.user.pk)
+        score = 0
         for d in display_list:
-            score = 0
-            # calculate the score for each profile in display_list
-            for pref in d.preference_list(): #
-                print(pref)
-                if pref != None:
-                    if(pref == "on_grounds" and d.on_grounds == profile.on_grounds):
-                        score += 1
-                    if(pref == "pref_gender"):
-                        if(profile.pref_gender == "NO_PREFERENCE"):
-                            score += 1
-                        else:
-                            if(d.gender == profile.pref_gender):
-                                score += 1
+            score = calculate_score(d, profile, "profile")
+            top_profile_list.append((score, d))
 
     elif (profile.match_list == "Property"):
         display_list = Profile.objects.filter(Q(display_profile=True) & Q(property__display_property=True)).exclude(user__pk=request.user.pk)
         print(display_list)
+        score = 0
         for d in display_list:
-            score = 0
-            # calculate the score for each profile in display_list
-            for pref in d.preference_list(): #
-                print(pref)
-                if pref != None:
-                    if(pref == "max_price" and d.property.rent <= profile.max_price):
-                        score += 1
-                    if(pref == "on_grounds" and d.property.on_grounds == profile.on_grounds):
-                        score += 1
-                    if(pref == "pref_gender"):
-                        if(profile.pref_gender == "NO_PREFERENCE"):
-                            score += 1
-                        else:
-                            if(d.gender == profile.pref_gender):
-                                score += 1
-
+            score = calculate_score(d, profile, "property")
             top_profile_list.append((score, d))
+    
     top_profile_list = sorted(top_profile_list, key=lambda x: x[0], reverse=True)
     print(top_profile_list[0:15])
     context = {
