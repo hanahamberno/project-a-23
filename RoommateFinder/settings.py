@@ -249,9 +249,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = (os.path.join(os.path.dirname(__file__),'static'),)
 
 
-#tells Django to read the keys from environment variables
-TWILIO_ACCT_SID = os.environ['TWILIO_ACCT_SID']
-TWILIO_CHAT_SID = os.environ['TWILIO_CHAT_SID']
-TWILIO_SYNC_SID = os.environ['TWILIO_SYNC_SID']
-TWILIO_API_SID = os.environ['TWILIO_API_SID']
-TWILIO_API_SECRET = os.environ['TWILIO_API_SECRET']
+TWILIO_ACCT_SID='AC73454785d6d7c885c047656d34a0b627'
+TWILIO_CHAT_SID='IS37db0fd7ecfc4769abbc1833bd11bf57'
+TWILIO_SYNC_SID='ISa2a449e1960064b38a302cd32698b6a3'
+TWILIO_API_SID='SKf2453063677a1b10463927e42cba9b2d'
+TWILIO_API_SECRET='7QlAPapGXtOQdAdwH3Zbu87bYJGt4Ocq'
