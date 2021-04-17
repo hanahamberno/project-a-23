@@ -62,7 +62,7 @@ $(function() {
   
       // Alert the user they have been assigned a random username
       username = data.identity;
-      print('You have been assigned a random username of: '
+      print('Your username is: '
       + '<span class="me">' + username + '</span>', true);
   
       }).catch(error => {
