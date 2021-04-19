@@ -53,7 +53,10 @@ class ProfileListView(ListView):
 
     def get_queryset(self):
         # queryset = Profile.objects.filter(property__pk__isnull = True).exclude(user__username="admin").exclude(display_profile=False)
-        queryset = Profile.objects.filter(Q(display_profile=True) & Q(property__display_property=False))
+        # queryset = Profile.objects.filter(Q(display_profile=True) & Q(property__display_property=False))
+        queryset_1 = Profile.objects.filter(Q(display_profile=True) & Q(property__isnull=True))
+        queryset_2 = Profile.objects.filter(Q(display_profile=True) & Q(property__display_property=False))
+        queryset = queryset_1 | queryset_2
         return queryset
 
 class PreferenceListView(ListView):
