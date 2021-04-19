@@ -29,6 +29,7 @@ urlpatterns = [
     #(Seungeon) for the profile url
     path('profile/', user_views.profile, name='profile'),
     path('property/', user_views.property_update, name='property'),
+    path(r'', include('chatapp.urls')),
 ]
 
 

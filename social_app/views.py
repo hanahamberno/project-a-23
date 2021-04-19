@@ -3,6 +3,7 @@ from django.views.generic import ListView, DetailView
 # (Seungeon)
 from users.models import Profile, Property
 from django.db.models import Q
+import requests 
 
 
 def home(request):
@@ -238,3 +239,11 @@ def about(request):
         request=request,
         template_name='social_app/about.html'
     )
+
+def twilio(request):
+    return render(
+        request=request,
+        template_name='twilio/index.html'
+    )
+    #response = requests.get('https://api.groupme.com/v3/groups?token=INSERTTOKENHERE')
+    #return render(request, 'social_app/groupme.html', {'response':response})
