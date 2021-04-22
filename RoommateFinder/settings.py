@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'bnsa+wj-r#obp6!bdnc$(@yr41$g3jsj%163g2w(dyfgtv%bep'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     '0.0.0.0',
@@ -245,8 +245,8 @@ except ImportError:
     found = False
 
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = (os.path.join(os.path.dirname(__file__),'static'),)
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATICFILES_DIRS = (os.path.join(os.path.dirname(__file__),'static'),)
 
 
 TWILIO_ACCT_SID='AC73454785d6d7c885c047656d34a0b627'
