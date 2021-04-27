@@ -1,6 +1,6 @@
 {% extends "social_app/base.html" %}
 <!-- (Hanah) tutorial had this in already? -->
-{% load crispy_forms_tags %} 
+{% load crispy_forms_tags %}
 {% block content %}
 <!--Kathy's CSS (main-page, container, and padding)-->
 <div class="container main-page py-4 px-3">
@@ -25,3 +25,11 @@
     </div>
 </div>
 {% endblock content %}
+{% block JS %}
+<script>
+    window.addEventListener('load', () => {
+        const property = document.getElementsByClassName("form-check-label")[0];
+        property.style.fontSize = "x-large";
+    })
+</script>
+{% endblock JS %}

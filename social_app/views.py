@@ -243,7 +243,7 @@ def about(request):
         template_name='social_app/about.html'
     )
 
-def twilio(request):
+def chat(request):
     return render(
         request=request,
         template_name='twilio/index.html'

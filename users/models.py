@@ -24,16 +24,16 @@ class AbstractItem(models.Model):
 
 class Profile(models.Model):
 
-    ON_GROUNDS = "on-grounds"
-    OFF_GROUNDS = "off-grounds"
-    NO_PREFERENCE = "no preference"
-    N_A = "na"
+    ON_GROUNDS = "On-grounds"
+    OFF_GROUNDS = "Off-grounds"
+    NO_PREFERENCE = "No preference"
+    #N_A = "na"
 
     GROUNDS_CHOICES = (
         (ON_GROUNDS, "On-Grounds"),
         (OFF_GROUNDS, "Off-Grounds"),
         (NO_PREFERENCE, "No Preference"),
-        (N_A, "N/A")
+        #(N_A, "N/A")
     )
 
     MALE = "Male"
@@ -90,7 +90,8 @@ class Profile(models.Model):
     on_grounds = models.CharField(
         blank=True,
         choices=GROUNDS_CHOICES,
-        max_length=50
+        max_length=50,
+        verbose_name = "On-Grounds or Off-Grounds?"
     )
 
     max_price = models.IntegerField(
@@ -103,6 +104,7 @@ class Profile(models.Model):
     display_profile = models.BooleanField(
         blank=True,
         default=False,
+        verbose_name = "Make Profile Public",
     )
 
     # user wants to match with people who only have 
@@ -227,16 +229,16 @@ class Property(models.Model):
     )
 
     # on grounds choices
-    ON_GROUNDS = "on-grounds"
-    OFF_GROUNDS = "off-grounds"
-    NO_PREFERENCE = "no preference"
-    N_A = "na"
+    ON_GROUNDS = "On-Grounds"
+    OFF_GROUNDS = "Off-Grounds"
+    #NO_PREFERENCE = "no preference"
+    #N_A = "na"
 
     GROUNDS_CHOICES = (
         (ON_GROUNDS, "On-Grounds"),
         (OFF_GROUNDS, "Off-Grounds"),
-        (NO_PREFERENCE, "No Preference"),
-        (N_A, "N/A")
+        #(NO_PREFERENCE, "No Preference"),
+        #(N_A, "N/A")
     )
 
     profile = models.OneToOneField(
@@ -325,12 +327,14 @@ class Property(models.Model):
     display_property = models.BooleanField(
         blank=True,
         default=False,
+        verbose_name = "Make Property Public",
     )
 
     on_grounds = models.CharField(
         blank=True,
         choices=GROUNDS_CHOICES,
-        max_length=50
+        max_length=50,
+        verbose_name = "On-Grounds or Off-Grounds?"
     )
 
     def __str__(self):

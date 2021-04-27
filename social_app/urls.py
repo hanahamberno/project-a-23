@@ -29,5 +29,5 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(template_name='social_app/home.html'), name='logout'),
     path('top_match_list/', views.preference_list_view, name='preference_list'),
     path('about', views.about, name="about"),
-    path('twilio', views.twilio, name="twilio"),
+    path('chat', views.chat, name="chat"),
 ]

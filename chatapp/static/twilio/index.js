@@ -60,7 +60,7 @@ $(function() {
           refreshToken(username);
         });
   
-      // Alert the user they have been assigned a random username
+      // Alert the user they have been assigned a username
       username = data.identity;
       print('Your username is: '
       + '<span class="me">' + username + '</span>', true);
@@ -85,7 +85,11 @@ $(function() {
     function createOrJoinGeneralChannel() {
       // Get the general chat channel, which is where all the messages are
       // sent in this simple application
-      print('Attempting to join "general" chat channel...');
+      print('Welcome!! This general chat is for those who want to discuss roommate preferences!');
+      print(" ")
+      print("Your messages are only visible to those logged into the chat when you send them.")
+      print(" ")
+      print("To maintain user privacy, your messages will not be saved.")
       chatClient.getChannelByUniqueName('general')
       .then(function(channel) {
         generalChannel = channel;

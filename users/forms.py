@@ -51,6 +51,7 @@ class PropertyUpdateForm(forms.ModelForm):
             'rent',
             'amenities',
             'address',
+            'on_grounds',
             'furnished', 
             'current_number_of_roommates', 
             'number_of_roommates_seeking', 
@@ -61,7 +62,7 @@ class PropertyUpdateForm(forms.ModelForm):
             'lease_duration',
             'building_type',
             'other_details',
-            'on_grounds',
+            
         ]
 
 

@@ -8,14 +8,14 @@
     --secondary3: #faf1ec;
 }
 
-body{
+body {
     background: var(--secondary2);
     color: var(--primary);
     font-family: 'Nunito', sans-serif;
     /* font-family: 'Patrick Hand SC', cursive; */
 }
 
-.main-pageg{
+.main-pageg {
     background-color: white;
 }
 
@@ -61,14 +61,14 @@ body{
     padding: auto;
 }
 
-.profile-bg{
+.profile-bg {
     border-width: 0.2rem;
     border-color: var(--secondary2);
     background-color: var(--secondary3);
 }
 
-.rounded-circle{
-    border-radius:50%;
-    width:10rem;
-    height:10rem;
+.rounded-circle {
+    border-radius: 50%;
+    width: 10rem;
+    height: 10rem;
 }

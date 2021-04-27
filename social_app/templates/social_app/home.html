@@ -7,30 +7,9 @@
 <!-- Added profile cards -->
 {% if user.is_authenticated %}
 <div class="container py-4 px-4 text-center">
-    <div class="row mb-4">
-        <div class="col">
-            <p class="m-4 h4">Hi, welcome to Roommate Finder! Check out a category to get started.</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col m-2">
-            <a href="{% url 'social_app:profile_list' %}">
-                <button class="btn btn-dark btn-overflow p-3">
-                    View people <br> who don't have a property
-                </button>
-            </a>
-        </div>
-        <div class="col m-2">
-            <a href="{% url 'social_app:property_list' %}">
-                <button class="btn btn-dark p-3">
-                    View people <br> who have a property
-                </button>
-            </a>
-        </div>
-    </div>
     <div class="row m-4">
         <div class="col">
-            <p class="m-4 h4">If you're new here, click below to edit your profile</p>
+            <p class="m-4 h4">Hi, welcome to Roommate Finder! If you're new here, click below to edit your profile</p>
         </div>
     </div>
     <div class="row">
@@ -38,6 +17,27 @@
             <a href="{% url 'profile' %}">
                 <button class="btn btn-dark btn-overflow p-3">
                     Edit Your Profile
+                </button>
+            </a>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col">
+            <p class="m-4 h4">Check out a category to get started.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col m-2">
+            <a href="{% url 'social_app:profile_list' %}">
+                <button class="btn btn-dark btn-overflow p-3">
+                    Find a roommate who doesn't <br> currently have a property
+                </button>
+            </a>
+        </div>
+        <div class="col m-2">
+            <a href="{% url 'social_app:property_list' %}">
+                <button class="btn btn-dark p-3">
+                    Find a roommate who <br> currently has a property
                 </button>
             </a>
         </div>
