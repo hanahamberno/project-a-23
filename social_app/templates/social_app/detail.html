@@ -86,13 +86,6 @@
                     -
                     {%endif%}
                 </p>
-                <div class="row justify-content-center m-4">
-                    <a href="{% url 'social_app:profile_list' %}">
-                        <button class="btn btn-dark">
-                            Back To Profiles
-                        </button>
-                    </a>
-                </div>
                 {% endif %}
             </div>
 
@@ -223,14 +216,14 @@
                     </div>
                 </div>
             </div>
+            {% endif %}
             <div class="row justify-content-center m-4">
-                <a href="{% url 'social_app:property_list' %}">
+                <a href="{{ request.META.HTTP_REFERER }}">
                     <button class="btn btn-dark">
-                        Back To Profiles
+                        Return
                     </button>
                 </a>
             </div>
-            {% endif %}
         </div>
     </div>
 </div>
