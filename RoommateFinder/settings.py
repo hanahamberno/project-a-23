@@ -53,6 +53,7 @@ DEFAULT_APPS = [
 PROJECT_APPS = [
     'social_app.apps.SocialAppConfig',
     'users.apps.UsersConfig',
+    'messages.apps.MessagesConfig',
 ]
 # it is the thrid party api
 THIRD_PARTY_APP = [
