@@ -8,7 +8,7 @@ from social_app.models import *
 # Create your models here.
 
 
-class Messages(models.Model):
+class Message(models.Model):
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
@@ -41,7 +41,7 @@ class Messages(models.Model):
         default=False,
     )
 
-    def send_message(from_user, to_user, body):
+    def send_messages(from_user, to_user, body):
         sender_message = Message(
             user=from_user,
             sender=from_user,
@@ -62,7 +62,7 @@ class Messages(models.Model):
 
         return sender_message
     
-    def get_message(user):
+    def get_messages(user):
         users = list()
         #.values() returns the dictionary of specific argument
         messages = Message.objects.filter(user=user).values('recipient').annotate(last=Max('date')).order_by('-last')

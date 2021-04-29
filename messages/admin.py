@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from . import models
 
 # Register your models here.
-@admin.register(models.Messages)
+@admin.register(models.Message)
 class MessageAdmin(admin.ModelAdmin):
     list_display = (
         'user',
