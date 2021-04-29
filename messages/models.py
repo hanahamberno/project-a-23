@@ -61,7 +61,7 @@ class Message(models.Model):
         recipient_message.save()
 
         return sender_message
-    
+
     def get_messages(user):
         users = list()
         #.values() returns the dictionary of specific argument
