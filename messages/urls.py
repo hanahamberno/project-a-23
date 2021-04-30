@@ -23,6 +23,7 @@ app_name = 'messages'
 
 urlpatterns = [
     path('', views.inbox, name='inbox'),
-    path('directs/<username>', directs, name='directs')
+    path('directs/<username>', directs, name='directs'),
+    path('send/', sendDirect, name='send_direct')
     
 ]
