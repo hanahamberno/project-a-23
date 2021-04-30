@@ -24,11 +24,11 @@ def inbox(request):
             if message['user'].username == active_direct:
                 message['unread'] = 0
             
-        context = {
+    context = {
             'directs': directs,
             'messages': messages,
             'active_direct': active_direct,
-        }
+    }
     return render(
         request=request,
         template_name='messages/inbox.html',
