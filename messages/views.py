@@ -9,12 +9,13 @@ from .models import *
 def inbox(request):
     user = request.user
     messages = Message.get_messages(user=user)
+    print('message' + str(messages))
     active_direct = None
     directs = None
 
     if messages:
+        print("message in")
         message = messages[0]
-        print(message)
         active_direct = message['user'].username
         directs = Message.objects.filter(user=user, recipient=message['user'])
         print(directs)
@@ -66,7 +67,6 @@ def sendDirect(request):
     to_user_username = request.POST.get('to_user')
     # the content of each message
     body = request.POST.get('body')
-    print(from_user)
     print('to_user_username' + to_user_username)
     print(body)
 

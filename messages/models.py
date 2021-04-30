@@ -58,14 +58,17 @@ class Message(models.Model):
             recipient=from_user,
             body=body,
         )
+
         recipient_message.save()
 
         return sender_message
 
     def get_messages(user):
         users = list()
+        print("user " + str(user))
         #.values() returns the dictionary of specific argument
         messages = Message.objects.filter(user=user).values('recipient').annotate(last=Max('date')).order_by('-last')
+        print("get_message, message: " + str(messages))
         for m in messages:
             users.append({
                 'user': User.objects.get(pk=m['recipient']),
