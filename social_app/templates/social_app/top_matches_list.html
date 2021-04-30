@@ -13,7 +13,7 @@
         {% for p in display_list %}
         <div class="col mb-4">
             <div class="card h-100 p-4 m-2 text-center roomie-card">
-                <p>Matched with {{p.0}} / 4 of Your Preferences!</p>
+                <p>Matched with {{p.0}} / 3 of Your Preferences!</p>
                 <a href="{% url 'social_app:profile_detail_view' p.1.user.pk %}">
                     <img src="{{ p.1.image.url }}" class="rounded-circle img-thumbnail card-img-top roomie-pfp">
                 </a>
