@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 # (Seungeon)
+from django.contrib.auth.models import User
 from users.models import Profile, Property
+from messages.models import Message
 from django.db.models import Q
 import requests 
 
@@ -214,9 +216,23 @@ class PropertyListView(ListView):
         return queryset
 
 def profile_detail_view(request, pk):
+    # myself
+    from_user = User.objects.get(username=request.user.username)
+    # profile/user are the information of the particular person I'm looking at rn
     profile = Profile.objects.get(user__pk=pk)
+    user = User.objects.get(pk=pk)
+    # check if this is first time messaging this person
+    message_record = Message.objects.filter(
+        user__username=from_user, 
+        sender__username=from_user, 
+        recipient__username=user
+    )
+
     context = {
         "profile": profile,
+        "record": message_record,
+        "from_user": from_user,
+        "user": user,
         }
     return render(
         request=request,

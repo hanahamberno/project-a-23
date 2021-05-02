@@ -46,6 +46,7 @@
                         <!-- Navbar Right Side -->
                         <div class="navbar-nav">
                             {% if user.is_authenticated %}
+                            <a class="nav-item nav-link" href="{% url 'messages:inbox' %}">Message Inbox</a>
                             <a class="nav-item nav-link" href="{% url 'profile' %}">Edit Profile</a>
                             <a class="nav-item nav-link" href="{% url 'property' %}">Manage Property</a>
                             <a class="nav-item nav-link" href="{% url 'social_app:logout' %}">Log Out</a>

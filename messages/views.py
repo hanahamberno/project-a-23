@@ -118,6 +118,7 @@ def newConversation(request, username):
     return redirect('messages:inbox')
 
 def deleteConversation(request, username):
-    Message.delete_messages(username)
+    from_user = request.user
+    Message.delete_messages(from_user, username)
     print("delete_view in")
     return redirect('messages:inbox')

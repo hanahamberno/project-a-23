@@ -42,13 +42,13 @@ class Message(models.Model):
     )
 
     def __str__(self):
-        return self.body
+        return 'user ' + self.user.username + " " + self.body
 
     def send_messages(from_user, to_user, body):
         sender_message = Message(
-            user=from_user,
-            sender=from_user,
-            recipient=to_user,
+            user=from_user, #seungeon
+            sender=from_user, #seungeon
+            recipient=to_user,# kathy
             body=body,
             is_read=True,
         )
@@ -56,9 +56,9 @@ class Message(models.Model):
         sender_message.save()
 
         recipient_message = Message(
-            user=to_user,
-            sender=from_user,
-            recipient=from_user,
+            user=to_user, #kathy
+            sender=from_user, #seungeon
+            recipient=to_user, #kathy
             body=body,
         )
 
@@ -78,10 +78,17 @@ class Message(models.Model):
             })
         return users
 
-    def delete_messages(user_to_be_deleted):
-        user = User.objects.get(username=user_to_be_deleted)
+    def delete_messages(from_user, user_to_be_deleted):
+        Message.objects.filter(
+            user__username=from_user, 
+            sender__username=from_user,
+            recipient__username=user_to_be_deleted
+        ).delete()
 
-        user.from_user.all().delete()
-        user.to_user.all().delete()
+        Message.objects.filter(
+            user__username=user_to_be_deleted, 
+            sender__username=from_user,
+            recipient__username=user_to_be_deleted
+        ).delete()
 
         return None
