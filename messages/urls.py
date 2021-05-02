@@ -18,17 +18,15 @@ from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from . import views
 from .views import *
-from messages.views import inbox
 
-app_name = 'social_app'
+app_name = 'messages'
 
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('profile_list', ProfileListView.as_view(), name='profile_list'),
-    path('property_list', PropertyListView.as_view(), name='property_list'),
-    path('profile/<int:pk>', views.profile_detail_view, name='profile_detail_view'),
-    path('logout/', auth_views.LogoutView.as_view(template_name='social_app/home.html'), name='logout'),
-    path('top_match_list/', views.preference_list_view, name='preference_list'),
-    path('about', views.about, name="about"),
-    path('chat', views.chat, name="chat"),
+    path('', views.inbox, name='inbox'),
+    path('directs/<username>', directs, name='directs'),
+    path('send/', views.sendDirect, name='send_direct'),
+    path('new/', views.userSearch, name='user_search'),
+    path('new/<username>', views.newConversation, name='new_conversation'),
+    path('delete/<username>', views.deleteConversation, name='delete_conversation'),
+    
 ]

@@ -104,7 +104,7 @@ class Profile(models.Model):
     display_profile = models.BooleanField(
         blank=True,
         default=False,
-        verbose_name = "Make Profile Public",
+        verbose_name = "MAKE PROFILE PUBLIC",
     )
 
     # user wants to match with people who only have 
@@ -327,7 +327,7 @@ class Property(models.Model):
     display_property = models.BooleanField(
         blank=True,
         default=False,
-        verbose_name = "Make Property Public",
+        verbose_name = "MAKE PROPERTY PUBLIC",
     )
 
     on_grounds = models.CharField(

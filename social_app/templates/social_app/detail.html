@@ -13,6 +13,22 @@
                 <p class="text-secondary">{{ profile.user.email }}</p>
                 <p></p>
             </div>
+            {% if from_user != user %}
+                {% if record %}
+                <a href="{% url 'messages:directs' user.username %}">
+                    <div>
+                    Send a Message
+                    </div>
+                </a>
+                {% else %}
+                <a href="{% url 'messages:user_search'%}">
+                    <div>
+                    Start a New Message
+                    </div>
+                </a>
+                {% endif %}
+            {%endif%}
+            
         </div>
         <div class="container p-4">
             <h3 class="mb-4 card-header pl-0 pb-4 pt-1">A little bit about this wonderful person :)</h3>
@@ -86,13 +102,6 @@
                     -
                     {%endif%}
                 </p>
-                <div class="row justify-content-center m-4">
-                    <a href="{% url 'social_app:profile_list' %}">
-                        <button class="btn btn-dark">
-                            Back To Profiles
-                        </button>
-                    </a>
-                </div>
                 {% endif %}
             </div>
 
@@ -223,14 +232,14 @@
                     </div>
                 </div>
             </div>
+            {% endif %}
             <div class="row justify-content-center m-4">
-                <a href="{% url 'social_app:property_list' %}">
+                <a href="{{ request.META.HTTP_REFERER }}">
                     <button class="btn btn-dark">
-                        Back To Profiles
+                        Return To Previous Page
                     </button>
                 </a>
             </div>
-            {% endif %}
         </div>
     </div>
 </div>

@@ -30,6 +30,7 @@ urlpatterns = [
     path('profile/', user_views.profile, name='profile'),
     path('property/', user_views.property_update, name='property'),
     path(r'', include('chatapp.urls')),
+    path('inbox/', include('messages.urls', namespace="messages")),
 ]
 
 
