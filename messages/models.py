@@ -41,6 +41,9 @@ class Message(models.Model):
         default=False,
     )
 
+    def __str__(self):
+        return self.body
+
     def send_messages(from_user, to_user, body):
         sender_message = Message(
             user=from_user,
@@ -65,10 +68,8 @@ class Message(models.Model):
 
     def get_messages(user):
         users = list()
-        print("user " + str(user))
         #.values() returns the dictionary of specific argument
         messages = Message.objects.filter(user=user).values('recipient').annotate(last=Max('date')).order_by('-last')
-        print("get_message, message: " + str(messages))
         for m in messages:
             users.append({
                 'user': User.objects.get(pk=m['recipient']),
@@ -76,3 +77,11 @@ class Message(models.Model):
                 'unread': Message.objects.filter(user=user, recipient__pk=m['recipient'], is_read=False).count()
             })
         return users
+
+    def delete_messages(user_to_be_deleted):
+        user = User.objects.get(username=user_to_be_deleted)
+
+        user.from_user.all().delete()
+        user.to_user.all().delete()
+
+        return None

@@ -24,6 +24,9 @@ app_name = 'messages'
 urlpatterns = [
     path('', views.inbox, name='inbox'),
     path('directs/<username>', directs, name='directs'),
-    path('send/', sendDirect, name='send_direct')
+    path('send/', views.sendDirect, name='send_direct'),
+    path('new/', views.userSearch, name='user_search'),
+    path('new/<username>', views.newConversation, name='new_conversation'),
+    path('delete/<username>', views.deleteConversation, name='delete_conversation'),
     
 ]

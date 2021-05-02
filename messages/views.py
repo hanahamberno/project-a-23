@@ -3,6 +3,8 @@ from django.contrib.auth.decorators import *
 from django.http import HttpResponseBadRequest
 from django.contrib.auth.models import User
 from .models import *
+from django.db.models import Q
+from django.core.paginator import Paginator
 # Create your views here.
 
 @login_required
@@ -67,13 +69,55 @@ def sendDirect(request):
     to_user_username = request.POST.get('to_user')
     # the content of each message
     body = request.POST.get('body')
-    print('to_user_username' + to_user_username)
-    print(body)
 
     if request.method == "POST":
         to_user = User.objects.get(username=to_user_username)
-        print(to_user)
         Message.send_messages(from_user=from_user, to_user=to_user, body=body)
         return redirect('messages:inbox')
     else:
         return HttpResponseBadRequest()
+
+@login_required
+def userSearch(request):
+    query = request.GET.get("q")
+    context = {}
+
+    if query:
+        #icontains means case insensative
+        users = User.objects.filter(Q(username__icontains=query))
+
+        #(Seungeon)
+        # Pagination
+        # First is the object(model) to be split, Second is how many objects is there in one page
+        paginator = Paginator(users, 6)
+        page_number = request.GET.get('page')
+        users_paginator = paginator.get_page(page_number)
+
+        context = {
+            'users': users_paginator,
+        }
+
+    return render(
+        request=request,
+        template_name="messages/search_user.html",
+        context=context
+    )
+
+@login_required
+def newConversation(request, username):
+    from_user = request.user
+    from_user_username = from_user.username
+    body = f"{from_user_username} is interested in messaging you!"
+
+    try:
+        to_user = User.objects.get(username=username)
+    except Exception as e:
+        return redirect('usersearch')
+    if from_user != to_user:
+        Message.send_messages(from_user=from_user, to_user=to_user, body=body)
+    return redirect('messages:inbox')
+
+def deleteConversation(request, username):
+    Message.delete_messages(username)
+    print("delete_view in")
+    return redirect('messages:inbox')
