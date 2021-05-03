@@ -11,7 +11,6 @@ from django.core.paginator import Paginator
 def inbox(request):
     user = request.user
     messages = Message.get_messages(user=user)
-    print('message' + str(messages))
     active_direct = None
     directs = None
 
