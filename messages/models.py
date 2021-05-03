@@ -58,7 +58,7 @@ class Message(models.Model):
         recipient_message = Message(
             user=to_user, #kathy
             sender=from_user, #seungeon
-            recipient=to_user, #kathy
+            recipient=from_user, #kathy
             body=body,
         )
 
@@ -88,7 +88,7 @@ class Message(models.Model):
         Message.objects.filter(
             user__username=user_to_be_deleted, 
             sender__username=from_user,
-            recipient__username=user_to_be_deleted
+            recipient__username=from_user
         ).delete()
 
         return None

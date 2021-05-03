@@ -16,11 +16,9 @@ def inbox(request):
     directs = None
 
     if messages:
-        print("message in")
         message = messages[0]
         active_direct = message['user'].username
         directs = Message.objects.filter(user=user, recipient=message['user'])
-        print(directs)
         directs.update(is_read=True)
 
         for message in messages:

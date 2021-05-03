@@ -10,7 +10,7 @@
                     {% for m in messages %}
 					<a href="{% url 'messages:directs' m.user.username %}" class="list-group-item list-group-item-action border-0">
 						<div class="d-flex align-items-start">
-							<img src="{{ m.user.profile.image.url }}" class="rounded-circle mr-1" alt="Jennifer Chang" width="40" height="40">
+							<img src="{{ m.user.profile.image.url }}" class="rounded-circle mr-1" width="40" height="40">
 							<div class="flex-grow-1 ml-3">
 								<div class="small"><span class="fas fa-circle chat-offline"></span></div>
                                 <p>{{ m.user.first_name }} {{m.user.last_name}}</p>
