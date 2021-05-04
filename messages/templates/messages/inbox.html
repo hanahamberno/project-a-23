@@ -46,25 +46,26 @@
 						</div>
 					</div> 
                 
-				 {% comment %} if there is no person on the left side, hide this {% endcomment %}
-                    <form action="{% url 'messages:send_direct' %}" method="POST">
-                        {% csrf_token %}
-                        <div class="media-content">
-                            <input type="hidden" name="to_user" value="{{ active_direct }}">
-                            <div class="field">
-                              <p class="control">
-                                <textarea class="textarea" name="body" placeholder="Message Here!"></textarea>
-                              </p>
-                            </div>
-                            <nav class="level">
-                              <div class="level-left">
-                                <div class="level-item">
-                                  <button type="submit" name="action" class="button is-info">Send</buttom>
-                                </div>
-                              </div>
-                            </nav>
-                          </div>
-                    </form>
+				 	{% if messages %}
+						<form action="{% url 'messages:send_direct' %}" method="POST">
+							{% csrf_token %}
+							<div class="media-content">
+								<input type="hidden" name="to_user" value="{{ active_direct }}">
+								<div class="field">
+								<p class="control">
+									<textarea class="textarea" name="body" placeholder="Message Here!"></textarea>
+								</p>
+								</div>
+								<nav class="level">
+								<div class="level-left">
+									<div class="level-item">
+									<button type="submit" name="action" class="button is-info">Send</buttom>
+									</div>
+								</div>
+								</nav>
+							</div>
+						</form>
+					{% endif %}
 				</div>
 			</div>
 		</div>

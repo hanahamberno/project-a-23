@@ -23,7 +23,7 @@ def inbox(request):
         for message in messages:
             if message['user'].username == active_direct:
                 message['unread'] = 0
-            
+    print(messages)
     context = {
             'directs': directs,
             'messages': messages,
