@@ -186,7 +186,10 @@ def preference_list_view(request):
             else:
                 print(d, "display_profile in")
                 score = calculate_score(d, profile, "profile")
-            top_profile_list.append((score, d))
+            if(score == 0):
+                pass
+            else:
+                top_profile_list.append((score, d))
 
         # if d is a person w/ no property: score = calculate_score(d, profile, "profile")
         # else if d is a person w/ a property: score = calculate_score(d, profile, "property")
@@ -198,7 +201,10 @@ def preference_list_view(request):
         score = 0
         for d in display_list:
             score = calculate_score(d, profile, "profile")
-            top_profile_list.append((score, d))
+            if(score == 0):
+                pass
+            else:
+                top_profile_list.append((score, d))
 
     elif (profile.match_list == "Property"):
         display_list = Profile.objects.filter(Q(display_profile=True) & Q(property__display_property=True)).exclude(user__pk=request.user.pk)
@@ -206,7 +212,10 @@ def preference_list_view(request):
         score = 0
         for d in display_list:
             score = calculate_score(d, profile, "property")
-            top_profile_list.append((score, d))
+            if(score == 0):
+                pass
+            else:
+                top_profile_list.append((score, d))
     
     top_profile_list = sorted(top_profile_list, key=lambda x: x[0], reverse=True)
     print(top_profile_list[0:15])

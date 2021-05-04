@@ -1,35 +1,16 @@
+{% extends "social_app/base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html>
+{% block content %}
 
-<head>
-  <title>General Chat</title>
 
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="{% static 'twilio/index.css' %}">
-</head>
-
-<body>
-  <header>
-  </header>
-
-  <section>
     <div id="messages"></div>
     <input id="chat-input" type="text" placeholder="Write a message!" autofocus />
-    <div class="">
+    <div class="row justify-content-center mt-4">
       <a href="{% url 'social_app:home' %}">
         <button class="btn btn-dark">
           Back To Home
         </button>
       </a>
     </div>
-  </section>
 
-
-  <script src="https://media.twiliocdn.com/sdk/js/chat/releases/4.0.0/twilio-chat.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <script src="{% static 'twilio/index.js' %}"></script>
-</body>
-
-
-</html>
+{% endblock %}
