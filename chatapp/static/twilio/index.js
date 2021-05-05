@@ -1,3 +1,4 @@
+//This code is modified from code that's part of this tutorial: https://www.twilio.com/blog/2018/03/python-django-twilio-programmable-chat-application.html
 $(function() {
     // Get handle to the chat div
     var $chatWindow = $('#messages');
