@@ -7,14 +7,14 @@
 | Name          | Role                    |
 | ------------- | ----------------------- |
 | Hanah No      | **Scrum Manager**       |
-| Nathan Snyder | **DevOps Manager**      |
+| Seungeon Kim  | **DevOps Manager**      |
 | Kathy Kang    | **UX Desinger**         |
 | Ben Humleker  | **Requirement Manager** |
-| Seungeon Kim  | **Testing Manager**     |
+| Nathan Snyder | **Testing Manager**     |
 
 
 
-# Sprint 3 - login
+# Sprint 3: Login
 
 *   We implemented google authentication API to log in with users' uva google email. 
 
@@ -24,13 +24,30 @@
 
 
 
-# Sprint 4 - First Major Feature (Profile)
-   * [Default image resource](https://www.google.com/url?sa=i&url=https%3A%2F%2Ficon-library.com%2Ficon%2Fdefault-user-icon-26.html&psig=AOvVaw1B1qFKdKGh7zHRZTXUBjle&ust=1616142636270000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJCLvNS2ue8CFQAAAAAdAAAAABAD)
-   * dependencies
-     * ## make sure to set up the virtual environment and install these on your local machine:
-       * `pip install django-crispy-forms`
-       * `pip install django-allauth`
-       * `pip install Pillow`
-       * `pip install django-phone-field`
+# Sprint 4: First Major Feature (Profile)
+  * We implemented so-called 'dashboard' feature, where a user is able to look at who has interested in finding roomates.
+  * A user is also able to 
+  * [Default image resource](https://www.google.com/url?sa=i&url=https%3A%2F%2Ficon-library.com%2Ficon%2Fdefault-user-icon-26.html&psig=AOvVaw1B1qFKdKGh7zHRZTXUBjle&ust=1616142636270000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJCLvNS2ue8CFQAAAAAdAAAAABAD)
 
+# Sprint 5: Next Major Feature (Property)
+  * We implemented Property feature
+  * Now a user can update their property with some information
+    * Rent
+    * Amenities
+    * Location
+    * etc
+  
+# Sprint 5-2: Top Matching
+  * `Top Matching` will show a list of profile cards that suits with your preference.
+  * If a user wants to match with people who do not have properties, `Top Matching` feature will show a list of profile cards that are looking for rooms. It helps to connect them to seize rooms together
+  * If a user wants to match with people who DO have properties, `Top Matching` feature will show a list of profile cards that are looking for roomates. It helps to connect them directly.
+
+# Sprint 5-3: Another API
+  * We used another third-party API `Twilio` to implement a mega chat forum where all users can have conversation in one place synchronously. 
+  * [Youtube Video](www.google.com)
+
+# Sprint 6: Beta Version
+  * We implemented another chat feature, `Direct Message`. 
+  * On each of profile card, a user is able to send a direct message to show an interest. 
+  * [Tutorial Video](https://www.youtube.com/watch?v=RF22AuSYIR0&list=PL9tgJISrBWc5619CclyqYrnnMkVOPzVYM&index=17)
 
