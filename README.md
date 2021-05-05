@@ -8,7 +8,7 @@
 | ------------- | ----------------------- |
 | Hanah No      | **Scrum Manager**       |
 | Seungeon Kim  | **DevOps Manager**      |
-| Kathy Kang    | **UX Desinger**         |
+| Kathy Kang    | **UX Designer**         |
 | Ben Humleker  | **Requirement Manager** |
 | Nathan Snyder | **Testing Manager**     |
 
@@ -44,10 +44,19 @@
 
 # Sprint 5-3: Another API
   * We used another third-party API `Twilio` to implement a mega chat forum where all users can have conversation in one place synchronously. 
-  * [Youtube Video](www.google.com)
+  * Author: Michael Jenkins
+  * Date: 4/16/21
+  * Code version: HTML, CSS, JS, and Python
+  * URL: https://www.twilio.com/blog/2018/03/python-django-twilio-programmable-chat-application.html
+  * Software License: None Listed
+
 
 # Sprint 6: Beta Version
   * We implemented another chat feature, `Direct Message`. 
   * On each of profile card, a user is able to send a direct message to show an interest. 
-  * [Tutorial Video](https://www.youtube.com/watch?v=RF22AuSYIR0&list=PL9tgJISrBWc5619CclyqYrnnMkVOPzVYM&index=17)
+  * Author: Lara Code
+  * Date: 5/2/21
+  * Code version: Python
+  * URL: https://www.youtube.com/watch?v=RF22AuSYIR0&list=PL9tgJISrBWc5619CclyqYrnnMkVOPzVYM&index=17
+  * Software License: None Listed
 
