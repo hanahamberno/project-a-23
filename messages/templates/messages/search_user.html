@@ -6,27 +6,26 @@
   
   <div class="field has-addons">
     <form>
-      <div class="control">
-        <input class="" name="q" type="text" placeholder="Search users..." value="{{ request.GET.q }}">
+      <div class="input-group">
+        <input class="form-control" name="q" type="text" placeholder="Search users..." value="{{ request.GET.q }}">
+        <div class="input-group-append">
+          <button type="submit" class="button is-success btn btn-dark">Search</button>
+        </div>
       </div>
-      <div class="control">
-          <button type="submit" class="button is-success">Search</button>
-      </div>
-    </form>
-    {% for user in users %}
-    <a href="{% url 'messages:new_conversation' user.username %}" class="list-group-item list-group-item-action border-0">
-						<div class="d-flex align-items-start">
-							<img src="{{ user.profile.image.url }}" class="rounded-circle mr-1" width="40" height="40">
-							<div class="flex-grow-1 ml-3">
-								<div class="small"><span class="fas fa-circle chat-offline"></span> Offline/Online</div>
-                <p>{{ user.first_name}} {{user.last_name}}</p>
-							</div>
-              <div>
-                <span>Send a Message!</span>
-              </div>
-						</div>
-			</a>
+      {% for user in users %}
+        <a href="{% url 'messages:new_conversation' user.username %}" class="list-group-item list-group-item-action border-0">
+                <div class="d-flex align-items-start">
+                  <img src="{{ user.profile.image.url }}" class="rounded-circle mr-1" width="40" height="40">
+                  <div class="flex-grow-1 ml-3">
+                    <div class="small"></div>
+                    <div style="font-size: 20px">{{ user.first_name}} {{user.last_name}}</div>
+                  </div>
+                </div>
+          </a>
       {% endfor %}
+
+    </form>
+
   </div>
   
   

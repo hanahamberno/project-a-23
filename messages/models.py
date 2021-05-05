@@ -91,4 +91,16 @@ class Message(models.Model):
             recipient__username=from_user
         ).delete()
 
+        Message.objects.filter(
+            user__username=from_user, 
+            sender__username=user_to_be_deleted,
+            recipient__username=user_to_be_deleted
+        ).delete()
+
+        Message.objects.filter(
+            user__username=user_to_be_deleted, 
+            sender__username=user_to_be_deleted,
+            recipient__username=from_user
+        ).delete()
+
         return None
