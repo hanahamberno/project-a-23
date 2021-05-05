@@ -15,7 +15,7 @@ $(function() {
   
     // Helper function to print info messages to the chat window
     function print(infoMessage, asHtml) {
-      var $msg = $('<div class="info">');
+      var $msg = $('<div class="info" style="color: white">');
       if (asHtml) {
         $msg.html(infoMessage);
       } else {
