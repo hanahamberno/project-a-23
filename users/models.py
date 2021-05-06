@@ -63,7 +63,7 @@ class Profile(models.Model):
     )
     age = models.IntegerField(
         blank=True,
-        validators=[MinValueValidator(0),MaxValueValidator(150)],
+        validators=[MinValueValidator(16),MaxValueValidator(120)],
         null=True,
     )
 
