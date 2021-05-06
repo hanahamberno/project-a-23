@@ -46,9 +46,9 @@ class Message(models.Model):
 
     def send_messages(from_user, to_user, body):
         sender_message = Message(
-            user=from_user, #seungeon
-            sender=from_user, #seungeon
-            recipient=to_user,# kathy
+            user=from_user,
+            sender=from_user,
+            recipient=to_user,
             body=body,
             is_read=True,
         )
@@ -56,9 +56,9 @@ class Message(models.Model):
         sender_message.save()
 
         recipient_message = Message(
-            user=to_user, #kathy
-            sender=from_user, #seungeon
-            recipient=from_user, #kathy
+            user=to_user,
+            sender=from_user,
+            recipient=from_user,
             body=body,
         )
 
