@@ -108,6 +108,9 @@ class PropertyModelTest(TestCase):
                     password='test_user',
                     email='123456@gmail.com'
                 )
+
+                test_user.full_clean()
+                test_user.save()
         except:
             test_user = User.objects.filter(username='test_user')[0]
 
@@ -121,6 +124,7 @@ class PropertyModelTest(TestCase):
                     on_grounds=Profile.ON_GROUNDS,
                     display_profile=True
                 )
+
                 test_profile.full_clean()
                 test_profile.save()
         except:
@@ -132,6 +136,7 @@ class PropertyModelTest(TestCase):
                     profile=test_profile,
                     image='default_property.jpg'
                 )
+
                 test_property.full_clean()
                 test_property.save()
         except:
@@ -139,9 +144,44 @@ class PropertyModelTest(TestCase):
 
     def test_property_str(self):
         print("Testing property __str__() method...")
-        test_user = User.objects.filter(username='test_user')[0]
-        test_profile = Profile.objects.filter(user__username='test_user')[0]
         test_property = Property.objects.filter(profile__user__username='test_user')[0]
-        self.assertEqual(str(test_user), 'test_user')
-        self.assertEqual(str(test_profile), f'{test_profile.user.username} Profile')
         self.assertEqual(str(test_property), f'{test_property.profile.user.first_name} {test_property.profile.user.last_name}\'s Property')
+
+
+    def test_property_valid_rent(self):
+        print("Testing property valid rent...")
+        test_property = Property.objects.filter(profile__user__username='test_user')[0]
+        test_property.rent = 1500
+        self.assertTrue(test_property.is_valid_rent())
+
+    def test_property_invalid_rent(self):
+        print("Testing property invalid rent...")
+        test_property = Property.objects.filter(profile__user__username='test_user')[0]
+        test_property.rent = -200
+        self.assertFalse(test_property.is_valid_rent())
+
+    # 0 is a valid rent number
+    def test_property_edge_case_rent(self):
+        print("Testing property edge case rent...")
+        test_property = Property.objects.filter(profile__user__username='test_user')[0]
+        test_property.rent = 0
+        self.assertTrue(test_property.is_valid_rent())
+    
+    def test_property_valid_num_roommates(self):
+        print("Testing property valid num roommates...")
+        test_property = Property.objects.filter(profile__user__username='test_user')[0]
+        test_property.current_number_of_roommates = 2
+        self.assertTrue(test_property.is_valid_num_roommates())
+
+    def test_property_invalid_num_roommates(self):
+        print("Testing property invalid num roommates...")
+        test_property = Property.objects.filter(profile__user__username='test_user')[0]
+        test_property.current_number_of_roommates = 34
+        self.assertFalse(test_property.is_valid_num_roommates())
+    
+    # 0 is a valid current number of roommates
+    def test_property_edge_case_num_roommates(self):
+        print("Testing property edge case num roommates...")
+        test_property = Property.objects.filter(profile__user__username='test_user')[0]
+        test_property.current_number_of_roommates = 0
+        self.assertTrue(test_property.is_valid_rent())

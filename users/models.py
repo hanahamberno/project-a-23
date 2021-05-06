@@ -278,7 +278,7 @@ class Property(models.Model):
 
     current_number_of_roommates = models.IntegerField(
         blank = True,
-        validators=[MinValueValidator(1),MaxValueValidator(20)], 
+        validators=[MinValueValidator(0),MaxValueValidator(20)], 
         null=True,
     )
 
@@ -339,3 +339,15 @@ class Property(models.Model):
 
     def __str__(self):
        return f"{self.profile.user.first_name} {self.profile.user.last_name}'s Property"
+
+    def is_valid_rent(self):
+        if self.rent is not None:
+            if self.rent < 0 or self.rent > 10000:
+                return False
+        return True
+    
+    def is_valid_num_roommates(self):
+        if self.current_number_of_roommates is not None:
+            if self.current_number_of_roommates < 0 or self.current_number_of_roommates > 20:
+                return False
+        return True
