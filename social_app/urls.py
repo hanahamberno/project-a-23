@@ -29,6 +29,5 @@ urlpatterns = [
     path('profile/<int:pk>', views.profile_detail_view, name='profile_detail_view'),
     path('logout/', auth_views.LogoutView.as_view(template_name='social_app/home.html'), name='logout'),
     path('top_match_list/', views.preference_list_view, name='preference_list'),
-    path('about', views.about, name="about"),
     path('chat', views.chat, name="chat"),
 ]
