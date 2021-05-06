@@ -79,7 +79,7 @@ class Profile(models.Model):
         verbose_name = "Gender",
         blank = True,
         max_length = 30,
-        choices = GENDER_CHOICES,
+        choices = GENDER_CHOICES[0:3],
     )
 
     pronouns = models.CharField(
@@ -124,9 +124,16 @@ class Profile(models.Model):
         max_length = 100
     )
 
+    pref_gender = models.CharField(
+        verbose_name='Preferred Gender',
+        blank=True,
+        max_length=30,
+        choices=GENDER_CHOICES,
+    )
+
     # Returns a list of preferences that the user specified
     def preference_list(self):
-        return ["max_price", "on_grounds", "gender"]
+        return ["max_price", "on_grounds", "pref_gender"]
 
     # to-string method for profiles
     def __str__(self):
