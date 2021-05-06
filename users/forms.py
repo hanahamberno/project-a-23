@@ -6,11 +6,7 @@ from .models import Profile, Property
 
 #This code is modified from code that's part of this tutorial: https://www.youtube.com/watch?v=CQ90L5jfldw&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p&index=12&t=4s
 
-# class MakePublic(forms.ModelForm):
-#     model = Profile
-#     fields = [
-#         'display_profile',
-#     ]
+
 
 class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField()
@@ -31,11 +27,11 @@ class ProfileUpdateForm(forms.ModelForm):
             'display_profile',
             'image',
             'age',
-            'gender',
             'bio',
-            'pronouns', 
             'graduation_year',
-            'phone_number', 
+            'gender',
+            'pronouns',
+            'phone_number',
         ]
 
 class PreferenceUpdateForm(forms.ModelForm):
@@ -43,11 +39,11 @@ class PreferenceUpdateForm(forms.ModelForm):
         model = Profile
         fields = [
             'match_list',
-            'on_grounds', 
+            'on_grounds',
             'max_price',
             'gender',
         ]
-        
+
 
 class PropertyUpdateForm(forms.ModelForm):
     class Meta:
@@ -59,9 +55,9 @@ class PropertyUpdateForm(forms.ModelForm):
             'amenities',
             'address',
             'on_grounds',
-            'furnished', 
-            'current_number_of_roommates', 
-            'number_of_roommates_seeking', 
+            'furnished',
+            'current_number_of_roommates',
+            'number_of_roommates_seeking',
             'room_type',
             'number_of_bedrooms',
             'number_of_bathrooms',
@@ -69,7 +65,4 @@ class PropertyUpdateForm(forms.ModelForm):
             'lease_duration',
             'building_type',
             'other_details',
-            
         ]
-
-

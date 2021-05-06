@@ -64,7 +64,7 @@ class Profile(models.Model):
     )
 
     bio = models.TextField(
-        blank = True, 
+        blank = True,
         default = "",
     )
 
@@ -83,12 +83,12 @@ class Profile(models.Model):
     )
 
     pronouns = models.CharField(
-        blank = True, 
+        blank = True,
         max_length = 50,
     )
 
     phone_number = PhoneField(
-        blank = True, 
+        blank = True,
         max_length = 14,
     )
 
@@ -220,7 +220,7 @@ class Property(models.Model):
 
     image = models.ImageField(
         default="default_property.jpg",
-        
+
         # the directory that the image will be uploaded to (Django will create the directory if it doesn't exist yet)
         upload_to="property_pics",
     )
@@ -232,7 +232,7 @@ class Property(models.Model):
     )
 
     amenities = models.TextField(
-        blank = True, 
+        blank = True,
         default="",
     )
 
@@ -279,7 +279,7 @@ class Property(models.Model):
     )
 
     building_policies = models.TextField(
-        blank = True, 
+        blank = True,
         default = ""
     )
 
@@ -298,7 +298,7 @@ class Property(models.Model):
     )
 
     other_details = models.TextField(
-        blank = True, 
+        blank = True,
         default = ""
     )
 
