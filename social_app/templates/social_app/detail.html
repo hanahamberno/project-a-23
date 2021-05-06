@@ -21,7 +21,7 @@
                     </div>
                 </a>
                 {% else %}
-                <a href="{% url 'messages:user_search'%}">
+                <a href="{% url 'messages:new_conversation' profile.user.username %}">
                     <div>
                     Start a New Message
                     </div>

@@ -23,7 +23,6 @@ def inbox(request):
         for message in messages:
             if message['user'].username == active_direct:
                 message['unread'] = 0
-    print(messages)
     context = {
             'directs': directs,
             'messages': messages,
@@ -117,5 +116,4 @@ def newConversation(request, username):
 def deleteConversation(request, username):
     from_user = request.user
     Message.delete_messages(from_user, username)
-    print("delete_view in")
     return redirect('messages:inbox')

@@ -3,11 +3,10 @@
     <div class="container p-0">
 
 		<h1 class="h3 mb-3">Messages</h1>
+		{% for m in messages %}
 		<div class="card">
 			<div class="row g-0">
-                
 				<div class="col-12 col-lg-5 col-xl-3 border-right">
-                    {% for m in messages %}
 					<a href="{% url 'messages:directs' m.user.username %}" class="list-group-item list-group-item-action border-0">
 						<div class="d-flex align-items-start">
 							<img src="{{ m.user.profile.image.url }}" class="rounded-circle mr-1" width="40" height="40">
@@ -18,15 +17,15 @@
 						</div>
 					</a>
 					<a href="{% url 'messages:delete_conversation' m.user.username %}">X</a>
-                {% endfor %}
+        {% endfor %}
 				
-                    <a href="{% url 'messages:user_search'%}">
-						<button class="btn btn-dark">New Message</button>
-					</a>
+        <a href="{% url 'messages:user_search'%}">
+			<button class="btn btn-dark">New Message</button>
+		</a>
 
 
 					<hr class="d-block d-lg-none mt-1 mb-0">
-				</div>
+		</div>
 				<div class="col-12 col-lg-7 col-xl-9">
 					<div class="position-relative">
 						<div class="chat-messages p-4">
