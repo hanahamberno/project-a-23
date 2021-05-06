@@ -24,14 +24,27 @@ class AbstractItem(models.Model):
 
 class Profile(models.Model):
 
-    ON_GROUNDS = "on-grounds"
-    OFF_GROUNDS = "off-grounds"
-    NO_PREFERENCE = "no preference"
+    ON_GROUNDS = "On-grounds"
+    OFF_GROUNDS = "Off-grounds"
+    NO_PREFERENCE = "No preference"
+    #N_A = "na"
 
     GROUNDS_CHOICES = (
         (ON_GROUNDS, "On-Grounds"),
         (OFF_GROUNDS, "Off-Grounds"),
         (NO_PREFERENCE, "No Preference"),
+        #(N_A, "N/A")
+    )
+
+    MALE = "Male"
+    FEMALE = "Female"
+    OTHER = "Other"
+
+    GENDER_CHOICES = (
+        (MALE, "Male"),
+        (FEMALE, "Female"),
+        (OTHER, "Other"),
+        (NO_PREFERENCE, "No preference")
     )
 
     user = models.OneToOneField(
@@ -56,6 +69,13 @@ class Profile(models.Model):
 
     bio = models.TextField(blank=True, default='')
 
+    gender = models.CharField(
+        blank=True,
+        max_length=30,
+        choices=GENDER_CHOICES[0:3],
+    )
+
+
     graduation_year = models.IntegerField(
         blank=True,
         default=2021,
@@ -70,10 +90,12 @@ class Profile(models.Model):
     on_grounds = models.CharField(
         blank=True,
         choices=GROUNDS_CHOICES,
-        max_length=50
+        max_length=50,
+        verbose_name = "On-Grounds or Off-Grounds?"
     )
 
     max_price = models.IntegerField(
+        verbose_name='Max Rent or Rent Amount',
         blank=True,
         validators=[MinValueValidator(0),MaxValueValidator(10000)],
         default=600,
@@ -82,7 +104,30 @@ class Profile(models.Model):
     display_profile = models.BooleanField(
         blank=True,
         default=False,
+        verbose_name = "MAKE PROFILE PUBLIC",
     )
+
+    # user wants to match with people who only have 
+    match_list = models.CharField(
+        verbose_name='Match with people who',
+        blank=True,
+        choices=(
+            ("Property", 'Have a property'),
+            ("Profile", 'Don\'t have a property'),
+            ("Both", 'No preference'),
+        ),
+        max_length=100
+    )
+
+    pref_gender = models.CharField(
+        verbose_name='Preferred Gender',
+        blank=True,
+        max_length=30,
+        choices=GENDER_CHOICES,
+    )
+
+    def preference_list(self):
+        return ["max_price", "on_grounds", "pref_gender",]
     # attributes needed:
     # 2. graduation year -> Char(with number)? Integer?
     # 3. Age -> Integer
@@ -153,6 +198,7 @@ class Property(models.Model):
     class Meta:
         verbose_name_plural = "Properties"
 
+
     FURNISHED = "Furnished"
     UNFURNISHED = "Unfurnished"
     FURNISHED_CHOICES = (
@@ -180,6 +226,19 @@ class Property(models.Model):
         (HOUSE, "House"),
         (TOWNHOUSE, "Townhouse"),
         (OTHER, "Other"),
+    )
+
+    # on grounds choices
+    ON_GROUNDS = "On-Grounds"
+    OFF_GROUNDS = "Off-Grounds"
+    #NO_PREFERENCE = "no preference"
+    #N_A = "na"
+
+    GROUNDS_CHOICES = (
+        (ON_GROUNDS, "On-Grounds"),
+        (OFF_GROUNDS, "Off-Grounds"),
+        #(NO_PREFERENCE, "No Preference"),
+        #(N_A, "N/A")
     )
 
     profile = models.OneToOneField(
@@ -268,6 +327,14 @@ class Property(models.Model):
     display_property = models.BooleanField(
         blank=True,
         default=False,
+        verbose_name = "MAKE PROPERTY PUBLIC",
+    )
+
+    on_grounds = models.CharField(
+        blank=True,
+        choices=GROUNDS_CHOICES,
+        max_length=50,
+        verbose_name = "On-Grounds or Off-Grounds?"
     )
 
     def __str__(self):

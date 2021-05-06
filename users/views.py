@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect#Ben
 from django.contrib import messages
-from .forms import UserUpdateForm, ProfileUpdateForm, PropertyUpdateForm
+from .forms import *
 from .models import Property
 # makes users login before they can see a page, Kathy
 from django.contrib.auth.decorators import login_required
@@ -13,24 +13,33 @@ def profile(request):
         p_form = ProfileUpdateForm(request.POST,
                                    request.FILES,
                                    instance=request.user.profile)
+        pref_form = PreferenceUpdateForm(
+            request.POST,
+            request.FILES,
+            instance=request.user.profile
+        )
 
-        if u_form.is_valid() and p_form.is_valid():
+        if u_form.is_valid() and p_form.is_valid() and pref_form.is_valid():
             u_form.save()
             p_form.save()
+            pref_form.save()
             messages.success(request, f'Your account has been updated!')
             return redirect('social_app:home')
         #endif
     else:
         u_form = UserUpdateForm(instance=request.user)
         p_form = ProfileUpdateForm(instance=request.user.profile)
+        pref_form = PreferenceUpdateForm(instance=request.user.profile)
     #endif
 
     context = {
         'u_form': u_form,
         'p_form': p_form,
+        'pref_form': pref_form,
     }
 
     return render(request, 'users/profile.html', context) 
+
 
 def property_update(request):
     if request.method == 'POST':
@@ -60,4 +69,6 @@ def property_update(request):
         template_name='users/property_form.html',
         context=context,
     )
+
+
 

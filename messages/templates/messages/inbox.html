@@ -1,0 +1,74 @@
+{% extends "social_app/base.html" %}\
+{% block content %}
+    <div class="container p-0">
+
+		<h1 class="h3 mb-3">Messages</h1>
+		<div class="card">
+			<div class="row g-0">
+                
+				<div class="col-12 col-lg-5 col-xl-3 border-right">
+                    {% for m in messages %}
+					<a href="{% url 'messages:directs' m.user.username %}" class="list-group-item list-group-item-action border-0">
+						<div class="d-flex align-items-start">
+							<img src="{{ m.user.profile.image.url }}" class="rounded-circle mr-1" width="40" height="40">
+							<div class="flex-grow-1 ml-3">
+								<div class="small"></div>
+                                <p>{{ m.user.first_name }} {{m.user.last_name}}</p>
+							</div>
+						</div>
+					</a>
+					<a href="{% url 'messages:delete_conversation' m.user.username %}">X</a>
+                {% endfor %}
+				
+                    <a href="{% url 'messages:user_search'%}">
+						<button class="btn btn-dark">New Message</button>
+					</a>
+
+
+					<hr class="d-block d-lg-none mt-1 mb-0">
+				</div>
+				<div class="col-12 col-lg-7 col-xl-9">
+					<div class="position-relative">
+						<div class="chat-messages p-4">
+                            {% for direct in directs %}
+							<div class="chat-message-right mb-4">
+								<div>
+									<!-- <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40"> -->
+									<div class="text-muted small text-nowrap mt-2">{{ direct.date }}</div>
+								</div>
+                                
+								<div class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
+									<div class="font-weight-bold mb-1">{{direct.sender}}</div>
+									{{ direct.body }}
+								</div>
+                                {% endfor %}
+							</div>
+						</div>
+					</div> 
+                
+				 	{% if messages %}
+						<form action="{% url 'messages:send_direct' %}" method="POST">
+							{% csrf_token %}
+							<div class="media-content">
+								<input type="hidden" name="to_user" value="{{ active_direct }}">
+								<div class="field">
+								<p class="control">
+									<textarea class="textarea form-control" name="body" placeholder="Message Here!"></textarea>
+								</p>
+								</div>
+								<nav class="level">
+								<div class="level-left">
+									<div class="level-item">
+									<button type="submit" name="action" class="button is-info btn btn-dark">Send</buttom>
+									</div>
+								</div>
+								</nav>
+							</div>
+						</form>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

@@ -1,6 +1,6 @@
 {% extends "social_app/base.html" %}
-<!-- (Hanah) tutorial had this in already? -->
-{% load crispy_forms_tags %} 
+<!-- This code is modified from code that's part of this tutorial: https://www.youtube.com/watch?v=FdVuKt_iuSI&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p&index=11&t=1143s -->
+{% load crispy_forms_tags %}
 {% block content %}
 <!--Kathy's CSS (main-page, container, and padding)-->
 <div class="container main-page py-4 px-3">
@@ -21,6 +21,9 @@
                     <legend class="border-bottom mb-4 header-text">Profile Information</legend>
                     {{ u_form|crispy }}
                     {{ p_form|crispy }}
+                    <legend class="border-bottom mb-4 mt-4 header-text">Roommate Preferences</legend>
+                    <p class="text-center"><b>This Information Will Be Used To Determine Your Top Matches!</b></p>
+                    {{ pref_form|crispy }}
                 </fieldset>
                 <div class="form-group">
                     <button class="btn btn-dark" type="submit">Update</button>
@@ -30,3 +33,16 @@
     </div>
 </div>
 {% endblock content %}
+{% block JS %}
+<script>
+    window.addEventListener('load', () => {
+        const label = document.getElementById("div_id_display_profile");
+        label.getElementsByTagName("label")[0].style.fontSize = "large";
+    })
+    document.getElementById('id_match_list').addEventListener('change', function () {
+        const match_form = document.getElementById('id_match_list');
+        const match_form_option = match_form.options[match_form.selectedIndex].value;
+        console.log(match_form_option);
+    })
+</script>
+{% endblock JS %}

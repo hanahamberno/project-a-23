@@ -1,0 +1,21 @@
+{% extends "social_app/base.html" %}
+{% load static %}
+{% block content %}
+
+<!-- This code is modified from code that's part of this tutorial: https://www.twilio.com/blog/2018/03/python-django-twilio-programmable-chat-application.html -->
+    <div id="messages"></div>
+    <div class="col-xs-2">
+      <input id="chat-input" class="form-control mt-3" type="text" placeholder="Write a message!" width="48" autofocus />
+    </div>
+    <div class="row justify-content-center mt-4">
+      <a href="{% url 'social_app:home' %}">
+        <button class="btn btn-dark">
+          Back To Home
+        </button>
+      </a>
+    </div>
+    
+
+{% endblock %}
+{% block JS %}
+{% endblock %}

@@ -1,8 +1,9 @@
 {% extends "social_app/base.html" %}
 {% load socialaccount %}
 
-    {% block title %}Roommate Finder{% endblock %}
-    {% block content %}
+{% block title %}Roommate Finder{% endblock %}
+{% block content %}
+<h1 class="text-center m-4">People Who Have Properties</h1>
 <!-- Seungeon -->
 <!-- Added profile cards -->
 {% if user.is_authenticated %}
@@ -51,5 +52,5 @@
     </div>
 </div>
 {% endif %}
-    
-    {% endblock content %}
+
+{% endblock content %}

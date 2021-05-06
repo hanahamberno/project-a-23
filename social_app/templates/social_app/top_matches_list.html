@@ -1,0 +1,58 @@
+{% extends "social_app/base.html" %}
+{% load socialaccount %}
+
+{% block title %}Roommate Finder{% endblock %}
+{% block content %}
+<!-- Seungeon -->
+<!-- Added profile cards -->
+{% if user.is_authenticated %}
+<div class="container py-4 px-4">
+    {% if display_list %}
+    <h1 class="text-center">You Have Matched with {{ display_list|length }} people</h1>
+    <div class="row row-cols-1 row-cols-md-5">
+        {% for p in display_list %}
+        <div class="col mb-4">
+            <div class="card h-100 p-4 m-2 text-center roomie-card">
+                <p>Matched with {{p.0}} / 3 of Your Preferences!</p>
+                <a href="{% url 'social_app:profile_detail_view' p.1.user.pk %}">
+                    <img src="{{ p.1.image.url }}" class="rounded-circle img-thumbnail card-img-top roomie-pfp">
+                </a>
+                <div class="card-body">
+                    <a href="{% url 'social_app:profile_detail_view' p.1.user.pk %}" class="card-title roomie-name">
+                        <strong>{{ p.1.user.first_name }} {{ p.1.user.last_name}}</strong>
+                    </a>
+                    <p class="card-text">{{ p.1.bio|truncatewords:15 }}</p>
+                </div>
+                <div class="card-footer roomie-footer">
+                    <a href="{% url 'social_app:profile_detail_view' p.1.user.pk %}" class="btn btn-dark">View
+                        Profile</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <div class="row justify-content-center m-4">
+        <a href="{% url 'social_app:home' %}">
+            <button class="btn btn-dark">
+                Back To Home
+            </button>
+        </a>
+    </div>
+</div>
+{% else %}
+<div class="jumbotron container text-center">
+    <div class="row justify-content-center">
+        <p class="m-4 h4">Log in to start viewing profiles</p>
+    </div>
+    <div class="row justify-content-center mt-4">
+        <a href="{% provider_login_url 'google' %}">
+            <button class="btn btn-dark">
+                Log In
+            </button>
+        </a>
+    </div>
+</div>
+{% endif %}
+
+{% endblock content %}

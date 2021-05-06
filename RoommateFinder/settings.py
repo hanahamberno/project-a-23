@@ -53,6 +53,7 @@ DEFAULT_APPS = [
 PROJECT_APPS = [
     'social_app.apps.SocialAppConfig',
     'users.apps.UsersConfig',
+    'messages.apps.MessagesConfig',
 ]
 # it is the thrid party api
 THIRD_PARTY_APP = [
@@ -68,7 +69,8 @@ THIRD_PARTY_APP = [
     'storages',
     # Postgre stuff?
     'django_extensions',
-
+    # twilio stuff
+    'chatapp',
 ]
 
 INSTALLED_APPS = DEFAULT_APPS + PROJECT_APPS + THIRD_PARTY_APP
@@ -192,7 +194,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/New_York'
 
 USE_I18N = True
 
@@ -235,3 +237,31 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # ex) pure-reaches-whatever.com/media/the_name_of_the_pic
 MEDIA_URL = '/media/'
 
+# Activate Django-Heroku.
+try:
+    # Configure Django App for Heroku.
+    import django_heroku
+    django_heroku.settings(locals())
+except ImportError:
+    found = False
+
+
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATICFILES_DIRS = (os.path.join(os.path.dirname(__file__),'static'),)
+
+
+TWILIO_ACCT_SID='AC73454785d6d7c885c047656d34a0b627'
+TWILIO_CHAT_SID='IS37db0fd7ecfc4769abbc1833bd11bf57'
+TWILIO_SYNC_SID='ISa2a449e1960064b38a302cd32698b6a3'
+TWILIO_API_SID='SKf2453063677a1b10463927e42cba9b2d'
+TWILIO_API_SECRET='7QlAPapGXtOQdAdwH3Zbu87bYJGt4Ocq'
+
+# ACCOUNT_ADAPTER = "social_app.adapter.CustomAccountAdapter"
+
+# ACCOUNT_ALLOW_SIGNUPS = False
+
+
+
+#SECURE_SSL_REDIRECT = True
+#SESSION_COOKIE_SECURE = True
+#CSRF_COOKIE_SECURE = True

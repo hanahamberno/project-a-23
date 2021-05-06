@@ -1,7 +1,7 @@
 {% extends "social_app/base.html" %}
 
-    {% block title %}Roommate Finder{% endblock %}
-    {% block content %}
+{% block title %}Roommate Finder{% endblock %}
+{% block content %}
 <!-- Kathy -->
 <!-- Added profile cards -->
 <div class="container main-page py-4 px-3">
@@ -13,6 +13,22 @@
                 <p class="text-secondary">{{ profile.user.email }}</p>
                 <p></p>
             </div>
+            {% if from_user != user %}
+                {% if record %}
+                <a href="{% url 'messages:directs' user.username %}">
+                    <div>
+                    Send a Message
+                    </div>
+                </a>
+                {% else %}
+                <a href="{% url 'messages:user_search'%}">
+                    <div>
+                    Start a New Message
+                    </div>
+                </a>
+                {% endif %}
+            {%endif%}
+            
         </div>
         <div class="container p-4">
             <h3 class="mb-4 card-header pl-0 pb-4 pt-1">A little bit about this wonderful person :)</h3>
@@ -25,59 +41,70 @@
                     <strong>Bio :</strong>
                     {%if profile.bio%}
                     {{ profile.bio }}
-                {%else%}
+                    {%else%}
                     -
-                {%endif%}
+                    {%endif%}
                 </p>
                 <p>
                     <strong>Age :</strong>
                     {%if profile.age%}
                     {{ profile.age }}
-                {%else%}
+                    {%else%}
                     -
-                {%endif%}
+                    {%endif%}
+                </p>
+                <p>
+                    <strong>Gender :</strong>
+                    {%if profile.gender%}
+                    {{ profile.gender }}
+                    {%else%}
+                    -
+                    {%endif%}
                 </p>
                 <p>
                     <strong>Graduation Year :</strong>
                     {%if profile.graduation_year%}
                     {{ profile.graduation_year }}
-                {%else%}
+                    {%else%}
                     -
-                {%endif%}
+                    {%endif%}
                 </p>
                 <p>
                     <strong>Pronouns :</strong>
                     {%if profile.pronouns%}
                     {{ profile.pronouns }}
-                {%else%}
+                    {%else%}
                     -
-                {%endif%}
+                    {%endif%}
                 </p>
                 <p>
                     <strong>Phone Number :</strong>
                     {%if profile.phone_number%}
                     {{ profile.phone_number }}
-                {%else%}
+                    {%else%}
                     -
-                {%endif%}
+                    {%endif%}
                 </p>
+                {% if profile.property.display_property == False %}
                 <p>
-                    <strong>On Grounds :</strong>
+                    <strong>On-Grounds or Off-Grounds?:</strong>
                     {%if profile.on_grounds%}
                     {{ profile.on_grounds }}
-                {%else%}
+                    {%else%}
                     -
-                {%endif%}
+                    {%endif%}
                 </p>
                 <p>
-                    <strong>Max Price :</strong>
+                    <strong>Up To How Much Can You Pay For Rent?(Monthly) :</strong>
                     {%if profile.max_price%}
-                    {{ profile.max_price }}
-                {%else%}
+                    ${{ profile.max_price }}
+                    {%else%}
                     -
-                {%endif%}
+                    {%endif%}
                 </p>
+                {% endif %}
             </div>
+
             {% if profile.property.display_property %}
             <h3 class="mb-4 mt-5 card-header pl-0 pb-4 pt-1">Property Information</h3>
             <div class="card-text">
@@ -93,110 +120,126 @@
                             <strong>Rent :</strong>
                             {%if profile.property.rent%}
                             {{ profile.property.rent }}
-                        {%else%}
+                            {%else%}
                             -
-                        {%endif%}
+                            {%endif%}
+                        </p>
+                        <p>
+                            <strong>Amenities :</strong>
+                            {%if profile.property.amenities%}
+                            {{ profile.property.amenities }}
+                            {%else%}
+                            -
+                            {%endif%}
                         </p>
                         <p>
                             <strong>Address/Location:</strong>
                             {%if profile.property.address%}
                             {{ profile.property.address }}
-                        {%else%}
+                            {%else%}
                             -
-                        {%endif%}
+                            {%endif%}
                         </p>
                         <p>
-                            <strong>Amentities :</strong>
-                            {%if profile.property.amenities%}
-                            {{ profile.property.amenities }}
-                        {%else%}
+                            <strong>On-Grounds or Off-Grounds?:</strong>
+                            {%if profile.property.on_grounds%}
+                            {{ profile.property.on_grounds }}
+                            {%else%}
                             -
-                        {%endif%}
+                            {%endif%}
                         </p>
+
                         <p>
                             <strong>Furnished :</strong>
                             {%if profile.property.furnished%}
                             {{ profile.property.furnished }}
-                        {%else%}
+                            {%else%}
                             -
-                        {%endif%}
+                            {%endif%}
                         </p>
                         <p>
                             <strong>Current Number of Roommates:</strong>
                             {%if profile.property.current_number_of_roommates%}
                             {{ profile.property.current_number_of_roommates }}
-                        {%else%}
+                            {%else%}
                             -
-                        {%endif%}
+                            {%endif%}
                         </p>
                         <p>
-                            <strong>Desired Number of Roommates:</strong>
+                            <strong>Number of Roommates Seeking:</strong>
                             {%if profile.property.number_of_roommates_seeking%}
                             {{ profile.property.number_of_roommates_seeking }}
-                        {%else%}
+                            {%else%}
                             -
-                        {%endif%}
+                            {%endif%}
                         </p>
                         <p>
                             <strong>Room Type :</strong>
                             {%if profile.property.room_type%}
                             {{ profile.property.room_type }}
-                        {%else%}
+                            {%else%}
                             -
-                        {%endif%}
+                            {%endif%}
                         </p>
                         <p>
                             <strong>Number of Bedrooms:</strong>
                             {%if profile.property.number_of_bedrooms%}
                             {{ profile.property.number_of_bedrooms }}
-                        {%else%}
+                            {%else%}
                             -
-                        {%endif%}
+                            {%endif%}
                         </p>
                         <p>
                             <strong>Number of Bathrooms:</strong>
                             {%if profile.property.number_of_bathrooms%}
                             {{ profile.property.number_of_bathrooms }}
-                        {%else%}
+                            {%else%}
                             -
-                        {%endif%}
+                            {%endif%}
                         </p>
                         <p>
                             <strong>Building Policies :</strong>
                             {%if profile.property.building_policies%}
                             {{ profile.property.building_policies }}
-                        {%else%}
+                            {%else%}
                             -
-                        {%endif%}
+                            {%endif%}
                         </p>
                         <p>
                             <strong>Lease Duration:</strong>
                             {%if profile.property.lease_duration%}
                             {{ profile.property.lease_duration }} month(s)
-                        {%else%}
+                            {%else%}
                             -
-                        {%endif%}
+                            {%endif%}
                         </p>
                         <p>
                             <strong>Building Type:</strong>
                             {%if profile.property.building_type%}
                             {{ profile.property.building_type }}
-                        {%else%}
+                            {%else%}
                             -
-                        {%endif%}
+                            {%endif%}
                         </p>
                         <p>
                             <strong>Other Details:</strong>
                             {%if profile.property.other_details%}
                             {{ profile.property.other_details }}
-                        {%else%}
+                            {%else%}
                             -
-                        {%endif%}
+                            {%endif%}
                         </p>
                     </div>
                 </div>
             </div>
             {% endif %}
+            <div class="row justify-content-center m-4">
+                <a href="{{ request.META.HTTP_REFERER }}">
+                    <button class="btn btn-dark">
+                        Return To Previous Page
+                    </button>
+                </a>
+            </div>
         </div>
     </div>
 </div>
