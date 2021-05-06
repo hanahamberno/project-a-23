@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .models import Profile, Property
 
+#This code is modified from code that's part of this tutorial: https://www.youtube.com/watch?v=CQ90L5jfldw&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p&index=12&t=4s
+
 # class MakePublic(forms.ModelForm):
 #     model = Profile
 #     fields = [
