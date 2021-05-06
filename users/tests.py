@@ -223,3 +223,44 @@ class PropertyModelTest(TestCase):
         test_property.number_of_roommates_seeking = 1
         self.assertTrue(test_property.is_valid_num_roommates_seeking())
 
+
+
+    def test_property_valid_num_bedrooms(self):
+        print("Testing property valid num bedrooms...")
+        test_property = Property.objects.filter(profile__user__username='test_user')[0]
+        test_property.number_of_bedrooms = 3
+        self.assertTrue(test_property.is_valid_number_of_bedrooms())
+
+    def test_property_invalid_num_bedrooms(self):
+        print("Testing property invalid num bedrooms...")
+        test_property = Property.objects.filter(profile__user__username='test_user')[0]
+        test_property.number_of_bedrooms = 58
+        self.assertFalse(test_property.is_valid_number_of_bedrooms())
+
+
+
+    def test_property_valid_num_bathrooms(self):
+        print("Testing property valid num bathrooms...")
+        test_property = Property.objects.filter(profile__user__username='test_user')[0]
+        test_property.number_of_bathrooms = 3
+        self.assertTrue(test_property.is_valid_number_of_bathrooms())
+
+    def test_property_invalid_num_bathrooms(self):
+        print("Testing property invalid num bathrooms...")
+        test_property = Property.objects.filter(profile__user__username='test_user')[0]
+        test_property.number_of_bathrooms = 58
+        self.assertFalse(test_property.is_valid_number_of_bathrooms())
+
+
+
+    def test_property_valid_lease_duration(self):
+        print("Testing property valid lease duration...")
+        test_property = Property.objects.filter(profile__user__username='test_user')[0]
+        test_property.lease_duration = 3
+        self.assertTrue(test_property.is_valid_lease_duration())
+
+    def test_property_invalid_lease_duration(self):
+        print("Testing property invalid lease duration...")
+        test_property = Property.objects.filter(profile__user__username='test_user')[0]
+        test_property.lease_duration = 753
+        self.assertFalse(test_property.is_valid_lease_duration())

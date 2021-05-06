@@ -357,4 +357,21 @@ class Property(models.Model):
             if self.number_of_roommates_seeking < 1 or self.number_of_roommates_seeking > 20:
                 return False
         return True
-    
+
+    def is_valid_number_of_bedrooms(self):
+        if self.number_of_bedrooms is not None:
+            if self.number_of_bedrooms < 1 or self.number_of_bedrooms > 20:
+                return False
+        return True
+
+    def is_valid_number_of_bathrooms(self):
+        if self.number_of_bathrooms is not None:
+            if self.number_of_bathrooms < 1 or self.number_of_bathrooms > 20:
+                return False
+        return True
+
+    def is_valid_lease_duration(self):
+        if self.lease_duration is not None:
+            if self.lease_duration < 1 or self.lease_duration > 72:
+                return False
+        return True
