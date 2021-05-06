@@ -34,7 +34,7 @@ ALLOWED_HOSTS = [
     '0.0.0.0',
     '127.0.0.1',
     'localhost',
-    'pure-reaches-12380.herokuapp.com'
+    'pure-reaches-12380.herokuapp.com',
 ]
 
 

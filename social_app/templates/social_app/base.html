@@ -49,38 +49,29 @@
                                 {% if user.is_authenticated %}
                                 <li class="nav-item dropdown navbar_dropdown">
                                     <a class="nav-link dropdown-toggle" style="opacity:1.0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Edit
+                                    Edit My Info
                                     </a>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="{% url 'profile' %}">Edit Profile</a>
                                         <a class="dropdown-item" href="{% url 'property' %}">Manage Property</a>
                                     </div>
                                 </li>
-                                {% comment %} <a class="nav-item nav-link" href="{% url 'profile' %}">Edit Profile</a>
-                                <a class="nav-item nav-link" href="{% url 'property' %}">Manage Property</a>
-                                <a class="nav-item nav-link" href="{% url 'messages:inbox' %}">Message Inbox</a> {% endcomment %}
-                                <li class="nav-item dropdown navbar_dropdown">
-                                    <a class="nav-link dropdown-toggle" style="opacity:1.0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Messages
-                                    </a>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="{% url 'social_app:chat' %}">Chat With Everyone</a>
-                                        <a class="dropdown-item" href="{% url 'messages:inbox' %}">Message Inbox</a>
-                                        {% comment %} <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Something else here</a> {% endcomment %}
-                                    </div>
-                                </li>
+                                <a class="nav-item nav-link" href="{% url 'messages:inbox' %}">Message Inbox</a>
+                                <a class="nav-item nav-link" href="{% url 'social_app:chat' %}">Chat With Everyone</a>
                                 {% endif %}
                             </div>
                             <div class="navbar-nav">
                                 {% if user.is_authenticated %}
-                                <a class="nav-item nav-link" href="{% url 'social_app:profile_list' %}">
-                                    Without a
-                                Property
-                                </a>
-                                <a class="nav-item nav-link" href="{% url 'social_app:property_list' %}">With a Property</a>
-                                <a class="nav-item nav-link" href="{% url 'social_app:preference_list' %}">Top Matches</a>
-                                {% comment %} <a class="nav-item nav-link" href="{% url 'social_app:chat' %}">Chat With Everyone</a> {% endcomment %}
+                                <li class="nav-item dropdown navbar_dropdown">
+                                    <a class="nav-link dropdown-toggle" style="opacity:1.0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Explore Roommates
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="{% url 'social_app:property_list' %}">With a Property</a>
+                                        <a class="dropdown-item" href="{% url 'social_app:profile_list' %}">Without a Property</a>
+                                        <a class="dropdown-item" href="{% url 'social_app:preference_list' %}">Your Top Matches</a>
+                                    </div>
+                                </li>
                                 <a class="nav-item nav-link" href="{% url 'social_app:logout' %}">Log Out</a>
                                 {% else %}
                                 <a class="nav-item nav-link" href="{% provider_login_url 'google' %}">Log In</a>
@@ -104,6 +95,7 @@
                 </a>
             </div>
         </div>
+        <!-- Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -112,13 +104,12 @@
 </html>
 </div>
 
-<!--Twilio JS-->
+
 
 </body>
+<!--Twilio JS-->
 <script src="https://media.twiliocdn.com/sdk/js/chat/releases/4.0.0/twilio-chat.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="{% static 'twilio/index.js' %}"></script>
-<!-- Bootstrap JS -->
-
 {% block JS %}{% endblock %}
 </html>
