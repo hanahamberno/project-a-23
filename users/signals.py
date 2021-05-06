@@ -4,6 +4,8 @@ from django.dispatch import receiver
 from .models import Profile, Property
 from django.core.exceptions import ObjectDoesNotExist
 
+#This code is modified from code that's part of this tutorial: https://www.youtube.com/watch?v=FdVuKt_iuSI&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p&index=11&t=1143s
+
 # (Hanah) want a user profile to be created for each new user
 @receiver(post_save, sender=User) #signal = save
 def create_user_profile(sender, instance, created, **kwargs):
