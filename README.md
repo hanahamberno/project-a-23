@@ -28,9 +28,6 @@
   * We implemented the so-called 'dashboard' feature, where a user is able to look at those who are interested in finding roommates.
   * A user is also able to edit their own profile information. 
   * We used the following videos to implement user profile and profile pictures:
-    *   [Youtube Video](https://www.youtube.com/watch?v=FdVuKt_iuSI&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p&index=11&t=1143s)
-    *   [Youtube Video](https://www.youtube.com/watch?v=CQ90L5jfldw&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p&index=12&t=4s)
-    *   [Youtube Video](https://www.youtube.com/watch?v=kt3ZtW9MXhw&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p&index=19&t=1297s)
     * Author: Corey Schafer
     * Date: 3/13/21
     * Code version: HTML and Python
