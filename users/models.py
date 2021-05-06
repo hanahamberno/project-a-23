@@ -12,7 +12,7 @@ from PIL import Image
 # So whenever we create a amenity, this will be created
 class AbstractItem(models.Model):
     name = models.CharField(max_length=30)
-    
+
     # (Seungeon)
     # abstract = True will prevent this class from storing
     # in the DB.
@@ -63,7 +63,7 @@ class Profile(models.Model):
     )
     age = models.IntegerField(
         blank=True,
-        validators=[MinValueValidator(0),MaxValueValidator(150)],
+        validators=[MinValueValidator(16),MaxValueValidator(120)],
         null=True,
     )
 
@@ -107,7 +107,7 @@ class Profile(models.Model):
         verbose_name = "MAKE PROFILE PUBLIC",
     )
 
-    # user wants to match with people who only have 
+    # user wants to match with people who only have
     match_list = models.CharField(
         verbose_name='Match with people who',
         blank=True,
@@ -145,19 +145,19 @@ class Profile(models.Model):
             if self.graduation_year < 2021 or self.graduation_year > 2025:
                 return False
         return True
-    
+
     def is_valid_age(self):
         if self.age is not None:
             if self.age < 16 or self.age > 120:
                 return False
         return True
-    
+
     def is_valid_phone_number(self):
         if self.phone_number is not None:
             if sum(c.isdigit() for c in self.phone_number) != 10:
                 return False
         return True
-    
+
     def is_valid_max_price(self):
         if self.max_price is not None:
             if self.max_price < 0 or self.max_price > 10000:
@@ -190,7 +190,7 @@ class Profile(models.Model):
 class Amenity(models.Model):
     name = models.CharField(max_length=30)
     class Meta:
-        verbose_name_plural = "Amenities" 
+        verbose_name_plural = "Amenities"
     def __str__(self):
         return self.name
 
@@ -257,8 +257,8 @@ class Property(models.Model):
     )
 
     rent = models.IntegerField(
-        blank=True, 
-        validators=[MinValueValidator(0),MaxValueValidator(10000)], 
+        blank=True,
+        validators=[MinValueValidator(0),MaxValueValidator(10000)],
         null=True,
     )
 
@@ -266,7 +266,7 @@ class Property(models.Model):
 
     address = models.CharField(
         verbose_name="Address/Location",
-        blank = True, 
+        blank = True,
         max_length = 200
     )
 
@@ -278,13 +278,13 @@ class Property(models.Model):
 
     current_number_of_roommates = models.IntegerField(
         blank = True,
-        validators=[MinValueValidator(1),MaxValueValidator(20)], 
+        validators=[MinValueValidator(0),MaxValueValidator(20)],
         null=True,
     )
 
     number_of_roommates_seeking = models.IntegerField(
         blank = True,
-        validators=[MinValueValidator(1),MaxValueValidator(20)], 
+        validators=[MinValueValidator(1),MaxValueValidator(20)],
         null=True,
     )
 
@@ -296,13 +296,13 @@ class Property(models.Model):
 
     number_of_bedrooms =  models.IntegerField(
         blank = True,
-        validators=[MinValueValidator(1),MaxValueValidator(20)], 
+        validators=[MinValueValidator(1),MaxValueValidator(20)],
         null=True,
     )
 
     number_of_bathrooms =  models.IntegerField(
         blank = True,
-        validators=[MinValueValidator(1),MaxValueValidator(20)], 
+        validators=[MinValueValidator(1),MaxValueValidator(20)],
         null=True,
     )
 
@@ -311,7 +311,7 @@ class Property(models.Model):
     lease_duration = models.IntegerField(
         'Lease Duration (Months)',
         blank = True,
-        validators=[MinValueValidator(1),MaxValueValidator(72)], 
+        validators=[MinValueValidator(1),MaxValueValidator(72)],
         null=True,
         default = 12,
     )
@@ -339,3 +339,39 @@ class Property(models.Model):
 
     def __str__(self):
        return f"{self.profile.user.first_name} {self.profile.user.last_name}'s Property"
+
+    def is_valid_rent(self):
+        if self.rent is not None:
+            if self.rent < 0 or self.rent > 10000:
+                return False
+        return True
+
+    def is_valid_curr_num_roommates(self):
+        if self.current_number_of_roommates is not None:
+            if self.current_number_of_roommates < 0 or self.current_number_of_roommates > 20:
+                return False
+        return True
+
+    def is_valid_num_roommates_seeking(self):
+        if self.number_of_roommates_seeking is not None:
+            if self.number_of_roommates_seeking < 1 or self.number_of_roommates_seeking > 20:
+                return False
+        return True
+
+    def is_valid_number_of_bedrooms(self):
+        if self.number_of_bedrooms is not None:
+            if self.number_of_bedrooms < 1 or self.number_of_bedrooms > 20:
+                return False
+        return True
+
+    def is_valid_number_of_bathrooms(self):
+        if self.number_of_bathrooms is not None:
+            if self.number_of_bathrooms < 1 or self.number_of_bathrooms > 20:
+                return False
+        return True
+
+    def is_valid_lease_duration(self):
+        if self.lease_duration is not None:
+            if self.lease_duration < 1 or self.lease_duration > 72:
+                return False
+        return True
