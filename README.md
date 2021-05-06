@@ -35,7 +35,7 @@
     * URL: https://www.youtube.com/watch?v=CQ90L5jfldw&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p&index=12&t=4s
     * URL: https://www.youtube.com/watch?v=kt3ZtW9MXhw&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p&index=19&t=1297s
     * Software License: None Listed
-  * [Default profile image resource](https://icon-library.com/icon/default-user-icon-8.html)
+  * [Profile Pic Default Image Resource](https://icon-library.com/icon/default-user-icon-8.html)
 
 # Sprint 5: Next Major Feature (Property)
   * We implemented the Property feature
