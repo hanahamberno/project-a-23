@@ -45,7 +45,7 @@ class PreferenceUpdateForm(forms.ModelForm):
             'match_list',
             'on_grounds', 
             'max_price',
-            'pref_gender',
+            'gender',
         ]
         
 

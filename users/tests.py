@@ -39,7 +39,7 @@ class ProfileModelTest(TestCase):
         test_user = User.objects.filter(username='test_user')[0]
         test_profile = Profile.objects.filter(user__username='test_user')[0]
         self.assertEqual(str(test_user), 'test_user')
-        self.assertEqual(str(test_profile), f'{test_profile.user.username} Profile')
+        self.assertEqual(str(test_profile), 'test_user\'s Profile')
 
 
 
@@ -157,7 +157,7 @@ class PropertyModelTest(TestCase):
     def test_property_str(self):
         print("Testing property __str__() method...")
         test_property = Property.objects.filter(profile__user__username='test_user')[0]
-        self.assertEqual(str(test_property), f'{test_property.profile.user.first_name} {test_property.profile.user.last_name}\'s Property')
+        self.assertEqual(str(test_property), f'hello hi\'s Property')
 
 
 
